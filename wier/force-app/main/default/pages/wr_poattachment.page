@@ -1,0 +1,23 @@
+<apex:page standardController="PO_Attachments__c">
+<apex:form >
+   <apex:detail relatedList="false" title="true"/> 
+   <!--<apex:relatedList list="CombinedAttachments">
+    <apex:facet name="header"><b> Quotation Attachments  </b></apex:facet>
+   </apex:relatedList>-->
+   <apex:pageBlock title="Quotation Attachments ">
+   <apex:pageBlockTable value="{!PO_Attachments__c.CombinedAttachments}" var="a" title="sam"> 
+       <apex:column headerValue="Action">
+          <apex:commandLink value="View" onclick="Javascript:window.open('/servlet/servlet.FileDownload?file={!a.id}');"/>
+       </apex:column>    
+       <apex:column value="{!a.title}"/>
+       <apex:column headerValue="Created By">
+           <apex:outputLabel >{!a.createdby.name} </apex:outputLabel>
+       </apex:column>
+       <apex:column value="{!a.createddate}"/>
+       <apex:column value="{!a.LastModifieddate}"/>
+   </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+   <apex:relatedList list="OpenActivities"/>
+   
+</apex:page>

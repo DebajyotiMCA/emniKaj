@@ -1,0 +1,771 @@
+<apex:page standardController="compliancequest__SQX_CAPA__c">
+            
+    <apex:variable var="PageSize" value="{!IF((JSENCODE($CurrentPage.parameters.printMode))=='true', 200, 5)}"/>
+            
+    <div style="text-align:right;">
+        <a href= "{!URLFOR($Page.SQX_CAPA, null, [id=compliancequest__SQX_CAPA__c.Id, printMode='true'])}" id="printPage" data-bind="invisible: isNewObject">{!$Label.compliancequest__CQ_UI_Print}</a>
+    </div> 
+
+    <chatter:feedwithfollowers entityid="{!Id}" showheader="true"/>
+    <div id="checkMobile"></div>
+     <div id="loadingBlock" data-role="cqloading"></div>
+
+     <div data-role="cqtabstrip" id="mainTab" data-collapsible="true" data-show-grid-title="true" data-show-grid-count="true" class="cqMainTab" data-activate="setActionButtons">
+        <ul>
+            <li id="detailTab" data-title="{!$ObjectType.compliancequest__SQX_CAPA__c.Label}" class="k-state-active">{!$ObjectType.compliancequest__SQX_CAPA__c.Label}</li>
+            <li id="policyTab" data-title="{!$Label.compliancequest__CQ_UI_Policy}">{!$Label.compliancequest__CQ_UI_Policy}</li>
+            <li id="noteAndAttachmentTab" data-grid-sobject="Note,ContentDocumentLink" data-title="{!$Label.compliancequest__CQ_UI_Notes_And_Attachments}"> {!$Label.compliancequest__CQ_UI_Notes_And_Attachments}</li>
+            <li id="referenceTab" data-grid-sobject="DefectsFindingCAPAReferenceAndRelatedCapas" data-title="{!$Label.compliancequest__CQ_UI_Reference}">{!$Label.compliancequest__CQ_UI_Reference}</li>
+            <li id="impactTab" data-grid-sobject="compliancequest__SQX_CAPA_Impacted_Site__c" data-title="{!$ObjectType.compliancequest__SQX_CAPA_Impacted_Site__c.Label}">{!$ObjectType.compliancequest__SQX_CAPA_Impacted_Site__c.Label}</li>
+            <li id="responseHistoryTab" data-grid-sobject="compliancequest__SQX_Finding_Response__c" data-bind="invisible: mainRecord.isInDraft">{!$ObjectType.compliancequest__SQX_Finding_Response__c.Label}</li>
+            <li id="approvedInvestigationTab" data-grid-sobject="ApprovedInvestigations" data-title="{!$ObjectType.compliancequest__SQX_Investigation__c.Label}" data-bind="invisible: mainRecord.isInDraft">{!$ObjectType.compliancequest__SQX_Investigation__c.Label}</li>
+            <li id="approvedActionTab" data-grid-sobject="compliancequest__SQX_Action__c" data-bind="invisible: mainRecord.isInDraft">{!$Label.compliancequest__CQ_UI_Change_Implementation_Type}</li>
+            <li id="effectivenessReviewTab" data-grid-sobject="compliancequest__SQX_Effectiveness_Review__c" data-bind="invisible: mainRecord.isInDraft">{!$ObjectType.compliancequest__SQX_Effectiveness_Review__c.Label}</li>
+            <li id="capaRecordHistoryTab" data-grid-sobject="compliancequest__SQX_CAPA_Record_Activity__c" data-title="{!$Label.compliancequest__CQ_UI_Record_Activity}">{!$Label.compliancequest__CQ_UI_Record_Activity}</li>
+            <li id="workflowTab" data-title="{!$Label.compliancequest__CQ_UI_Workflow}" data-bind="invisible: mainRecord.isNewObject">{!$Label.compliancequest__CQ_UI_Workflow}</li>
+        </ul>
+        <div id="detailSection" class="cqFormSection">
+            <div class="cqSectionContent section3col">
+                
+                <div data-container="Capa.compliancequest__CAPA_Type__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__SQX_Account__c" data-role='cqcompositefield' data-field-scope='CAPA'></div>
+                <div data-container="Capa.compliancequest__SQX_External_Contact__c" data-role='cqcompositefield' data-field-scope='CAPA' data-cascade-from='compliancequest__SQX_Account__c' data-cascade-field='AccountId'></div>
+                            
+                <div data-container="Capa.compliancequest__Issued_Date__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__Target_Due_Date__c" data-role='cqcompositefield'></div>
+                
+                <div data-container="Capa.compliancequest__External_Reference_Number__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__SQX_Part__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__SQX_Service__c" data-role='cqcompositefield'></div>
+                
+                <div data-container="Capa.compliancequest__Operation__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__Process__c" data-role='cqcompositefield'></div>
+                <!--div class="formItem"></div-->
+                <div data-container="Capa.compliancequest__Org_Division__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__Org_Business_Unit__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__Org_Region__c" data-role='cqcompositefield'></div>               
+                <div data-container="Capa.compliancequest__Org_Site__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.WEIR_Department__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__SQX_Revision_Of_CAPA__c" data-role='cqcompositefield' data-read-only="true"></div>
+                <div data-container="Capa.compliancequest__Revision__c" data-role='cqcompositefield' data-read-only="true"></div>
+                <div data-container="Capa.compliancequest__SQX_Revised_CAPA__c" data-role='cqcompositefield' data-read-only="true"></div>
+            </div>
+            <div data-role='cqsectionheader' data-title='{!$Label.compliancequest_CQ_UI_Team_Formation}'>{!$Label.compliancequest_CQ_UI_Team_Formation}</div>
+            <div class="cqSectionContent section3col">
+                <div data-container="Capa.compliancequest__SQX_CAPA_Coordinator__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__SQX_CAPA_Sponsor__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.OwnerId" data-role='cqcompositefield' data-read-only="true"></div>
+                <div data-container="Capa.CFT_Member_1__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.CFT_Member_2__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.CFT_Member_3__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.CFT_Member_4__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.CFT_Member_5__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.CFT_Member_6__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.CFT_Member_7__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.CFT_Member_8__c" data-role='cqcompositefield'></div>            
+            </div>
+            <div data-role='cqsectionheader' data-title='{!$Label.compliancequest_CQ_UI_Problem_Identification}'>{!$Label.compliancequest_CQ_UI_Problem_Identification}</div>
+            <div class="cqSectionContent section1col">
+                <div data-container="Capa.compliancequest__Finding_Type__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__Title__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__Description__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__Recommended_Action__c" data-role='cqcompositefield'></div>
+            </div>
+             <div data-role='cqsectionheader' data-title='{!$Label.compliancequest_CQ_UI_Containment_Actions}'>
+                {!$Label.compliancequest_CQ_UI_Containment_Actions}</div> 
+            <div class="cqSectionContent section1col">
+            <div data-role="cqgrid" class="cq-topGrid subGrid" data-source="Capa.relatedList('compliancequest__SQX_Responses__r')"
+                 data-editable='{ "mode": "popup", update:false, create:false, destroy:false }'
+                 data-detail-template="responseHistoryTemplate"
+                 data-detail-init="initGridDetail"
+                 data-show-title="false"
+                 data-collapsible="false"
+                 data-columns="[{field: 'compliancequest__Response_Summary__c',template : '#: chompedSummary(compliancequest__Response_Summary__c) #'},
+                 {field: 'compliancequest__Submitted_On__c'},
+                 {field: 'compliancequest__Submitted_By__c'},
+                 {field: 'hasContainments()',title : '{!$ObjectType.compliancequest__SQX_Containment__c.Label}', template : '#= getCheckBox(hasContainments()) #', width:'100px'},
+                 {field: 'hasInvestigations()',title : '{!$ObjectType.compliancequest__SQX_Investigation__c.Label}', template : '#= getCheckBox(hasInvestigations()) #', width:'100px'},
+                 {field: 'hasActions()',title : '{!$Label.compliancequest__CQ_UI_Action}', template : '#= getCheckBox(hasActions()) #', width:'100px'},
+                 {field: 'compliancequest__Approval_Status__c',template: function(dataItem){return responseApprovalColumnTemplate(dataItem)}, width:'200px'},
+                 {title: '{!$Label.compliancequest__CQ_UI_Approved_On}', template: '#: ApprovedOn() #'}
+                 ]"
+                 data-initially-collapsed="false"></div>
+            </div>
+            
+            <div data-role='cqsectionheader' data-title='{!$Label.compliancequest_CQ_UI_Defining_Problem_Root_Causes}'>{!$Label.compliancequest_CQ_UI_Defining_Problem_Root_Causes}</div> 
+            <div class="cqSectionContent section1col">
+            <div class="section2col"> 
+              <div class="formItem" style="width:40%">
+                  <b>{!$ObjectType.compliancequest__SQX_Investigation__c.fields.compliancequest__Investigation_Summary__c.label}</b>
+                  <div id= "listViewApprovedInvestigations">
+                  </div>
+                  <div class="clearFix"></div>
+              </div>
+
+              <div id="approvedRootCauses" class="formItem" style="width:58%; padding-left:15px; float:right; margin-top:12px;">
+                <div data-role="cqgrid" class="cq-topGrid"
+                    data-toolbar = '[]'
+                     data-title="{!$ObjectType.compliancequest__SQX_Approved_Root_Cause__c.LabelPlural}"
+                     data-collapsible="false"
+                     data-source="Capa.approvedRootCauses()"
+                     data-columns="[
+                            {field : 'compliancequest__SQX_Root_Cause_Code__c'},
+                            {field : 'compliancequest__Description__c'},
+                            {field : 'compliancequest__Category__c'},
+                            {field : 'compliancequest__Failure_Component__c'},
+                            {field : 'compliancequest__Supplier_Issue__c'}]"></div>
+                <div class="clearFix"></div>
+              </div>                  
+            </div> 
+           
+            <div id="approvedActionPlans" class="formItem">
+              <br/>
+              <div data-role="cqgrid" class="cq-topGrid"
+                   data-toolbar="[]"
+                   data-title="{!$Label.compliancequest__CQ_UI_Approved_Action_Plans}"
+                   data-collapsible="false"
+                   data-source="Capa.approvedActionPlans()"
+                   data-columns="[
+                        {field : 'compliancequest__Plan_Number__c'},
+                        {field : 'compliancequest__Plan_Type__c'},
+                        {field : 'compliancequest__Description__c'},
+                        {field : 'compliancequest__SQX_User__c', template : '#= getReferenceDisplayTemplate(\'compliancequest__SQX_User__c\')(data) #'},
+                        {field : 'compliancequest__Due_Date__c',template : '#: getFormattedDate(data.compliancequest__Due_Date__c) #'},
+                        {field : 'compliancequest__Days_Required__c'},
+                        {field : 'compliancequest__Completed__c',template : '#= getCheckBox(compliancequest__Completed__c) #'},
+                        {field : 'compliancequest__Completion_Date__c',template : '#: getFormattedDate(data.compliancequest__Completion_Date__c) #'}
+                        ]"></div>
+              <div class="clearFix"></div>
+            </div>
+            
+            <div data-role='cqsectionheader' data-title='{!$Label.compliancequest_CQ_UI_Permanent_Corrective_Actions}'>{!$Label.compliancequest_CQ_UI_Permanent_Corrective_Actions}</div>      
+            <div class="cqSectionContent section1col">
+            <div data-role="cqgrid" class="cq-topGrid subGrid" data-source="Capa.relatedList('compliancequest__SQX_Actions__r')"
+                 data-detail-template="approvedActionDetailTemplate"
+                 data-detail-init="initGridDetail"
+                 data-editable='false'
+                 data-show-title="false"
+                 data-collapsible="false"
+                 data-columns='[{"field": "compliancequest__Plan_Number__c"},
+                                     {"field": "compliancequest__Plan_Type__c"},
+                                     {"field": "compliancequest__Description__c"},
+                                     {"field" : "compliancequest__SQX_User__c", "template" : "#= getReferenceDisplayTemplate(\"compliancequest__SQX_User__c\")(data)  #"},
+                                     {"field": "compliancequest__Due_Date__c"},
+                                     {"field": "compliancequest__Status__c"},
+                                     {"field": "compliancequest__Completion_Date__c"}]'>
+            </div>
+            </div>
+        
+       <div data-role='cqsectionheader' data-title='{!$Label.compliancequest_CQ_UI_Effectiveness_Review}'>{!$Label.compliancequest_CQ_UI_Effectiveness_Review}</div> 
+            <div class="cqSectionContent section1col">
+<div data-role="cqgrid" class="cq-topGrid subGrid"
+                 data-detail-template="attachmentOnlyTemplate"
+                 data-detail-init="initGridDetail"
+                 data-save="sqx.evtHdlr.capa.effectivenessreview"
+                 data-collapsible="false"
+                 data-show-title="false"
+                 data-source="Capa.relatedList('compliancequest__SQX_Effectiveness_Review__r')"
+                 data-editable='{ "mode": "popup", update:true, create:true, destroy:true}'
+                 data-columns="[{title: '{!$Label.compliancequest__CQ_UI_Actions}',command: ['edit', 'destroy'], width: '100px'},
+                    {field: 'compliancequest__Review_Started_On__c'},
+                    {field: 'compliancequest__Review__c'},
+                    {field: 'compliancequest__Reviewed_By__c'},
+                    {field: 'compliancequest__Status__c'},
+                    {field: 'compliancequest__Resolution__c'},
+                    {field: 'compliancequest__Create_New_Revision__c'},
+                    {field: 'compliancequest__Review_Completed_On__c'},
+                    {field: 'compliancequest__Next_Review_Date__c'},
+                    {field: 'compliancequest__Rating__c'}]"></div>
+            <div class="clearFix"></div>
+            
+            </div>
+      
+      
+            <div data-role='cqsectionheader' data-title='{!$Label.compliancequest_CQ_UI_Recognizing_Congratulating_the_Team}' data-initially-collapsed="{!IF($CurrentPage.parameters.printMode=='true', false, true)}">{!$Label.compliancequest_CQ_UI_Recognizing_Congratulating_the_Team}</div>
+            <div class="cqSectionContent section1col">
+                <div data-container="Capa.compliancequest__Closure_Comment__c" data-role='cqcompositefield' data-read-only="true"></div>
+                <div class="formItem">
+                    <div class="formLabel">&nbsp;</div>
+                    <div class="formField">
+                        <a href="#" 
+                            id="voidLink" 
+                            data-fn-ns="sqx.evtHdlr.closeCAPA"
+                            data-comment-field-bound-to="Capa.compliancequest__Closure_Comment__c"
+                            data-template-id="closeCapaTemplate"
+                            data-cmd-buttons="[{name: 'save', text: '{!$Label.compliancequest__CQ_UI_Void}', nextAction : 'void'},   'cancel']"
+                            class="cqActionButton"
+                            data-cq-action="void"
+                            data-bind="visible: enableVoid">{!$Label.compliancequest__CQ_UI_Click_to_void_CAPA}</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearFix"></div>
+        </div>
+            <!--div class="clearFix"></div>
+                 </div>
+            <div data-role='cqsectionheader' data-title='{!$Label.compliancequest__CQ_UI_Closure}' data-initially-collapsed="{!IF($CurrentPage.parameters.printMode=='true', false, true)}">{!$Label.compliancequest__CQ_UI_Closure}</div>
+            <div class="cqSectionContent section1col">
+                <div data-container="Capa.compliancequest__Closure_Comment__c" data-role='cqcompositefield' data-read-only="true"></div>
+                <div class="formItem">
+                    <div class="formLabel">&nbsp;</div>
+                    <div class="formField">
+                        <a href="#" 
+                            id="voidLink" 
+                            data-fn-ns="sqx.evtHdlr.closeCAPA"
+                            data-comment-field-bound-to="Capa.compliancequest__Closure_Comment__c"
+                            data-template-id="closeCapaTemplate"
+                            data-cmd-buttons="[{name: 'save', text: '{!$Label.compliancequest__CQ_UI_Void}', nextAction : 'void'},   'cancel']"
+                            class="cqActionButton"
+                            data-cq-action="void"
+                            data-bind="visible: enableVoid">{!$Label.compliancequest__CQ_UI_Click_to_void_CAPA}</a>
+                    </div>
+                </div>
+            </div-->
+
+            <div class="clearFix"></div>
+        </div>
+        <div id="policySection" class="cqFormSection">                
+            <!--div data-role='cqsectionheader' data-title='{!$Label.compliancequest__CQ_UI_Risk}'>{!$Label.compliancequest__CQ_UI_Risk}</div>
+            <div class="cqSectionContent section3col">
+                <div data-container="Capa.compliancequest__Severity__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__Probability__c" data-role='cqcompositefield'></div>
+                <div data-container="Capa.compliancequest__Risk_Level__c" data-read-only="true" data-role='cqcompositefield' data-dynamic-style="backgroundColor:riskLevelColor"></div>
+            </div>
+            <div class="cqSectionContent section1col">
+                <div data-container="Capa.compliancequest__Risk_Justification__c" data-role='cqcompositefield'></div>
+            </div-->
+            <div data-role='cqsectionheader' data-initially-collapsed='false' data-title='{!$Label.compliancequest__CQ_UI_Policy}'></div>
+            <div class="cqSectionContent section3col">
+                <div data-container="Capa.compliancequest__Response_Required__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Containment_Required__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Investigation_Required__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Due_Date_Response__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Due_Date_Containment__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Due_Date_Investigation__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Completion_Date_Response__c" data-edit-mode="false" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Completion_Date_Containment__c" data-edit-mode="false" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Completion_Date_Investigation__c" data-edit-mode="false" data-role="cqcompositefield"></div>
+                <div class="formItem"></div>
+                <div class="formItem"></div>
+                <div data-container="Capa.compliancequest__Corrective_Action_Required__c" data-role="cqcompositefield"></div>
+                <div class="formItem"></div>
+                <div class="formItem"></div>
+                <div data-container="Capa.compliancequest__Preventive_Action_Required__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Post_Approval_Required__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Pre_Approval_Required__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Investigation_Approval__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__SQX_Action_Approver__c" data-role="cqcompositefield"></div>
+                <div class="formItem"></div>
+                <div data-container="Capa.compliancequest__SQX_Investigation_Approver__c" data-role="cqcompositefield"></div>
+            </div>
+            <div data-role='cqsectionheader' data-initially-collapsed='false' data-title='{!$ObjectType.compliancequest__SQX_Effectiveness_Review__c.Label}'></div>
+            <div class="cqSectionContent section3col">
+                <div data-container="Capa.compliancequest__Needs_Effectiveness_Review__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__Effectiveness_Monitoring_Days__c" data-role="cqcompositefield"></div>
+                <div data-container="Capa.compliancequest__SQX_Effectiveness_Reviewer__c" data-role="cqcompositefield"></div>
+            </div>
+            <div class="cqSectionContent section1col">
+                <div data-container="Capa.compliancequest__Effectiveness_Verification_Plan__c" data-role="cqcompositefield"></div>
+            </div>
+            <div class="clearFix"></div>
+        </div>
+        <div id="noteAndAttachmentSection" class="cqFormSection">
+            <div data-role="cqgrid" class="cq-topGrid subGrid"
+                 data-source="Capa.relatedList('Notes')"
+                 data-editable='{ "mode": "popup", "update":true, "create":true, "destroy":true}'
+                 data-columns="[{title: '{!$Label.compliancequest__CQ_UI_Actions}',command: [{ name: 'edit', text: { update: '{!$Label.compliancequest__CQ_UI_Save}'} }, 'destroy'], width: '100px'},
+                                 {field: 'IsPrivate', hidden: true},
+                                 {field: 'Title'}, 
+                                 {field: 'Body'},
+                                 {field: 'LastModifiedDate',template : '#: convertToLocalDateTime(data.LastModifiedDate) #', hideOnPopupEdit: true},
+                                 {field: 'LastModifiedById', template: getReferenceDisplayTemplate('LastModifiedById'), hideOnPopupEdit: true}]">
+            </div>
+            <div data-role="cqgrid" id="filesGrid" class="cq-topGrid subGrid"
+                 data-source="Capa.relatedList('ContentDocumentLinks')"
+                 data-collapsible="true"
+                 data-editable='{"mode": "incell", "create":true, "update":true, "destroy":true}'
+                 data-toolbar="[{name: 'custom', text: '{!$Label.compliancequest__CQ_UI_Add_Files}', className: 'addFiles', enable: 'Capa.canEdit()', action: 'sqx.commonActions.addFiles'}]"
+                 data-columns="[{title: '{!$Label.compliancequest__CQ_UI_Actions}', command: ['preview', 'destroy'], width: '110px'},
+                                {field: 'ContentTitle', template: '#: data.Title() #', editor: cq.getFileEditor}, 
+                                {field: 'ContentDescription', template: '#: data.Description() #', editor: cq.getFileEditor}]">
+            </div>
+            <div class="clearFix"></div>
+        </div>
+        <div id="referenceSection" class="cqFormSection">
+            <div data-role="cqgrid" class="cq-topGrid subGrid" data-source="Capa.relatedList('compliancequest__SQX_CAPA_Defects__r')"
+                 data-editable='{ "mode": "popup", update:true, create:true, destroy:true }'
+                 data-detail-template="attachmentOnlyTemplate"
+                 data-detail-init="initGridDetail"
+                 data-columns="[{title: '{!$Label.compliancequest__CQ_UI_Actions}',command: [{ name: 'edit', text: { update: '{!$Label.compliancequest__CQ_UI_Save}'} }, 'destroy'], width: '100px'},
+                                     {field : 'compliancequest__SQX_Part__c',template:getReferenceDisplayTemplate('compliancequest__SQX_Part__c', 'compliancequest__Part_Number_and_Name__c')},
+                                    {field : 'compliancequest__Lot_Ser_Number__c'},
+                                    {field : 'compliancequest__SQX_Defect_Code__c',hidden:true},
+                                    {field : 'compliancequest__Defect_Code__c'},
+                                    {field : 'compliancequest__Defect_Category__c'},
+                                    {field : 'compliancequest__Defective_Quantity__c'},
+                                    {field : 'compliancequest__Defect_Description__c'},
+                                    ]"
+                 data-collapsible="true"
+                 data-expand-on-save="false"
+                 data-initially-collapsed="{!IF($CurrentPage.parameters.printMode=='true', false, true)}"></div>
+            <div class="clearFix"></div>
+            
+            <div data-role="cqgrid" class="cq-topGrid subGrid"
+                 data-title="{!$Label.compliancequest__CQ_UI_Revisions_of_CAPA}" 
+                 data-source="Capa.relatedCAPA()"
+                 data-editable='{ "mode": "popup", "update":true, "create":false, "destroy":false}'
+                 data-columns='[
+                               {field: "Name"},
+                               {field: "compliancequest__Revision__c", title :"{!$ObjectType.compliancequest__SQX_CAPA__c.fields.compliancequest__Revision__c.label}"}]'>
+            </div>
+
+           <div data-role="cqgrid" class="cq-topGrid subGrid"
+                 data-title = "{!$Label.compliancequest__CQ_UI_Related_Findings}"
+                 data-source= "Capa.relatedList('compliancequest__SQX_Finding_CAPAs__r')"
+                 data-editable='{ "mode": "popup", update:true, create:true, destroy:true}'
+                 data-unique-fields="compliancequest__SQX_Finding__c" 
+                 data-show-uniqueness-error-on="compliancequest__SQX_Finding__c"
+                 data-uniqueness-validation-msg="{!$Label.compliancequest__CQ_UI_Finding_has_already_been_referred}"
+                 data-columns="[{title: '{!$Label.compliancequest__CQ_UI_Actions}',command: [{ name: 'edit', text: { update: '{!$Label.compliancequest__CQ_UI_Save}'} }, 'destroy'], width: '100px'},
+                    {field: 'compliancequest__SQX_Finding__c'},
+                    {field: 'compliancequest__Finding_Title__c', hideOnPopupEdit: true},
+                    {'title': '{!$Label.compliancequest__CQ_UI_Finding_Status_Stage}', 'template': '#= getStatusAndStage() #', hideOnPopupEdit: true},
+                    {field: 'compliancequest__Resolves_by_CAPA__c' },
+                    {field: 'compliancequest__Comment__c' }
+                 ]">
+            </div>
+
+            <div class="clearFix"></div>
+        </div>
+        <div id="impactSection" class="cqFormSection defer">
+            <div data-role="cqgrid" class="cq-topGrid subGrid"
+                 data-source="Capa.relatedList('compliancequest__SQX_Impacted_Sites__r')"
+                 data-editable='{ "mode": "popup", update:true, create:true, destroy:true}'
+                 data-columns="[{title: '{!$Label.compliancequest__CQ_UI_Actions}',command: [{ name: 'edit', text: { update: '{!$Label.compliancequest__CQ_UI_Save}'} }, 'destroy'], width: '100px'},
+                    {field: 'compliancequest__Division__c'},
+                    {field: 'compliancequest__Business_Unit__c'},
+                    {field: 'compliancequest__Site__c'},
+                    {field: 'compliancequest__Production_Line__c'},
+                    {field: 'compliancequest__Operation__c'},
+                    {field: 'compliancequest__Department__c'}]"></div>
+            <div class="clearFix"></div>
+        </div>
+        <div id="responseHistorySection" class="cqFormDetail">
+            <div data-role="cqgrid" class="cq-topGrid subGrid" data-source="Capa.relatedList('compliancequest__SQX_Responses__r')"
+                 data-editable='{ "mode": "popup", update:false, create:false, destroy:false }'
+                 data-detail-template="responseHistoryTemplate"
+                 data-detail-init="initGridDetail"
+                 data-show-title="false"
+                 data-collapsible="false"
+                 data-columns="[{field: 'compliancequest__Response_Summary__c',template : '#: chompedSummary(compliancequest__Response_Summary__c) #'},
+                 {field: 'compliancequest__Submitted_On__c'},
+                 {field: 'compliancequest__Submitted_By__c'},
+                 {field: 'hasContainments()', title : '{!$ObjectType.compliancequest__SQX_Containment__c.Label}', template : '#= getCheckBox(hasContainments()) #', width:'100px'},
+                 {field: 'hasInvestigations()',title : '{!$ObjectType.compliancequest__SQX_Investigation__c.Label}', template : '#= getCheckBox(hasInvestigations()) #', width:'100px'},
+                 {field: 'hasActions()',title : '{!$Label.compliancequest__CQ_UI_Action}', template : '#= getCheckBox(hasActions()) #', width:'100px'},
+                 {field: 'compliancequest__Approval_Status__c',template: function(dataItem){return responseApprovalColumnTemplate(dataItem)}, width:'200px'},
+                 {title: '{!$Label.compliancequest__CQ_UI_Approved_On}', template: '#: ApprovedOn() #'}
+                 ]"
+                 data-initially-collapsed="false"></div>
+        </div>
+        <div id="approvedInvestigation" class="cqFormSection">
+            <div class="section2col"> 
+              <div class="formItem" style="width:40%">
+                  <b>{!$ObjectType.compliancequest__SQX_Investigation__c.fields.compliancequest__Investigation_Summary__c.label}</b>
+                  <div id= "listViewApprovedInvestigations">
+                  </div>
+                  <div class="clearFix"></div>
+              </div>
+
+              <div id="approvedRootCauses" class="formItem" style="width:58%; padding-left:15px; float:right; margin-top:12px;">
+                <div data-role="cqgrid" class="cq-topGrid"
+                    data-toolbar = '[]'
+                     data-title="{!$ObjectType.compliancequest__SQX_Approved_Root_Cause__c.LabelPlural}"
+                     data-collapsible="false"
+                     data-source="Capa.approvedRootCauses()"
+                     data-columns="[
+                            {field : 'compliancequest__SQX_Root_Cause_Code__c'},
+                            {field : 'compliancequest__Description__c'},
+                            {field : 'compliancequest__Category__c'},
+                            {field : 'compliancequest__Failure_Component__c'},
+                            {field : 'compliancequest__Supplier_Issue__c'}]"></div>
+                <div class="clearFix"></div>
+              </div>                  
+            </div> 
+            <div id="approvedActionPlans" class="formItem">
+              <br/>
+              <div data-role="cqgrid" class="cq-topGrid"
+                   data-toolbar="[]"
+                   data-title="{!$Label.compliancequest__CQ_UI_Approved_Action_Plans}"
+                   data-collapsible="false"
+                   data-source="Capa.approvedActionPlans()"
+                   data-columns="[
+                        {field : 'compliancequest__Plan_Number__c'},
+                        {field : 'compliancequest__Plan_Type__c'},
+                        {field : 'compliancequest__Description__c'},
+                        {field : 'compliancequest__SQX_User__c', template : '#= getReferenceDisplayTemplate(\'compliancequest__SQX_User__c\')(data) #'},
+                        {field : 'compliancequest__Due_Date__c',template : '#: getFormattedDate(data.compliancequest__Due_Date__c) #'},
+                        {field : 'compliancequest__Days_Required__c'},
+                        {field : 'compliancequest__Completed__c',template : '#= getCheckBox(compliancequest__Completed__c) #'},
+                        {field : 'compliancequest__Completion_Date__c',template : '#: getFormattedDate(data.compliancequest__Completion_Date__c) #'}
+                        ]"></div>
+              <div class="clearFix"></div>
+            </div>
+            <div class="clearFix"></div>
+        </div>
+        <div id="approvedActions" class="cqFormSection subGrid">
+            <div data-role="cqgrid" class="cq-topGrid subGrid" data-source="Capa.relatedList('compliancequest__SQX_Actions__r')"
+                 data-detail-template="approvedActionDetailTemplate"
+                 data-detail-init="initGridDetail"
+                 data-editable='false'
+                 data-show-title="false"
+                 data-collapsible="false"
+                 data-columns='[{"field": "compliancequest__Plan_Number__c"},
+                                     {"field": "compliancequest__Plan_Type__c"},
+                                     {"field": "compliancequest__Description__c"},
+                                     {"field" : "compliancequest__SQX_User__c", "template" : "#= getReferenceDisplayTemplate(\"compliancequest__SQX_User__c\")(data)  #"},
+                                     {"field": "compliancequest__Due_Date__c"},
+                                     {"field": "compliancequest__Status__c"},
+                                     {"field": "compliancequest__Completion_Date__c"}]'>
+            </div>
+        </div>
+        <div id="effectivenessReviews" class="cqFormSection">
+            <div data-role="cqgrid" class="cq-topGrid subGrid"
+                 data-detail-template="attachmentOnlyTemplate"
+                 data-detail-init="initGridDetail"
+                 data-save="sqx.evtHdlr.capa.effectivenessreview"
+                 data-collapsible="false"
+                 data-show-title="false"
+                 data-source="Capa.relatedList('compliancequest__SQX_Effectiveness_Review__r')"
+                 data-editable='{ "mode": "popup", update:true, create:true, destroy:true}'
+                 data-columns="[{title: '{!$Label.compliancequest__CQ_UI_Actions}',command: ['edit', 'destroy'], width: '100px'},
+                    {field: 'compliancequest__Review_Started_On__c'},
+                    {field: 'compliancequest__Review__c'},
+                    {field: 'compliancequest__Reviewed_By__c'},
+                    {field: 'compliancequest__Status__c'},
+                    {field: 'compliancequest__Resolution__c'},
+                    {field: 'compliancequest__Create_New_Revision__c'},
+                    {field: 'compliancequest__Review_Completed_On__c'},
+                    {field: 'compliancequest__Next_Review_Date__c'},
+                    {field: 'compliancequest__Rating__c'}]"></div>
+            <div class="clearFix"></div>
+        </div>
+        <div id="capaRecordHistoryTab" class="cqFormSection">
+          <div data-role="cqgrid" class="cq-topGrid subGrid"
+               data-source="Capa.relatedList('compliancequest__SQX_CAPA_Record_Activities__r')"  
+               data-columns='[{"field": "compliancequest__Activity__c"},
+                                {"field": "compliancequest__Comment__c","title":"{!$ObjectType.compliancequest__SQX_CAPA_Record_Activity__c.fields.compliancequest__Comment__c.label}"},
+                                {"field": "compliancequest__Modified_By__c"},
+                                {"field": "CreatedDate", "template": "#: convertToLocalDateTime(CreatedDate) #"}]'>
+          </div>
+        <div class="clearFix"></div>     
+        </div>
+        <!-- code added for Workflow(Task) -->
+        <div id="workflowSection" class="cqFormSection">
+            <div class="cqSectionContent section1col">
+              <apex:relatedList list="OpenActivities" pageSize="{!PageSize}"/>
+            </div>
+
+            <div class="cqSectionContent section1col">
+               <apex:relatedList list="ActivityHistories" pageSize="{!PageSize}"/>
+            </div>
+            <div class="clearFix"></div>
+        </div> 
+    </div>
+        
+    <script id="responseHistoryTemplate" type="text/x-kendo-template">
+        <div><b>{!$Label.compliancequest__CQ_UI_Summary}</b><span  class="boundElem responseSummary" data-bind="html: compliancequest__Response_Summary__c"></span></div>
+        
+        #if(data.compliancequest__Approval_Status__c != 'Recalled')  {#
+
+            <div class="cq-topGrid subGrid"
+                 data-options='{"title":"{!$ObjectType.compliancequest__SQX_Containment__c.Label}","hideIfEmpty":true}'
+                 data-detailtemplate="containmentDetailTemplate"
+                 data-relatedlist="containments"
+                 data-columns='[
+                 {"field": "compliancequest__SQX_Containment__r.compliancequest__Containment_Summary__c","title":"{!$Label.compliancequest__CQ_UI_Summary}", "template": "\\\#: chompedSummary(compliancequest__SQX_Containment__r.compliancequest__Containment_Summary__c)\\\#" },
+                 {"field": "compliancequest__SQX_Containment__r.compliancequest__Completion_Date__c","title":"{!$ObjectType.compliancequest__SQX_Containment__c.fields.compliancequest__Completion_Date__c.label}", "template": "\\\#: getFormattedDate(compliancequest__SQX_Containment__r.compliancequest__Completion_Date__c)\\\#"},
+                 {"title": "{!$Label.compliancequest__CQ_UI_Approval_Remark}", "template" :"\\\#= ApprovalRemark() \\\#"}]'>
+            </div>
+            <div class="cq-topGrid subGrid"
+                 data-relatedlist="investigations"
+                 data-options='{"title":"{!$ObjectType.compliancequest__SQX_Investigation__c.Label}","hideIfEmpty":true}'
+                 data-detailtemplate="invDetailTemplate"
+                 data-columns='[
+                                 {"field": "compliancequest__SQX_Investigation__r.compliancequest__Investigation_Summary__c","title":"{!$Label.compliancequest__CQ_UI_Summary}", "template": "\\\#: chompedSummary(compliancequest__SQX_Investigation__r.compliancequest__Investigation_Summary__c)\\\#" },
+                                 {"title": "{!$ObjectType.compliancequest__SQX_Investigation__c.fields.compliancequest__Approval_Status__c.label}", template : "\\\#: ApprovalStatus() \\\#"},
+                                 {"title": "{!$Label.compliancequest__CQ_UI_Approval_Remark}", template :"\\\#= ApprovalRemark() \\\#"}
+                             ]'>
+            </div>
+
+            <div class="cq-topGrid subGrid" data-relatedlist="actions"
+                 data-options='{"title":"{!$Label.compliancequest__CQ_UI_Action}","hideIfEmpty":true}'
+                 data-detailtemplate="actionDetailTemplate"
+                 data-columns='[
+                                 {"field": "compliancequest__SQX_Action__r.compliancequest__Plan_Number__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Plan_Number__c.label}" },
+                                 {"field": "compliancequest__SQX_Action__r.compliancequest__Plan_Type__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Plan_Type__c.label}","template": "\\#: translateValue(data.compliancequest__SQX_Action__r, compliancequest__SQX_Action__r.compliancequest__Plan_Type__c, \"compliancequest__Plan_Type__c\")\\#"},
+                                 {"field": "compliancequest__SQX_Action__r.compliancequest__Description__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Description__c.label}" },
+                                 {"field": "compliancequest__SQX_Action__r.compliancequest__SQX_User__c", "title" : "{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__SQX_User__c.label}", "template" : "\\\\#= getReferenceDisplayTemplate(\"compliancequest__SQX_User__c\")(data.compliancequest__SQX_Action__r) \\\\#"},
+                                 {"field": "compliancequest__SQX_Action__r.compliancequest__Due_Date__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Due_Date__c.label}", "template": "\\\#: getFormattedDate(compliancequest__SQX_Action__r.compliancequest__Due_Date__c)\\\#"},
+                                 {"field": "compliancequest__SQX_Action__r.compliancequest__Status__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Status__c.label}", "template": "\\#: translateValue(data.compliancequest__SQX_Action__r, compliancequest__SQX_Action__r.compliancequest__Status__c, \"compliancequest__Status__c\")\\#"},
+                                 {"field": "compliancequest__SQX_Action__r.compliancequest__Completion_Date__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Completion_Date__c.label} ", "template": "\\\#: getFormattedDate(compliancequest__SQX_Action__r.compliancequest__Completion_Date__c)\\\#"},
+                                 {"field": "compliancequest__SQX_Action__r.compliancequest__Remark__c","title":"{!$Label.compliancequest__CQ_UI_Sign_off_Comment}" },
+                                 {"title": "{!$Label.compliancequest__CQ_UI_Approval_Status}", template : "\\\#: ApprovalStatus() \\\#"},
+                                 {"title": "{!$Label.compliancequest__CQ_UI_Approval_Remark}", template :"\\\#= ApprovalRemark() \\\#"}
+                             ]'>
+            </div>
+            
+            <div class="cq-topGrid subGrid" data-relatedlist="activeProcessSteps"
+                 data-options='{"title" : "{!$Label.compliancequest__CQ_UI_Controlled_Document_Approval_History}", "hideIfEmpty": true}'
+                 data-columns='[
+                    {"title": "{!$Label.compliancequest__CQ_UI_Action}", "width": "120px", "command": [ {"name" : "{!$Label.compliancequest__CQ_UI_Approve}", "enable": "data.canApprove()", "click": approveResponse }, {"name" : "{!$Label.compliancequest__CQ_UI_Reject}", "enable": "data.canReject()", "click" : rejectResponse }]},
+                    {"title": "{!$Label.compliancequest__CQ_UI_Status}", "template" : "\\\#: ComputedStatus() \\\#"},
+                    {"title": "{!$Label.compliancequest__CQ_UI_Approved_On}", "template": "\\\#: ApprovedOn() \\\#" },
+                    {"field":  "OriginalActor.Name", "title" : "{!$Label.compliancequest__CQ_UI_Assigned_To}"},
+                    {"field":  "Actor.Name", "title" : "{!$Label.compliancequest__CQ_UI_Actual_Approver}"},
+                    {"field":  "Comments"}]'>
+             </div>
+        # } #
+
+    </script>
+
+    <script type="text/x-kendo-template" id="invDetailTemplate">
+        <div><b>{!$Label.compliancequest__CQ_UI_Summary} </b><span  class="boundElem investigationSummary" data-bind="html: compliancequest__SQX_Investigation__r.compliancequest__Investigation_Summary__c"></span></div>
+        <div class="cq-topGrid subGrid"
+             data-options='{"title":"{!$ObjectType.compliancequest__SQX_Root_Cause__c.LabelPlural}","hideIfEmpty":true}'
+             data-relatedlist="compliancequest__rootCauses__r"
+             data-columns='[
+                        {"field" : "compliancequest__SQX_Root_Cause_Code__r.Name","title":"{!$ObjectType.compliancequest__SQX_Root_Cause_Code__c.Label}"},
+                        {"field" : "compliancequest__Description__c"},
+                        {"field" : "compliancequest__Sub_Supplier_Name__c"},
+                        {"field" : "compliancequest__Category__c"},
+                        {"field" : "compliancequest__Failure_Component__c"},
+                        {"field" : "compliancequest__Supplier_Issue__c","template": "\\#= getCheckBox(compliancequest__Supplier_Issue__c) \\#"}]'>
+        </div>
+        <div class="cq-topGrid subGrid"
+             data-options='{"title":"{!$ObjectType.compliancequest__SQX_Investigation_Tool__c.LabelPlural}","hideIfEmpty":true}'
+             data-relatedlist="compliancequest__investigationTools__r"
+             data-columns='[
+                        {"field": "compliancequest__Investigation_Tool_Method_Used__r.Name", "title":"{!$ObjectType.compliancequest__SQX_Investigation_Tool__c.fields.compliancequest__Investigation_Tool_Method_Used__c.label}"},
+                        {"field" : "compliancequest__Description__c"}]'>
+        </div>
+        <div class="cq-topGrid subGrid"
+             data-options='{"title":"{!$ObjectType.compliancequest__SQX_Action_Plan__c.LabelPlural}","hideIfEmpty":true}'
+             data-relatedlist="compliancequest__actionPlans__r"
+             data-columns='[
+                        {"field" : "compliancequest__Plan_Number__c"},
+                        {"field" : "compliancequest__Plan_Type__c"},
+                        {"field" : "compliancequest__Description__c"},
+                        {"field" : "compliancequest__SQX_User__c", "template" : "\\#= getReferenceDisplayTemplate(\"compliancequest__SQX_User__c\")(data) \\#"},
+                        {"field" : "compliancequest__Due_Date__c"},
+                        {"field" : "compliancequest__Days_Required__c"},
+                        {"field" : "compliancequest__Completed__c" ,"template": "\\#= getCheckBox(compliancequest__Completed__c) \\#"},
+                        {"field" : "compliancequest__Completion_Date__c"}]'>
+        </div>
+        <div class="cq-topGrid subGrid"
+             data-options='{"title":"{!$Label.compliancequest__CQ_UI_Attachments}","hideIfEmpty":true}'
+             data-relatedlist="compliancequest__investigationAttachments__r"
+             data-columns='[
+                       {"field" : "Name", "template": "\\#= buildAttachmentViewLink(data) \\#"},
+                        {"field" : "Description"}]'>
+        </div>
+    </script>
+
+    <script type="text/x-kendo-template" id="containmentDetailTemplate">
+    <div><b>Summary : </b><span  class="boundElem containmentSummary" data-bind="html: compliancequest__SQX_Containment__r.compliancequest__Containment_Summary__c"></span></div>
+
+        <div class="cq-topGrid subGrid"
+             data-options='{"title":"{!$Label.compliancequest__CQ_UI_Attachments}","hideIfEmpty":true}'
+             data-relatedlist="compliancequest__containmentAttachments__r"
+             data-columns='[
+                       {"field" : "Name", "template": "\\#= buildAttachmentViewLink(data) \\#"},
+                        {"field" : "Description"}]'>
+        </div>
+    </script>
+
+    <script type="text/x-kendo-template" id="actionDetailTemplate">
+        <div class="cq-topGrid subGrid"
+             data-options='{"title":"{!$Label.compliancequest__CQ_UI_Attachments}","hideIfEmpty":true}'
+             data-relatedlist="compliancequest__actionAttachments__r"
+             data-columns='[
+                       {"field" : "Name", "template": "\\#= buildAttachmentViewLink(data) \\#"},
+                        {"field" : "Description"}]'>
+        </div>
+    </script>
+
+    <script type="text/x-kendo-template" id="approvedActionDetailTemplate">
+        <div class="cq-topGrid subGrid"
+             data-options='{"title":"{!$Label.compliancequest__CQ_UI_Attachments}","hideIfEmpty":true}'
+             data-relatedlist="Attachments"
+             data-columns='[
+                       {"field" : "Name", "template": "\\#= buildAttachmentViewLink(data) \\#"},
+                        {"field" : "Description"}]'>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="approvedInvTemplate">
+      <div class="approvedInvestigations">
+            <div><b>{!$ObjectType.compliancequest__SQX_Investigation__c.fields.CreatedDate.label}</b> : #: getFormattedDate(data.CreatedDate)#</div>
+            <div>#=data.compliancequest__Investigation_Summary__c#</div>
+            <br/>
+
+        </div>
+    </script>
+    
+    <script id="approveRejectResponseTemplate" type="text/x-jquery-tmpl">
+        <div id="approveRejectResponse">
+            <div style="padding:10px 20px 10px 10px;">
+                <div class="cq-topGrid subGrid"
+                     data-options='{"title":"{!$ObjectType.compliancequest__SQX_Containment__c.Label}","hideIfEmpty":true}'
+                     data-relatedlist="containments"
+                     data-columns='[
+                                 {"field": "compliancequest__SQX_Containment__r.compliancequest__Containment_Summary__c","title":"{!$Label.compliancequest__CQ_UI_Summary}", "template": "\#: chompedSummary(compliancequest__SQX_Containment__r.compliancequest__Containment_Summary__c)\#" },
+                                 {"field": "compliancequest__SQX_Containment__r.compliancequest__Completion_Date__c","title":"{!$ObjectType.compliancequest__SQX_Containment__c.fields.compliancequest__Completion_Date__c.label}","template": "\#: getFormattedDate(compliancequest__SQX_Containment__r.compliancequest__Completion_Date__c)\#"},
+                                 {"field" : "Remark" , "title" : "{!$Label.compliancequest__CQ_UI_Remark}", "template" : "&lt;textarea type=\"text\"  class=\"approvalRemarkItem\" data-bind=\"value: compliancequest__Approval_Remark__c \" &gt;&lt;/textarea&gt;", "width":  "300px"}
+                             ]'>
+                </div>
+                <div class="cq-topGrid subGrid" data-relatedlist="investigations"
+                     data-options='{"title":"{!$ObjectType.compliancequest__SQX_Investigation__c.Label}","hideIfEmpty":true}'
+                     data-columns='[
+                                     {"field": "compliancequest__SQX_Investigation__r.compliancequest__Completion_Date__c","title":"{!$Label.compliancequest__CQ_UI_Completion_Date}"},
+                                     {"field": "compliancequest__SQX_Investigation__r.compliancequest__Investigation_Summary__c","title":"{!$Label.compliancequest__CQ_UI_Summary}", "template": "\#: chompedSummary(compliancequest__SQX_Investigation__r.compliancequest__Investigation_Summary__c)\#"},
+                                     {"field": "compliancequest__SQX_Investigation__r.compliancequest__Status__c","title":"{!$ObjectType.compliancequest__SQX_Investigation__c.fields.compliancequest__Status__c.label}", "template": "\\#: translateValue(data.compliancequest__SQX_Investigation__r, compliancequest__SQX_Investigation__r.compliancequest__Status__c, \"compliancequest__Status__c\")\\#"  },
+                                     {"field" : "Reject", "title" : "{!$Label.compliancequest__CQ_UI_Reject}", "template" : "&lt;input type=\"checkbox\" onchange=\"rejectCheckboxOnChange()\"  class=\"rejectItem\" /&gt;", "width":  "50px"},
+                                     {"field" : "Remark" , "title" : "{!$Label.compliancequest__CQ_UI_Remark}", "template" : "&lt;textarea class=\"approvalRemarkItem\"  data-bind=\"value: compliancequest__Approval_Remark__c \" &gt;&lt;/textarea&gt;", "width":  "300px"}
+                                 ]'>
+                </div>
+                <div class="cq-topGrid subGrid"
+                     data-relatedlist="actions"
+                     data-options='{"title":"{!$Label.compliancequest__CQ_UI_Actions}","hideIfEmpty":true}'
+                     data-columns='[
+                                     {"field": "compliancequest__SQX_Action__r.compliancequest__Plan_Number__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Plan_Number__c.label}" },
+                                     {"field": "compliancequest__SQX_Action__r.compliancequest__Plan_Type__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Plan_Type__c.label}", "template": "\\#: translateValue(data.compliancequest__SQX_Action__r, compliancequest__SQX_Action__r.compliancequest__Plan_Type__c, \"compliancequest__Plan_Type__c\")\\#"},
+                                     {"field": "compliancequest__SQX_Action__r.compliancequest__Description__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Description__c.label}" },
+                                     {"field": "compliancequest__SQX_Action__r.compliancequest__SQX_User__c", "title" : "{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__SQX_User__c.label}", "template" : "\\#= getReferenceDisplayTemplate(\"compliancequest__SQX_User__c\")(data.compliancequest__SQX_Action__r) \\#"},
+                                     {"field": "compliancequest__SQX_Action__r.compliancequest__Due_Date__c","title":"{!$ObjectType.compliancequest__SQX_Action__c.fields.compliancequest__Due_Date__c.label}","template": "\#: getFormattedDate(compliancequest__SQX_Action__r.compliancequest__Due_Date__c)\#" },
+                                     {"field": "compliancequest__SQX_Action__r.compliancequest__Completed__c","title":"{!$Label.compliancequest__CQ_UI_Completed}","template": "\#= getCheckBox(compliancequest__SQX_Action__r.compliancequest__Completed__c) \#" },
+                                     {"field": "compliancequest__Inclusion_Comment__c"},
+                                     {"field": "compliancequest__Inclusion_Reason__c"},
+                                     {"field" : "Reject", "title" : "{!$Label.compliancequest__CQ_UI_Reject}", "template" : "&lt;input type=\"checkbox\" onchange=\"rejectCheckboxOnChange()\" class=\"rejectItem\"  /&gt;", "width":  "50px"},
+                                     {"field" : "compliancequest__Approval_Remark__c" , "title" : "{!$Label.compliancequest__CQ_UI_Remark}", "template" : "&lt;textarea class=\"approvalRemarkItem\" &gt;&lt;/textarea&gt;", "width":  "300px"}
+                                 ]'>
+                </div>
+                <div class="section1col">
+                    <!-- Meaning of signature -->
+                    <div class="formItem">
+                        <div class="formLabel"><label for="respondMeaningOfSignature">{!$Label.compliancequest__CQ_UI_Purpose_Of_Sig}</label></div>
+                        <div class='formField' name='respondMeaningOfSignature'><span></span></div>
+                    </div>
+                    <!-- ****** -->
+                    <div class="formItem">
+                        <div class="formLabel"><label for="approvalRemark">{!$Label.compliancequest__CQ_UI_Comment}</label></div>
+                        <div class="formField">
+                            <div class="editableElement">
+                                <textarea id="approvalRemark" class="cq-multi-line-textarea" name="Comment"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div  data-current-user-details-var="userDetails"  data-role='cqelectronicsignature'></div>
+                </div>
+                <div class="clearFix"></div>
+                <div class="commandSection" style="text-align:center;margin-top:10px">
+                    <div>
+                        <div class="errorStyle errorDiv">
+                            <span class="k-icon k-warning"> </span> <span class="msg"></span>
+                        </div>
+                    </div>
+                    <button type="button" id="btnApproveReject" onclick="approveRejectResponse(event)" class="cqCommandButton k-button" data-role="button" role="button" aria-disabled="false" tabindex="0">{!$Label.compliancequest__CQ_UI_Approve}</button>
+                    <button type="button" id="btnCancelApproval" onclick="cancelResponseApproval(event)" class="cqCommandButton k-button" data-role="button" role="button" aria-disabled="false" tabindex="0">{!$Label.compliancequest__CQ_UI_Button_Cancel}</button>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-kendo-template" id="closeCapaTemplate">
+        <div class="cqSectionContent section1col">
+            <!-- Meaning of signature -->
+                <div data-container="Capa.compliancequest__Resolution__c" data-role='cqcompositefield' data-edit-mode="true" class='capaResolution'></div>
+                <div data-container="Capa.compliancequest__Create_New_Revision__c" data-role='cqcompositefield' data-edit-mode="true" class="capaRevision"></div>
+                <div data-container="Capa.compliancequest__Rating__c" data-role='cqcompositefield' data-edit-mode="true" class="capaRating"></div>
+            
+        </div>
+        <div class="clearFix"></div>
+    </script>
+
+    <!-- Template for save submit and initiate -->
+    <script type="text/x-kendo-template" id="saveSubmitTemplate">
+        <div id="saveSubmitWindow" style="padding:10px 20px 10px 10px">
+            <div class="section1col">
+                <!-- Meaning of signature -->
+                <div class="formItem">
+                    <div class="formLabel"><label for="saveMeaningOfSignature">{!$Label.compliancequest__CQ_UI_Purpose_Of_Sig}</label></div>
+                        <div class='formField' name='saveMeaningOfSignature'><span></span></div>
+                </div>
+                <!-- ****** -->
+                <div class='formItem'>
+                    <div class='formLabel'><label for='comment'>{!$Label.compliancequest__CQ_UI_Comment}</label></div>
+                    <div class='formField'><div class='editableElement cq-field-required'><textarea rows='4' class='cq-wo cq-multi-line-textarea'  name='Comment' required='required'></textarea></div>
+                </div>
+                
+                <div 
+                     data-role='cqelectronicsignature'
+                     data-current-user-details-var='userDetails'
+                     ></div>
+            </div>
+            <div class="clearFix"></div>
+            <div class="commandSection">
+                <div>
+                    <div class="errorStyle errorDiv">
+                        <span class="k-icon k-warning"> </span> <span class="msg"></span>
+                    </div>
+                </div>
+                <div style="text-align:center;">
+                    <button type="button" id="btnSaveSubmit" onclick="saveSubmit()" class="cqCommandButton k-button" data-role="button" role="button" aria-disabled="false" tabindex="0">{!$Label.compliancequest__CQ_UI_Button_Save}</button>
+                    <button type="button" id="btnClose" onclick="cancelSaveSubmit()" class="cqCommandButton k-button" data-role="button" role="button" aria-disabled="false" tabindex="0">{!$Label.compliancequest__CQ_UI_Close}</button>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-kendo-template" id="FindingDropDownTemplate">
+        <div>
+            <p>#: data.Name # (#: data.compliancequest__Status__c # /#: data.compliancequest__Stage__c #)</p>
+            <em>#: data.compliancequest__Title__c #</em>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="attachmentOnlyTemplate">
+        <div data-role="cqtabstrip" data-collapsible="true" data-show-grid-title="true" data-show-grid-count="true" class="tabStrip">
+            <ul>
+                <li class="k-state-active" data-grid-sobject="ContentDocumentLink">{!$Label.compliancequest__CQ_UI_Files}</li>
+            </ul>
+            <div>
+                <div class="Attachment">
+                    <div class="subGrid"
+                         data-relatedlist="ContentDocumentLinks"
+                         data-toolbar='[{"name": "custom", "text": "{!$Label.compliancequest__CQ_UI_Add_Files}", "className": "addFiles", "action": "sqx.commonActions.addFiles", "enable": "#: data.canAddChildren(SQXSchema.ContentDocumentLink.sObjectName) #"}]'
+                         data-options='{"editable":{"mode":"incell","update":#= data.rowEditable ? data.rowEditable() : true #,"create":#= data.rowEditable ? data.rowEditable() : true #,"destroy":#= data.rowEditable ? data.rowEditable() : true # },"showTitle":false,"collapsible":false}'
+                        data-columns='[{"title": "{!$Label.compliancequest__CQ_UI_Actions}", "command": ["preview", "destroy"], "width": "110px"},
+                                        {"field": "ContentTitle", "template": "\\#: data.Title() \\#", "editor": cq.getFileEditor},
+                                        {"field": "ContentDescription", "template": "\\#: data.Description() \\#", "editor": cq.getFileEditor}]'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    
+    <script id="DocDropdownTemplate" type="text/x-kendo-template">
+        <div>
+            <p>
+                <strong>Document Number:</strong>
+                #: Name #
+            </p>
+            <p>
+                <strong>Title:</strong>
+                #: data.compliancequest__Title__c #
+            </p>
+        </div>
+    </script>
+
+</apex:page>

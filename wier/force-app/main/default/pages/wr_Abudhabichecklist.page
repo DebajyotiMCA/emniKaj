@@ -1,0 +1,151 @@
+<apex:page id="thepage" standardController="Abu_Dhabi_Contract_Checklist__c" extensions="Wr_Abudhabichecklist" showHeader="false">
+    <script>
+        function check(input,assignstatus,assignmanagercomm,assigncomm,button,date,assigned) 
+        {
+          
+           if(input.checked)
+            {
+               document.getElementById(assignstatus).style.visibility = 'visible';
+               document.getElementById(assignmanagercomm).style.visibility = 'visible';
+               document.getElementById(assigncomm).style.visibility = 'visible';
+               document.getElementById(button).style.visibility = 'visible';
+               document.getElementById(date).style.visibility = 'visible';
+               document.getElementById(assigned).style.visibility = 'visible'; 
+            }
+            else 
+            {
+              document.getElementById(assignstatus).style.visibility = 'hidden';
+              document.getElementById(assignmanagercomm).style.visibility = 'hidden'; 
+              document.getElementById(assigncomm).style.visibility = 'hidden'; 
+              document.getElementById(button).style.visibility = 'hidden';
+              document.getElementById(date).style.visibility = 'hidden';
+              document.getElementById(assigned).style.visibility = 'hidden';   
+            }
+            
+        } 
+    </script>
+ <apex:form >
+ <apex:pageMessages />
+        <apex:pageBlock >
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!csave}" />
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            <apex:outputPanel >
+                <table align="center">
+                    <tr>
+                        <td>  <apex:outputPanel > <b> PO Attachments </b>&nbsp; </apex:outputPanel>
+                        </td>
+                        <td>
+                            <apex:inputField value="{!Abu_Dhabi_Contract_Checklist__c.PO_Attachments__c}"/>
+                        </td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+            <apex:pageBlockTable value="{!checklistresult}" var="chk">
+                <apex:column headerValue="S No">
+                    <apex:outputField value="{!chk.S_No__c}"/>
+                </apex:column>
+                <apex:column headerValue="Name">
+                     <apex:outputField value="{!chk.Name__c}"/>
+                </apex:column>
+                <!--<apex:column headerValue="Name">
+                     <apex:outputField value="{!chk.Name}"/>
+                </apex:column>-->
+                <apex:column headerValue="Whether Applicable">
+                    <apex:inputCheckbox id="applicable" value="{!chk.Whether_Applicable__c}" onclick="check(this,'{!$Component.assigneestatus}','{!$Component.assigneecomment}','{!$Component.assigneemanagercomment}','{!$Component.taskbutton}','{!$Component.Duedate}','{!$Component.assignedstatus}');"  />
+                </apex:column>
+                <apex:column headerValue="Status">
+                    <apex:inputField id="assigneestatus" value="{!chk.Assignee_status__c}" />
+                </apex:column>
+                 <apex:column headerValue="Contract Rep's Comments">
+                    <apex:inputField id="assigneecomment" value="{!chk.Assignee_Comments__c}" />
+                </apex:column>
+                <apex:column headerValue="Contract Manager's Comments">
+                    <apex:inputField id="assigneemanagercomment" value="{!chk.Tendering_Manager_Comments__c}" />
+                </apex:column>
+                <!--apex:column headerValue="Assign task"-->
+                    <!--apex:commandButton id="taskbutton" value="Create Task" onclick="javascript:window.open('/00T/e?what_id={!chk.id}&tsk5={!chk.Name}','mywin',
+'left=20,top=20,width=700,height=500,toolbar=1,resizable=0')"/-->
+                <!--/apex:column-->
+              </apex:pageBlockTable>
+              
+              
+              <apex:pageBlockTable value="{!checklistAddList }" var="chk">
+                <apex:column headerValue="S No">
+                    <apex:inputText value="{!chk.S_No__c}" style="width:150px"/>
+                </apex:column>
+                <apex:column headerValue="Name">
+                     <apex:inputText value="{!chk.Name__c}" style="width:300px"/>
+                </apex:column>
+                <!--<apex:column headerValue="Name">
+                     <apex:outputField value="{!chk.Name}"/>
+                </apex:column>-->
+                <apex:column headerValue="Whether Applicable">
+                    <apex:inputCheckbox id="applicable" value="{!chk.Whether_Applicable__c}" onclick="check(this,'{!$Component.assigneestatus}','{!$Component.assigneecomment}','{!$Component.assigneemanagercomment}','{!$Component.taskbutton}','{!$Component.Duedate}','{!$Component.assignedstatus}');"  />
+                </apex:column>
+                <apex:column headerValue="Status">
+                    <apex:inputField id="assigneestatus" value="{!chk.Assignee_status__c}" />
+                </apex:column>
+                 <apex:column headerValue="Contract Rep's Comments">
+                    <apex:inputField id="assigneecomment" value="{!chk.Assignee_Comments__c}" />
+                </apex:column>
+                 <apex:column headerValue="Contract Manager's Comments">
+                    <apex:inputField id="assigneemanagercomment" value="{!chk.Tendering_Manager_Comments__c}" />
+                </apex:column>
+                
+                
+                
+            </apex:pageBlockTable>
+              
+             <br/>
+             <apex:commandLink value="Add Row" action="{!addRow}"/> 
+             <apex:outputPanel >
+             
+             <table align="center">
+                 <tr>
+                     <td colspan="2">
+                         <table>
+                             <tr>
+                                 <td align="center"> <b>Please ensure that the PO reference selected above matches with details mentioned by Tendering on the PO. &nbsp;&nbsp;&nbsp;</b>
+                                 </td>
+                             </tr>
+                         </table>
+                     </td>
+                     <apex:outputPanel rendered="{!if(profilename =='Contract Manager-Abu Dhabi'|| profilename =='Contract Representative-Abu Dhabi'|| profilename =='TM & Planning - Abu Dhabi' || profilename =='Tendering Manager - Abu Dhabi' || profilename =='System Administrator',TRUE,FALSE)}">
+                     <tr>
+                        
+                         <td>
+                            <apex:inputCheckbox id="check2" value="{!submitforapproval}"/>
+                         </td>
+                          <td>
+                             <b>Submit for Contract Manager Approval</b>
+                         </td>
+                     </tr>                
+                    </apex:outputPanel>
+                     
+                     
+                     <apex:outputPanel rendered="{!if(profilename =='Contract Representative-Abu Dhabi'|| profilename =='Contract Manager-Abu Dhabi'|| profilename =='TM & Planning - Abu Dhabi' || profilename =='Tendering Manager - Abu Dhabi' || profilename =='System Administrator',TRUE,FALSE)}"> 
+                     <tr>
+                        
+                         <td>
+                            <apex:inputCheckbox id="check3" value="{!finlapproval}"/>
+                         </td>
+                          <td>
+                             <b> Customer PO approved </b>
+                         </td>
+                     </tr>
+                 </apex:outputPanel>
+                     
+                 </tr>
+             </table>
+             
+                 
+             </apex:outputPanel>
+             
+             
+             
+        </apex:pageBlock>
+     </apex:form>
+</apex:page>

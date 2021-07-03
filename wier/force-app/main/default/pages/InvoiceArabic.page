@@ -1,0 +1,700 @@
+<apex:page sidebar="false" applyBodyTag="false" standardController="Invoice__c" renderAs="pdf" showheader="false" applyHtmlTag="false" showHeader="false" extensions="InvoiceArabic" action="{!getItems}" >
+    <head>
+        <style>
+        @page{ 
+            margin-bottom: 1cm;
+            size:A4 portrait;
+            margin-left: 0.4cm;
+            margin-right: 0.4cm;
+            margin-top: 15.6cm;
+            
+            
+            @top-center {                                     
+            content: element(header);                          
+            } 
+            
+            @bottom-left {
+                content: element(footer);
+            }
+        }
+            
+       div.header {
+            display: block;
+            padding: 10px;
+            position: running(header);
+        }
+            
+        div.footer {
+            display: block;
+            padding: 5px;
+            position: running(footer);
+        }
+        .pagenumber:before {
+            content: counter(page);
+        }
+        .pagecount:before {
+            content: counter(pages);
+        }
+        div.content {
+            
+            float: left;
+            width: 100%;
+             height:inherit;
+            page-break-inside: avoid !important; 
+        }
+            
+    tr    { page-break-inside: avoid !important; }
+            
+    </style>
+    </head>
+    
+    <div class="header"> 
+        <table width="100%" border="0" >
+            <tr>
+                <td>
+                    <table style="border:0px solid;border-spacing: 0;" width="100%">
+                        <tr >
+                            <td height="50px" width="30%" style="border:1px solid;border-spacing: 0;font-weight:bold;color:black;font-size:20pt;">  <B>TAX INVOICE</B></td>
+                            <td height="50px" width="70%"><img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.Header1)}' title="logo"/></td>
+                        </tr>
+                    </table>
+                    <table style="border:1px solid;border-collapse: separate;" width="100%" >
+                        <tr >
+                            <td height="100%" width="100%"><img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.Header2)}' title="logo"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <table width="100%" border="0" >
+            <tr>
+                <td >
+                    <table style="border-collapse: collapse;" width="100%"  >
+                        <tr>
+                            <td colspan="5" width="90%" >
+                                <table border="0" style="border-collapse: collapse;border:0.5px solid" width="100%">
+                                    <tr>
+                                        <td width="50%" style="border:0.5px solid ;">
+                                            <table border="0" width="100%" >
+                                                <tr>
+                                                    <td style="font-size:12px;text-align:left;" width="40%">Customer Number :</td>
+                                                    <td style="font-size:12px;text-align:center;" width="15%">{!Invoice__c.Customer_Numbers__c}</td>
+                                                    <td style="font-size:12px;text-align:center;" width="15%">{!Invoice__c.Customer_Numbers__c}</td>
+                                                    <td style="font-size:12px;text-align:right;" width="30%"><img style="WIDTH:50%; HEIGHT: 50%" src='{!URLFOR($Resource.CustomerNumber)}' title="logo"/></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="50%" style="border:0.5px solid ;">
+                                            <table border="0" width="100%" >
+                                                <tr>
+                                                    <td style="font-size:12px;text-align:left;" width="40%">Page :<span class="pagenumber"/>(<span class="pagecount"/>)</td>
+                                                    <td style="font-size:12px;text-align:center;" width="15%"></td>
+                                                    <td style="font-size:12px;text-align:right;" width="15%">(<span class="pagecount"/>)<span class="pagenumber"/></td>
+                                                    <td style="font-size:12px;text-align:left;" width="25%"><img style="WIDTH:40%; HEIGHT: 40%" src='{!URLFOR($Resource.Pagenumbers)}' title="logo"/></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="100%" style="border:0.5px solid;black;font-size:12px;text-align:center;background-color:#e6e5e3;">
+                                <img style="WIDTH:35%; HEIGHT: 35%" src='{!URLFOR($Resource.InvoiceNum)}' title="logo"/>
+                            </td>
+                            <td style="border:0.5px solid;color:black;font-size:12px;text-align:center;background-color:#e6e5e3;">
+                                <img style="WIDTH:45%; HEIGHT: 45%" src='{!URLFOR($Resource.Facility)}' title="logo"/>
+                            </td>
+                            <td style="border:0.5px solid;color:black;font-size:12px;text-align:center;background-color:#e6e5e3;">
+                                <img style="WIDTH:35%; HEIGHT: 35%" src='{!URLFOR($Resource.AmcoWeirRef)}' title="logo"/>
+                            </td>
+                            <td style="border:0.5px solid;color:black;font-size:12px;text-align:center;background-color:#e6e5e3;">
+                                <img style="WIDTH:45%; HEIGHT: 45%" src='{!URLFOR($Resource.CustomerRef)}' title="logo"/>
+                            </td>
+                            <td style="border:0.5px solid;color:black;font-size:12px;text-align:center;background-color:#e6e5e3;">
+                                <img style="WIDTH:45%; HEIGHT: 45%" src='{!URLFOR($Resource.InvoiceDate)}' title="logo"/>  
+                            </td>
+                        </tr>
+                        <tr height="20px">
+                            <td height="100%" style="border:0.5px solid;text-align:center;background-color:#e6e5e3;font-size:14px;">Invoice Number</td>
+                            <td style="border:0.5px solid;text-align:center;background-color:#e6e5e3;font-size:14px;">Facility</td>
+                            <td style="border:0.5px solid;text-align:center;background-color:#e6e5e3;font-size:14px;">Amco Weir Reference</td>
+                            <td style="border:0.5px solid;text-align:center;background-color:#e6e5e3;font-size:14px;">Customer Reference</td>
+                            <td style="border:0.5px solid;text-align:center;background-color:#e6e5e3;font-size:14px;">Invoice Date</td>
+                        </tr>
+                        <tr>
+                            <td style="border:0.5px solid;text-align:center;font-size:12px;">{!Invoice__c.Name}</td>
+                            <td style="border:0.5px solid;text-align:center;font-size:12px;">{!Invoice__c.Facility__c}</td>
+                            <td style="border:0.5px solid;text-align:center;font-size:12px;">{!Invoice__c.Amco_Weir_Reference__c}</td>
+                            <td style="border:0.5px solid;text-align:center;font-size:12px;">{!Invoice__c.Customer_Reference__c}</td>
+                            <td style="border:0.5px solid;text-align:center;font-size:12px;">
+                                <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                    <apex:param value="{!Invoice__c.Invoice_Date__c}" />
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%">
+                    <table width="100%" border="0" >
+                        <tr>
+                            <td width="50%" style="vertical-align: top;">
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="height:22px;border:0.5px solid ;text-align:left;background-color:#e6e5e3;font-size:14px;">Invoice To</td>
+                                        <td style="border:0.5px solid ;text-align:right;background-color:#e6e5e3;font-size:14px;">
+                                            <img style="WIDTH:25%; HEIGHT: 25%" src='{!URLFOR($Resource.InvoiceTo)}' title="logo"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="height:81px;border:0.5px solid ;text-align:left;font-size:10px;">
+                                            <apex:outputpanel rendered="{!Invoice__c.Customer_Name__c != ''}">
+                                                {!Invoice__c.Customer_Name__c}
+                                            </apex:outputpanel><br/>
+                                            <apex:outputpanel rendered="{!Invoice__c.Invoice_To_Address_Line_01__c != ''}">
+                                                {!Invoice__c.Invoice_To_Address_Line_01__c}
+                                            </apex:outputpanel><br/>
+                                            <apex:outputpanel rendered="{!Invoice__c.Invoice_To_Address_Line_02__c != ''}">
+                                                {!Invoice__c.Invoice_To_Address_Line_02__c}
+                                            </apex:outputpanel><br/>
+                                            <apex:outputpanel rendered="{!Invoice__c.Invoice_To_Zip_Postal_Code__c != ''}">
+                                                {!Invoice__c.Invoice_To_Zip_Postal_Code__c}
+                                            </apex:outputpanel><br/>
+                                            <apex:outputpanel rendered="{!Invoice__c.Invoice_To_Country__c != ''}">
+                                                {!Invoice__c.Invoice_To_Country__c}
+                                            </apex:outputpanel>
+                                        </td>
+                                        <td dir="rtl"  width="50%" style="border:0.5px solid ;text-align:right;font-size:8px;font-family:Arial Unicode MS;">
+                                            <apex:image url="{!imageURL}" width="100%" height="100%"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="height:20px;border:0.5px solid ;text-align:left;font-size:11px;">Customer VAT Registration Number:</td>
+                                        <td width="50%" style="border:0.5px solid ;text-align:center;font-size:12px;">{!Invoice__c.Customer_VAT_Registration_Num__c}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="50%" style="vertical-align: top;">
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="height:22px;border:0.5px solid ;text-align:left;background-color:#e6e5e3;font-size:14px;">Deliver To:</td>
+                                        <td style="border:0.5px solid ;text-align:right;background-color:#e6e5e3;font-size:14px;">
+                                            <img style="WIDTH:30%; HEIGHT: 30%" src='{!URLFOR($Resource.DeliverTo)}' title="logo"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="height:81px;border:0.5px solid ;text-align:left;font-size:10px;">
+                                            <apex:outputpanel rendered="{!Invoice__c.Customer_Name__c != ''}">
+                                                {!Invoice__c.Customer_Name__c}
+                                            </apex:outputpanel><br/>
+                                            <apex:outputpanel rendered="{!Invoice__c.Deliver_To_Address_Line_01__c != ''}">
+                                                {!Invoice__c.Deliver_To_Address_Line_01__c}
+                                            </apex:outputpanel><br/>
+                                            <apex:outputpanel rendered="{!Invoice__c.Deliver_To_Address_Line_02__c != ''}">
+                                                {!Invoice__c.Deliver_To_Address_Line_02__c}
+                                            </apex:outputpanel><br/>
+                                            <apex:outputpanel rendered="{!Invoice__c.Deliver_To_Zip_Postal_Code__c != ''}">
+                                                {!Invoice__c.Deliver_To_Zip_Postal_Code__c}
+                                            </apex:outputpanel><br/>
+                                            <apex:outputpanel rendered="{!Invoice__c.Deliver_To_Country__c != ''}">
+                                                {!Invoice__c.Deliver_To_Country__c}
+                                            </apex:outputpanel>
+                                        </td>
+                                        <td dir="rtl" width="50%" style="border:0.5px solid ;text-align:right;font-size:8px;font-family:Arial Unicode MS;">
+                                            <apex:image url="{!imageDeliverToURL}" width="100%" height="100%"/>
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="height:20px;border:0.5px solid ;text-align:center;font-size:12px;">{!Invoice__c.Customer_VAT_Registration_Num__c}</td>
+                                        <td width="50%" style="border:0.5px solid ;text-align:right;font-size:12px;">
+                                            <img style="WIDTH:58%; HEIGHT: 58%" src='{!URLFOR($Resource.CustomeVat)}' title="logo"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%">
+                    <table width="100%" border="0" >
+                        <tr>
+                            <td  width="30%" style="vertical-align: top;">
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;">
+                                            <img style="WIDTH:30%; HEIGHT: 30%" src='{!URLFOR($Resource.Paymentterms)}' title="logo"/>  </td>
+                                    </tr>
+                                </table>
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;" colspan="2">Payment Terms</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="height:22px;border:0.5px solid ;text-align:center;font-size:12px;">{!Invoice__c.Payment_Term__c} days</td>
+                                        <td width="50%" style="border:0.5px solid ;text-align:center">
+                                        <apex:outputpanel rendered="{!Invoice__c.Payment_Term__c == '30'}">
+                                               <img style="WIDTH:30%; HEIGHT: 30%" src='{!URLFOR($Resource.ThirtyDays)}' title="logo"/> 
+                                               </apex:outputpanel>
+                                             <apex:outputpanel rendered="{!Invoice__c.Payment_Term__c == '45'}">
+                                               <img style="WIDTH:30%; HEIGHT: 30%" src='{!URLFOR($Resource.fourtyfivedays)}' title="logo"/> 
+                                               </apex:outputpanel>  
+                                              <apex:outputpanel rendered="{!Invoice__c.Payment_Term__c == '60'}">
+                                               <img style="WIDTH:30%; HEIGHT: 30%" src='{!URLFOR($Resource.Sixty)}' title="logo"/> 
+                                               </apex:outputpanel>   
+                                              <apex:outputpanel rendered="{!Invoice__c.Payment_Term__c == 'Immediate'}">
+                                               <img style="WIDTH:30%; HEIGHT: 30%" src='{!URLFOR($Resource.immediate)}' title="logo"/> 
+                                               </apex:outputpanel> 
+                                         
+                                         
+                                        </td>
+                                    </tr>
+                                </table>                
+                            </td>
+                            <td  width="30%" style="vertical-align: top;">
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;">
+                                            <img style="WIDTH:30%; HEIGHT: 30%" src='{!URLFOR($Resource.DelivertGerms)}' title="logo"/>  
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;" colspan="2">Delivery Method</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="height:22px;border:0.5px solid ;text-align:center;font-size:12px;">
+                                            <apex:outputpanel rendered="{!Invoice__c.Delivery_Method__c == '003'}">
+                                                Collection
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!Invoice__c.Delivery_Method__c != '003'}">
+                                                {!Invoice__c.Delivery_Method__c}
+                                            </apex:outputpanel>
+                                        </td>
+                                        <td width="50%" style="border:0.5px solid ;text-align:center">
+                                            <apex:outputpanel rendered="{!Invoice__c.Delivery_Method__c == '003'}">
+                                                <img style="WIDTH:40%; HEIGHT: 40%" src='{!URLFOR($Resource.Collection)}' title="logo"/>
+                                            </apex:outputpanel>
+                                            
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td  width="30%" style="vertical-align: top;">
+                                <table border="2" style="border:0.5px solid ;border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;">
+                                            <img style="WIDTH:40%; HEIGHT: 40%" src='{!URLFOR($Resource.CustomerContactName)}' title="logo"/>  </td>
+                                    </tr>
+                                </table>
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;" >Customer Contact Name</td>
+                                    </tr>
+                                    <tr height="100%">
+                                        <td width="50%" height="70%" style="height:22px;border:0.5px solid ;text-align:center;font-size:12px;">{!Invoice__c.Customer_Contact_Names__c}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%">
+                    <table width="100%" border="0" >
+                        <tr>
+                            <td  width="30%" style="vertical-align: top;">
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;">
+                                            <img style="WIDTH:25%; HEIGHT: 20%" src='{!URLFOR($Resource.Currency)}' title="logo"/>  </td>
+                                    </tr>
+                                </table>
+        
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;" colspan="2">Currency</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="height:22px;border:0.5px solid ;text-align:center;font-size:12px;">{!Invoice__c.CurrencyIsoCode}</td>
+                                        <td width="50%" style="border:0.5px solid ;text-align:center">
+                                            <apex:outputpanel rendered="{!Invoice__c.CurrencyIsoCode == 'SAR'}">
+                                                <img style="WIDTH:45%; HEIGHT: 45%" src='{!URLFOR($Resource.SAR)}' title="logo"/>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel rendered="{!Invoice__c.CurrencyIsoCode == 'GBP'}">
+                                                <img style="WIDTH:45%; HEIGHT: 45%" src='{!URLFOR($Resource.GBP)}' title="logo"/>
+                                            </apex:outputpanel>
+                                        </td>
+                                    </tr>
+                                </table>                
+                            </td>
+                            <td  width="30%" style="vertical-align: top;">
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;">
+                                            <img style="WIDTH:30%; HEIGHT: 30%" src='{!URLFOR($Resource.Delivery)}' title="logo"/>  </td>
+                                    </tr>
+                                </table>
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;" colspan="2">Delivery Terms</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="height:22px;border:0.5px solid ;text-align:center;font-size:12px;">{!Invoice__c.Delivery_Terms__c}</td>
+                                        <td width="50%" style="border:0.5px solid ;text-align:center">
+                                            <apex:outputpanel style="font-size:12px;" rendered="{!Invoice__c.Delivery_Terms__c == 'EXW'}">
+                                                <img style="WIDTH:70%; HEIGHT: 70%" src='{!URLFOR($Resource.Ex)}' title="logo"/>
+                                            </apex:outputpanel>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td  width="30%" style="vertical-align: top;">
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;">
+                                            <img style="WIDTH:40%; HEIGHT: 40%" src='{!URLFOR($Resource.WeirContactPerson)}' title="logo"/>  </td>
+                                    </tr>
+                                </table>
+                                <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                                    <tr>
+                                        <td style="border:0.5px solid ;text-align:center;background-color:#e6e5e3;font-size:14px;" >Weir Contact Person</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="height:22px;border:0.5px solid ;text-align:center;font-size:12px;">{!Invoice__c.Weir_Contact_Persons__c}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+    <div class="footer">   
+        <table border="0" style="border:0px solid;border-spacing: 0;" width="100%" >
+            <tr >
+                <td height="100%" width="100%"><img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.Footer)}' title="logo"/></td>
+            </tr>
+        </table>
+    </div> 
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+    
+            <table width="100%" border="0" >
+                <tr>
+                    <td width="100%">
+                        <table width="100%" border="0" >
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" border="0" >
+                                        <tr>
+                                            <td width="100%">
+                                                <table width="100%" class="table" border="1" style="border-collapse: collapse;border:0.5px solid;">
+                                                    <tr height="8%" style=" text-align:center" >
+                                                        <td dir="rtl" width="5%" height="8%" style="border:0.5px solid ;font-family:Arial Unicode MS;background-color: #e6e5e3; color:black;text-align:center">
+                                                            <img style="WIDTH:80%; HEIGHT: 80%" src='{!URLFOR($Resource.Line)}' title="logo"/>
+                                                        </td>
+                                                        <td dir="rtl" width="40%" height="8%" style="border:0.5px solid ;font-family:Arial Unicode MS;background-color: #e6e5e3; color:black; text-align:center">
+                                                            <img style="WIDTH:50%; HEIGHT: 50%" src='{!URLFOR($Resource.Details)}' title="logo"/>
+                                                        </td>
+                                                        <td  width="12%"  height="8%" style="border:0.5px solid ;font-family:Arial Unicode MS;background-color: #e6e5e3; color:black;text-align:center">
+                                                            <img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.Deli_Date)}' title="logo"/>
+                                                        </td>
+                                                        <td width="15%"  height="8%" style="border:0.5px solid ;font-family:Arial Unicode MS;background-color: #e6e5e3; color:black; text-align:center">
+                                                            <img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.vatrate)}' title="logo"/>
+                                                        </td>
+                                                        <td dir="rtl" width="8%" height="8%" style=";border:0.5px solid ;font-family:Arial Unicode MS;background-color: #e6e5e3; color:black; text-align:center">
+                                                            <img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.Quantity)}' title="logo"/>
+                                                        </td>
+                                                        <td dir="rtl" width="10%" height="8%" style="border:0.5px solid ;font-family:Arial Unicode MS;background-color: #e6e5e3; color:black; text-align:center">
+                                                            <img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.UnitPrice)}' title="logo"/>
+                                                        </td>
+                                                        <td dir="rtl" width="10%" height="8%" style="border:0.5px solid ;font-family:Arial Unicode MS;background-color: #e6e5e3; color:black; text-align:center">
+                                                            <img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.TotalPrice)}' title="logo"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style=" text-align:center" >
+                                                        <td width="5%" height="15%" style="border:0.5px solid ;font-size:14px;background-color: #bcc1c4; color:black;text-align:center">Line</td>
+                                                        <td width="40%" height="15%" style="border:0.5px solid ;font-size:14px;background-color: #bcc1c4; color:black; text-align:center">Details</td>
+                                                        <td width="12%"  height="15%" style="border:0.5px solid ;font-size:14px;background-color: #bcc1c4; color:black;text-align:center">Delivery Date</td>
+                                                        <td width="15%"  height="15%" style="border:0.5px solid ;font-size:14px;background-color: #bcc1c4; color:black; text-align:center">VAT Rate</td>
+                                                        <td width="8%" height="15%" style="border:0.5px solid ;font-size:14px;background-color: #bcc1c4; color:black; text-align:center">Quantity</td>
+                                                        <td width="10%" height="15%" style="border:0.5px solid ;font-size:14px;background-color: #bcc1c4; color:black; text-align:center">Unit Price</td>
+                                                        <td width="10%" height="15%" style="border:0.5px solid ;font-size:14px;background-color: #bcc1c4; color:black; text-align:center">Total Price</td>
+                                                    </tr>
+                                                    
+                                                    <apex:variable var="i" value="{!10}"/>           
+                                                        
+                                                    <apex:repeat value="{!lstCEERLines }" var="CLI">  
+                                                        <tr style=" text-align:center;font-size:12px;">
+                                                            <td style=" border:0.5px solid ;"> {!CLI.Line__c} </td>
+                                                            <td style=" border:0.5px solid ;text-align:left;font-size:12px;">
+                                                                {!CLI.Product_Code__c} |<br/>
+                                                                
+                                                                <apex:outputpanel rendered="{!CLI.Arabic_ID__c != ''}">
+                                                                    <apex:image url="{!CLI.Arabic_ID__c}" width="100%" height="100%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_2_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_2_Link__c}" width="90%" height="90%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_3_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_3_Link__c}" width="10%" height="10%"/>
+                                                                </apex:outputpanel> 
+                                                                <apex:outputpanel rendered="{!CLI.Level_4_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_4_Link__c}" width="70%" height="70%"/>
+                                                                </apex:outputpanel> 
+                                                                <apex:outputpanel rendered="{!CLI.Level_5_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_5_Link__c}" width="50%" height="50%"/>
+                                                                </apex:outputpanel> 
+                                                                <apex:outputpanel rendered="{!CLI.Level_6_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_6_Link__c}" width="60%" height="60%"/>
+                                                                </apex:outputpanel> 
+                                                                <apex:outputpanel rendered="{!CLI.Level_7_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_7_Link__c}" width="15%" height="15%"/>
+                                                                </apex:outputpanel> 
+                                                                <apex:outputpanel rendered="{!CLI.Level_8_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_8_Link__c}" width="40%" height="40%"/>
+                                                                </apex:outputpanel> 
+                                                                <apex:outputpanel rendered="{!CLI.Level_9_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_9_Link__c}" width="20%" height="20%"/>
+                                                                </apex:outputpanel> 
+                                                                <apex:outputpanel rendered="{!CLI.Level_10_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_10_Link__c}" width="35%" height="35%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_11_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_11_Link__c}" width="55%" height="55%"/>
+                                                                </apex:outputpanel>
+                                                                    <apex:outputpanel rendered="{!CLI.Level_12_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_12_Link__c}" width="30%" height="30%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_13_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_13_Link__c}" width="45%" height="45%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_14_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_14_Link__c}" width="75%" height="75%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_15_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_15_Link__c}" width="65%" height="65%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_16_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_16_Link__c}" width="85%" height="85%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_17_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_17_Link__c}" width="25%" height="25%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_18_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_18_Link__c}" width="8%" height="8%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_19_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_19_Link__c}" width="7%" height="7%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_20_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_20_Link__c}" width="12%" height="12%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_21_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_21_Link__c}" width="6%" height="6%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_22_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_22_Link__c}" width="9%" height="9%"/>
+                                                                </apex:outputpanel>
+                                                                <apex:outputpanel rendered="{!CLI.Level_23_Link__c != ''}">
+                                                                    <apex:image url="{!CLI.Level_23_Link__c}" width="27%" height="27%"/>
+                                                                </apex:outputpanel>
+                                                                {!CLI.Product_Detatil__c} {!CLI.Line_Item_Description__c}
+
+                                                                  
+                                                            </td>
+                                                            <td style=" border:0.5px solid ;">
+                                                                <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                                                    <apex:param value="{!CLI.Delivery_Date__c}" />
+                                                                </apex:outputText>
+                                                            </td>
+                                                            <td style=" border:0.5px solid ;">
+                                                                {!CLI.VAT_Rate__c}
+                                                            </td>
+                                                            <td style=" border:0.5px solid ;">
+                                                                <apex:outputText value="{0, number}">
+                                                                    <apex:param value="{!CLI.Quantity__c}"/>
+                                                                </apex:outputText>
+                                                            </td>
+                                                            <td style=" border:0.5px solid ;">
+                                                                <apex:outputText value="{0, number, ###,##0.00}">
+                                                                    <apex:param value="{!CLI.Unit_Price__c}" />
+                                                                </apex:outputText>                                       
+                                                            </td>
+                                                            <td style=" border:0.5px solid ;">
+                                                                <apex:outputText value="{0, number, ###,##0.00}">
+                                                                    <apex:param value="{!CLI.Total_Price__c}" />
+                                                                </apex:outputText>                                       
+                                                            </td>
+                                                        </tr>        
+                                                    </apex:repeat>
+                                                         
+                                                    <tr style=" text-align:left;font-size:10px;">
+                                                        <td style=" border:0.5px solid ;"></td>
+                                                        <td style=" height:border:0.5px solid ;" colspan="5">PROVIDED ENGINEERING SERVICES TO MANUFACTURE THE ABOVE ITEM/S</td>                           
+                                                        <td style=" border:0.5px solid ;"></td>
+                                                    </tr>
+                                                    <tr style=" text-align:left;font-size:10px;">
+                                                        <td style=" border:0.5px solid ;"></td>
+                                                        <td style=" height:border:0.5px solid ;" colspan="5">***NOTHING FOLLOWS***</td>
+                                                        <td style=" border:0.5px solid ;"></td>
+                                                    </tr>
+                                                    <tr >
+                                                        <td style=" border:0.5px solid ;" width="5%"></td>
+                                                        <td style=" border:0.5px solid ;" width="42.5%" ><img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.AccountDetaol)}' title="logo"/></td>
+                                                        <td width="42.5%" style=" border:0.5px solid ;text-align:right;font-size:10px;" colspan="4"><img style="WIDTH:90%; HEIGHT: 90%" src='{!URLFOR($Resource.AccountDetaol2)}' title="logo"/></td>
+                                                        <td style=" border:0.5px solid ;" width="10%"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            
+                                                      
+            <table width="100%" border="0" >
+                <tr>
+                    <td width="100%" colspan="2">
+                        <table width="100%" border="0" >
+                <tr>
+                    <td width="100%" colspan="2">
+                        <table width="100%" border="0" >
+                <tr>
+                    <td width="50%" >
+                        <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                            <tr>
+                                <td width="40%" style="text-align:left;background-color:#e6e5e3;font-size:14px;">Exchange Rate</td>
+                                <td width="40%" style="text-align:right;font-size:14px;">
+                                                 <img style="WIDTH:80%; HEIGHT: 80%" src='{!URLFOR($Resource.ExchangeRate)}' title="logo"/>
+                                </td>
+                                <td width="20%" style="text-align:right;font-size:12px;">{!Invoice__c.Exchange_Rate__c}</td>
+                            </tr>
+                            <tr>
+                                <td width="40%" style="text-align:left;background-color:#e6e5e3;font-size:14px;">VAT Base Amount</td>
+                                <td width="40%" style="text-align:right;font-size:14px;">
+                                    <img style="WIDTH:80%; HEIGHT: 80%" src='{!URLFOR($Resource.VATbaseamount)}' title="logo"/>
+                                </td>
+                                <td width="20%" style="text-align:right;font-size:12px;">
+                                    <apex:outputText value="{0, number, ###,##0.00}">
+                                        <apex:param value="{!Invoice__c.VAT_Base_Amount__c}" />
+                                    </apex:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="40%" style="text-align:left;background-color:#e6e5e3;font-size:14px;">VAT Amount in SAR</td>
+                                <td width="40%" style="text-align:right;font-size:14px;">
+                                    <img style="WIDTH:80%; HEIGHT: 80%" src='{!URLFOR($Resource.VATAmountSAR)}' title="logo"/>
+                                </td>
+                                <td width="20%" style="text-align:right;font-size:12px;">{!Invoice__c.VAT_Amount_in_SARs__c}</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="50%" >
+                        <table border="2" style="border-collapse: collapse;border:0.5px solid" width="100%"  >
+                            <tr>
+                                <td width="40%" style="text-align:left;background-color:#e6e5e3;font-size:13px;">NET INVOICE VALUE </td>
+                                <td width="40%" style="text-align:right;font-size:14px;">
+                                    <img style="WIDTH:57%; HEIGHT: 57%" src='{!URLFOR($Resource.InvoiveValue)}' title="logo"/>
+                                </td>
+                                <td width="20%" style="text-align:right;font-size:12px;">
+                                    <apex:outputText value="{0, number, ###,##0.00}">
+                                        <apex:param value="{!Invoice__c.VAT_Base_Amount__c}" />
+                                    </apex:outputText> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="40%" style="text-align:left;background-color:#e6e5e3;font-size:14px;">VAT Amount </td>
+                                <td width="40%" style="text-align:right;font-size:14px;">
+                                    <img style="WIDTH:57%; HEIGHT: 57%" src='{!URLFOR($Resource.Amount)}' title="logo"/>
+                                </td>
+                                <td width="20%" style="text-align:right;font-size:12px;">{!Invoice__c.VAT_Amount_in_SARs__c}</td>
+                            </tr>
+                            <tr>
+                                <td width="40%" style="text-align:left;background-color:#e6e5e3;font-size:12px;">TOTAL INVOICE VALUE</td>
+                                <td width="40%" style="text-align:right;font-size:14px;">
+                                    <img style="WIDTH:57%; HEIGHT: 57%" src='{!URLFOR($Resource.InviceValRight)}' title="logo"/>
+                                </td>
+                                <td width="20%" style="text-align:right;font-size:12px;">
+                                    <apex:outputText value="{0, number, ###,##0.00}">
+                                        <apex:param value="{!Invoice__c.Total_Invoice_Values__c}" />
+                                    </apex:outputText> 
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+                    </td>
+                </tr>
+            </table>
+                    </td>
+                </tr>
+            </table>
+                                                                                                                        
+            <table width="100%" border="0" >
+                <tr>
+                    <td width="100%">
+                           <table width="100%" border="0" >
+                            <tr>
+                                <td width="100%">
+                                      <table width="100%" border="0" >
+                                        <tr> 
+                                            <td width="100%">
+                                                <table width="100%" border="2" style="border-collapse: collapse;border:0.5px solid" >
+                                                    <tr>
+                                                        <td width="33.33%" style="border:0.5px solid ;text-align:right;font-size:14px;background-color:#e6e5e3;">
+                                                            <img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.PreparedBy)}' title="logo"/></td>
+                                                        <td width="33.33%" style="border:0.5px solid ;text-align:right;font-size:14px;background-color:#e6e5e3;">
+                                                            <img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.AuthorizedSig)}' title="logo"/></td>
+                                                        <td width="33.33%" style="border:0.5px solid ;text-align:right;font-size:14px;background-color:#e6e5e3;">
+                                                            <img style="WIDTH:100%; HEIGHT: 100%" src='{!URLFOR($Resource.RecievedBy)}' title="logo"/></td>
+                                                    </tr>
+                                            
+                                                    <tr>
+                                                        <td width="33.33%" style="border:0.5px solid ;text-align:right;font-size:14px;background-color:white;font-color:white;">
+                                                            <p style="color:white;">I am red</p></td>
+                                                        <td width="33.33%" style="border:0.5px solid ;text-align:right;font-size:14px;background-color:#white;"> </td>
+                                                        <td width="33.33%" style="border:0.5px solid;text-align:right;font-size:14px;background-color:#white;"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>                                                                                                            
+                                    </table>                                                                                           
+                                </td>
+                            </tr>
+                        </table>                                                                                                 
+                    </td>
+                </tr>
+            </table>
+            
+            <table width="100%" border="0" style="border-collapse: collapse;border:0.5px solid" >
+                <tr>
+                    <td width="50%" style="text-align:center;font-size:9px;">(Output documents are not legally binding without authorised signature Subject
+to Weir Amco Standard Terms &amp; Conditions)</td>
+                    <td width="50%" style="text-align:right;">
+                        <img style="WIDTH:90%; HEIGHT: 90%" src='{!URLFOR($Resource.Signature)}' title="logo"/>
+                    </td>
+                </tr>
+            </table>
+         
+                        
+                        
+</apex:page>

@@ -1,0 +1,314 @@
+<apex:page docType="html-5.0" standardController="compliancequest__SQX_Nonconformance__c" extensions="NCExtensionclass"
+           showHeader="{!IF($CurrentPage.parameters.printMode=='true', false, false)}" 
+           sidebar="{!IF($CurrentPage.parameters.printMode=='true', false, true)}"   
+           standardStylesheets="true" Title="{!compliancequest__SQX_Nonconformance__c.Name}"  doctype="html-5.0">
+    <apex:messages />
+    <apex:slds />
+    <apex:form >
+        <div align="left" draggable="false" >
+<apex:commandButton style="float:centre" value="Print" onclick="window.print();"/>
+</div>
+    <!--    
+        <apex:commandLink value="Print" onclick="window.print();"/>
+    -->
+    
+    <script type="text/javascript">
+    var title = '{!JSENCODE(compliancequest__SQX_Nonconformance__c.Name)}';
+    </script> 
+    
+    <html>
+        <head> 
+            <style>
+                table{
+                max-width: 20cm;
+                }
+                
+                .headerInfo {
+                
+                margin-left:5%;         
+                margin-bottom:1%; 
+                }
+                .hdrInfoLbl {
+                font-family:"Times New Roman";
+                font-weight: normal;
+                }
+                .hdrInfoData {
+                font-family:"Times New Roman";
+                font-weight: normal;
+                }
+                
+                @media print
+                {
+                table { page-break-after:auto }
+                tr    { page-break-inside:avoid; page-break-after:auto }
+                td    { page-break-inside:avoid; page-break-after:auto }
+                thead { display:table-header-group }
+                tfoot { display:table-footer-group }
+                }
+                .A4 {
+                background: white;
+                width: 21cm;
+                height: 29.7cm;
+                display: block;
+                margin: 0 auto;
+                padding: 10px 25px;
+                margin-bottom: 0.5cm;
+                box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+                overflow-y: auto;
+                box-sizing: border-box;
+                font-size: 11pt;
+                
+                
+                }
+                
+                @media print {
+                .page-break {
+                display: block;
+                page-break-before: always;
+                }
+                size: A4 portrait;
+                }
+                
+                @media print {
+                body {
+                margin: 0;
+                padding: 0;
+                }
+                .A4 {
+                box-shadow: none;
+                margin: 0;
+                width: auto;
+                height: auto;
+                
+                
+                }
+                .noprint {
+                display: none;
+                }
+                .enable-print {
+                display: block;
+                }
+                }
+                .alert {
+                padding: 20px;
+                background-color: #4caf50;
+                color: white;
+                font-size: 23px;
+                width: 21cm;
+                margin: 0 auto;
+                padding: 10px 25px;       
+                box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+                overflow-y: auto;
+                box-sizing: border-box;
+                }
+                
+            </style>
+        </head>
+        <body>
+            
+            <div class="A4" rendered="true">
+                <hr style="border-top: 2px solid;"/>
+                <div class="page-header" style="text-align: center">  
+                    <table style="height: 50px; width: 100%;  border-collapse: collapse;" border="0">
+                        <tr>
+                            <td align="left" width ="40">
+                                <center><h1><apex:outputLabel value="QC MRR Form"  style="font-size: 25px;"/></h1></center>
+                                <br/><br/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr style="border-top: 2px solid;"/>
+                <div style="page-break-after:always;">
+                <table style="height: 50px; width: 100%;table-layout=auto;-fs-table-paginate: paginate;" align="center" >
+                    <tr>
+                        <th style="width:25%">From:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.compliancequest__Org_Division__c}</td>
+                        <th style="width:25%">MRR Num:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.compliancequest_MRR_Number__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%"></th><td style="width:25%"></td>
+                        <th style="width:25%">Item:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.Description_of_ITEM__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%"></th><td style="width:25%"></td>
+                        <th style="width:25%">Description:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.compliancequest__Description__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%"></th><td style="width:25%"></td>
+                        <th style="width:25%">MRR Revision:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.compliancequest_MRR_Revision__c}</td>
+                    </tr>
+                    <tr>
+                       <!-- <th style="width:25%">To:</th><td style="width:25%"></td> -->
+                        <th style="width:25%"></th><td style="width:25%"></td>
+                        <th style="width:25%">Ref Type:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.compliancequest_Ref_Type__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%"></th><td style="width:25%"></td>
+                        <th style="width:25%">Job/PS:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.compliancequest_Job__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%"></th><td style="width:25%"></td>
+                        <th style="width:25%">Operation:</th><td style="width:25%"></td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%"></th><td style="width:25%"></td>
+                        <th style="width:25%">Work center:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.Work_Order_Number__c}</td>
+                    </tr>
+                </table>
+                <table style="height: 50px; width: 100%; table-layout=auto;-fs-table-paginate: paginate;" align="center" >                
+                    <tr>
+                        <th style="width:10%">Rework Job:</th><td style="width:10%"></td>
+                        <th style="width:10%"></th><td style="width:12%"></td>
+                        <th style="width:25%"></th><td style="width:25%"></td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Revr Num:</th><td style="width:12%">{!compliancequest__SQX_Nonconformance__c.compliancequest_RCVR_Number__c}</td>
+                        <th style="width:10%"></th><td  style="width:10%"></td>
+                        <th style="width:25%">Create Date:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.createdDate}</td>
+                    </tr>
+                    <tr>
+                        
+                        <th style="width:10%">Qty Accepted:</th><td style="width:12%">{!receivedQty}</td>
+                       <th style="width:10%"></th><td style="width:10%"></td>
+                        <th style="width:25%">Quantity Received:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.Quantity__c}</td>
+                    </tr>
+                    <tr>
+                         <th style="width:10%">Quantity On Hold:</th><td style="width:12%">{!onHoldQty}</td>
+                        <th style="width:10%"></th><td style="width:10%"></td>
+                       <th style="width:25%">Qty Rejected:</th><td style="width:25%">{!rejectedQty}</td>
+                    <!--    <th style="width:25%">Qty Rejected:</th><td style="width:25%">{!myProperty[2]}</td> -->
+                    </tr>
+                </table>
+                </div>
+                <div style="page-break-after:always;">
+                    <hr style="border-top: 2px solid;"/>
+                <div class="page-header" style="text-align: center">  
+                    <table style="height: 50px; width: 100%;  border-collapse: collapse;" border="0">
+                        <tr>
+                            <td align="left" width ="40">
+                                <center><h1><apex:outputLabel value="QC MRR Form"  style="font-size: 25px;"/></h1></center>
+                                <br/><br/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr style="border-top: 2px solid;"/>
+                <table style="height: 50px; width: 100%; table-layout=auto;-fs-table-paginate: paginate;" align="center" >
+                    <tr>
+                        <th style="width:10%">Problem Description:</th><td>{!compliancequest__SQX_Nonconformance__c.Defect_Description__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Cause of Defect:</th><td>{!compliancequest__SQX_Nonconformance__c.Weir_Defect_Category__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Description:</th><td>{!compliancequest__SQX_Nonconformance__c.compliancequest__Description__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Correction/Containment:</th><td>{!conSummary }</td>
+                    </tr>
+                    <tr>
+                        
+                        
+                       <th style="width:10%">Corrective Action:</th>
+        <apex:repeat value="{!lstactionplans}" var="ap">
+            <td>{!ap.compliancequest__Description__c}</td>
+           
+    </apex:repeat>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Receiver Notes:</th><td></td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Defect Code:</th><td></td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">MRR Information:</th><td></td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Created Date:</th><td>{!compliancequest__SQX_Nonconformance__c.createdDate}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Inspector:</th><td>{!compliancequest__SQX_Nonconformance__c.compliancequest__SQX_Inspection__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Assigned To:</th><td>{!compliancequest__SQX_Nonconformance__c.Assign_To__r.name}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Sched Date:</th><td></td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Close Date:</th><td></td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Authorized By:</th><td></td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Final Disposition:</th><td></td>
+                    </tr>
+                </table>
+                </div>
+                <div style="page-break-after:always;" />
+                <hr style="border-top: 2px solid;"/>
+                <div class="page-header" style="text-align: center">  
+                    <table style="height: 50px; width: 100%;  border-collapse: collapse;" border="0">
+                        <tr>
+                            <td align="left" width ="40">
+                                <center><h1><apex:outputLabel value="QC MRR Form"  style="font-size: 25px;"/></h1></center>
+                                <br/><br/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr style="border-top: 2px solid;"/>
+                <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;-fs-table-paginate: paginate;" align="center" >
+                <!--    <tr>
+                        <th style="width:10%">Car Num:</th><td></td>
+                    </tr>
+                    <tr>
+                        <th style="width:10%">Car Notes:</th><td></td>                      
+                    </tr>
+-->
+                </table>
+                <table style="height: 50px; width: 100%; table-layout=auto;-fs-table-paginate: paginate;" align="center" >
+                    <tr>
+                        <th style="width:25%">Serial Number:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.Serial_Number__c}</td>
+                        <th style="width:25%">Machine:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.compliancequest_Machine__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%">Job:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.compliancequest_Job__c}</td>
+                        <th style="width:25%">Employee:</th><td style="width:25%"></td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%">Heat Code:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.compliancequest_Heat_Code__c}</td>
+                        <th style="width:25%">Shift:</th><td style="width:25%">{!compliancequest__SQX_Nonconformance__c.Shift__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%">Datefid:</th><td style="width:25%"></td>
+                        <th style="width:25%">logfid:</th><td style="width:25%"></td>
+                    </tr>
+                    
+                </table>
+                <table style="height: 50px; width: 100%; table-layout=auto;-fs-table-paginate: paginate;" align="center" >
+                     <tr>
+                        <th style="width:25%">Sign Offs:</th><td style="width:25%"></td>
+                    </tr>
+                    </table>
+                <table style="-fs-table-paginate: paginate;">
+                    <tr>
+                        <th style="width:20%">Engineering</th><td style="width:20%">---------------</td>
+                    </tr>
+                    <tr>
+                        <th style="width:20%">Manufacturing</th><td style="width:20%">---------------</td>
+                    </tr><tr>
+                    <th style="width:20%">Sales/Marketing</th><td style="width:20%">---------------</td>
+                    </tr>
+                    <tr>
+                        <th style="width:20%">Purchasing</th><td style="width:20%">---------------</td>
+                    </tr>
+                    <tr>
+                        <th style="width:20%">Others</th><td style="width:20%">---------------</td>
+                    </tr>
+                </table>
+             </div></body></html>
+    </apex:form>
+</apex:page>

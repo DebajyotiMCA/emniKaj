@@ -1,0 +1,368 @@
+<apex:page docType="html-5.0" standardController="compliancequest__SQX_CAPA__c" extensions="CAPAExtensionClass"
+           showHeader="{!IF($CurrentPage.parameters.printMode=='true', false, false)}" 
+           sidebar="{!IF($CurrentPage.parameters.printMode=='true', false, true)}"   
+           standardStylesheets="true" Title="{!compliancequest__SQX_CAPA__c.Name}" doctype="html-5.0">
+    <apex:messages />
+    <apex:slds />
+    <apex:form >
+        <div align="left" draggable="false" >
+<apex:commandButton style="float:centre" value="Print" onclick="window.print();"/>
+</div>
+    <!--    
+        <apex:commandLink value="Print" onclick="window.print();"/>
+    -->
+    
+    <script type="text/javascript">
+    var title = '{!JSENCODE(compliancequest__SQX_CAPA__c.Name)}';
+    </script> 
+        
+  <html>
+        <head> 
+            <style>
+                table{
+                max-width: 20cm;
+                }
+                
+                .headerInfo {
+                
+                margin-left:5%;         
+                margin-bottom:1%; 
+                }
+                .hdrInfoLbl {
+                font-family:"Times New Roman";
+                font-weight: normal;
+                }
+                .hdrInfoData {
+                font-family:"Times New Roman";
+                font-weight: normal;
+                }
+                
+                @media print
+                {
+                table { page-break-after:auto }
+                tr    { page-break-inside:avoid; page-break-after:auto }
+                td    { page-break-inside:avoid; page-break-after:auto }
+                thead { display:table-header-group }
+                tfoot { display:table-footer-group }
+                }
+                .A4 {
+                background: white;
+                width: 21cm;
+                height: 29.7cm;
+                display: block;
+                margin: 0 auto;
+                padding: 10px 25px;
+                margin-bottom: 0.5cm;
+                box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+                overflow-y: auto;
+                box-sizing: border-box;
+                font-size: 11pt;
+                
+                
+                }
+                
+                @media print {
+                .page-break {
+                display: block;
+                page-break-before: always;
+                }
+                size: A4 portrait;
+                }
+                
+                @media print {
+                body {
+                margin: 0;
+                padding: 0;
+                }
+                .A4 {
+                box-shadow: none;
+                margin: 0;
+                width: auto;
+                height: auto;
+                
+                
+                }
+                .noprint {
+                display: none;
+                }
+                .enable-print {
+                display: block;
+                }
+                }
+                .alert {
+                padding: 20px;
+                background-color: #4caf50;
+                color: white;
+                font-size: 23px;
+                width: 21cm;
+                margin: 0 auto;
+                padding: 10px 25px;       
+                box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+                overflow-y: auto;
+                box-sizing: border-box;
+                }
+                .page-header{
+                
+                }
+                
+            </style>
+        </head>
+      
+      <body>
+           <div class="A4" rendered="true">
+                
+                <div class="page-header" style="text-align: center">  
+                    <table style="height: 50px; width: 100%;  border-collapse: collapse;" border="0">
+                        <tr>
+                            <td align="center" width ="200">
+                                <center><h1><apex:outputLabel value="Corrective Action Request"  style="font-size: 20px;"/></h1></center>
+                                
+                            </td>
+                            
+                           <td align="right" style="width: 050mm; height: 020mm; max-width: 050mm; max-height: 020mm; overflow: hidden;" rowspan = "2">
+                                <apex:image url="{!$Resource.logo}" width="100%" height="10%"/>
+                            </td> 
+                        </tr>
+                    </table>
+                    <hr style="border-top: 2px solid;"/>
+                </div> 
+
+                <table style="height: 50px; width: 100%;table-layout=auto;-fs-table-paginate: paginate;" align="center" >
+                    <tr>
+                        <th style="width:25%">Initiator Name:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.Owner.name}</td>
+                        <th style="width:25%">Response Required by date:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.compliancequest__Target_Due_Date__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%">Date:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.compliancequest__Issued_Date__c}</td>
+                        <th style="width:25%">Assign To:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.WEIR_Department__c}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%">Identified Through:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.compliancequest__Title__c}</td>
+                       <th style="width:25%">CAR Number:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.name}</td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%">CAR Type:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.compliancequest__CAPA_Type__c}</td>
+                  <!--      <th style="width:25%">Account:</th><td style="width:25%">{!ncp.compliancequest__SQX_Nonconformance__r.name}</td>-->
+                        
+                    </tr>
+               <!--     <tr>
+                        <th style="width:25%">Supplier Name:</th><td style="width:25%"></td> 
+                        <th style="width:25%">Supplier NCR:</th><td style="width:25%"></td>
+                        </tr> 
+                    <tr>
+                        <th style="width:25%">NCR No:</th><td style="width:25%">{!ncp.compliancequest__SQX_Nonconformance__r.name}</td> 
+                    </tr> -->
+                    </table>
+                    <hr style="border-top: 1px solid;"/>
+            <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+                
+                <th style="width:25%">1.Cross Functional Team:</th><td></td>
+                <tr>
+                    <th style="width:25%">CAPA Coordinator:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.compliancequest__SQX_CAPA_Coordinator__r.name}</td>
+                    <th style="width:25%">CAPA Sponsor:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.compliancequest__SQX_CAPA_Sponsor__r.name}</td>
+                </tr>
+                <tr>
+                    <th style="width:25%">Team Member1:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.CFT_Member_1__c}</td>
+                    <th style="width:25%">Team Member2:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.CFT_Member_2__c}</td>
+                </tr>
+               <tr>
+                <th style="width:25%">Team Member3:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.CFT_Member_3__c}</td>
+                    <th style="width:25%">Team Member4:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.CFT_Member_4__c}</td>
+                  </tr>
+                <tr>
+                <th style="width:25%">Team Member5:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.CFT_Member_5__c}</td>
+                    <th style="width:25%">Team Member6:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.CFT_Member_6__c}</td>
+                </tr>
+            </table>
+               <hr style="border-top: 1px solid;"/>
+               <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+                
+                <th style="width:20%">2.Problem Statement:</th><td></td>
+                <tr>
+                    <th style="width:20%">Title:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.compliancequest__Title__c}</td>
+                   </tr>
+                   <tr>
+                    <th style="width:20%">Problem Description:</th><td style="width:100%">{!compliancequest__SQX_CAPA__c.compliancequest__Description__c}</td>
+                </tr>
+               </table>
+               <hr style="border-top: 1px solid;"/>
+               
+               <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+                   
+                   <th style="width:20%">3.Technical Description / Definition / Sketch / Photo of the Problem</th><td></td>
+                   <tr>
+                       <th style="width:20%">Notes And Files:</th><td style="width:100%"></td>
+                   </tr>
+                   <td>
+                       <apex:outputPanel rendered="{!NOT(mapIsEmpty)}">
+                       <apex:repeat value="{!images}" var="url">
+                           <apex:image url="{!url}" width="180px" height="180px" />
+                           <apex:outputText value="{!images[url]}" /><br/>
+                           <br/>
+                       </apex:repeat>
+                       </apex:outputPanel>
+                       <apex:outputPanel rendered="{!NOT(map1IsEmpty)}">
+                       <apex:repeat value="{!images1}" var="url">
+                           <apex:image url="{!url}" width="180px" height="180px" />
+                           <apex:outputText value="{!images1[url]}" /><br/>
+                           <br/>
+                       </apex:repeat>
+                           </apex:outputPanel>
+                   </td>
+                   <tr><th style="width:10%"></th>
+                   </tr>  
+                   
+               </table>
+               
+               <hr style="border-top: 1px solid;"/>
+               <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+                
+                <th style="width:20%">4.Immediate Containment Action</th><td></td>
+                <tr>
+                    <th style="width:20%">Response Summary:</th><td style="width:100%">{!Contment.compliancequest__Containment_Summary__c}</td>
+                   </tr>
+                    <tr>
+                    <th style="width:20%">Submitted By:</th><td style="width:100%">{!Res.compliancequest__Submitted_By__c}</td>
+                   </tr>
+                   <tr>
+                    <th style="width:20%">Submitted ON:</th><td style="width:100%">{!Res.compliancequest__Submitted_On__c}</td>
+                </tr>
+            </table>
+<hr style="border-top: 1px solid;"/>               
+               <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+                
+                <th style="width:25%">5.Root Cause Analysis</th><td></td>
+                <tr>
+                    <th style="width:20%">Investigation Summary:</th><td style="width:100%">{!Inv.compliancequest__Investigation_Summary__c}</td>
+                   </tr>
+                   <tr>
+                    <th style="width:20%">Category:</th><td style="width:100%">{!Roc.compliancequest__Category__c}</td>
+                   </tr>
+                   <tr>
+                       <th style="width:20%">Description:</th><td style="width:100%">{!Roc.compliancequest__Description__c}</td>
+                   </tr>
+               </table>
+               
+               <hr style="border-top: 1px solid;"/>               
+               <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+                   <th style="width:20%">6.Implemented Corrective And Preventive Actions</th><td style="width:100%"></td>
+                   <apex:repeat value="{!Acp}" var="ap" >
+                           <tr><th style="width:20%"><br/></th><td style="width:100%"></td></tr>
+                           <tr>
+                               <th style="width:20%">Plan Type:</th><td style="width:100%">{!action.compliancequest__Plan_Type__c}</td>
+                           </tr>
+                           <tr>
+                               <th style="width:20%">Assignee:</th><td style="width:100%">{!action.compliancequest__SQX_User__r.name}</td>
+                           </tr>
+                           <tr>
+                                  <th style="width:20%">Completion Date:</th><td style="width:100%">{!action.compliancequest__Completion_Date__c}</td>
+                           </tr>
+                           <tr>
+                               <th style="width:20%">Description:</th><td style="width:100%">{!action.compliancequest__Description__c}</td>
+                           </tr>
+                           <tr>
+                               <th style="width:20%">Due Date:</th><td style="width:100%">{!action.compliancequest__Due_Date__c}</td>
+                           </tr>
+                           <tr>
+                               <th style="width:20%">Status:</th><td style="width:100%">{!action.compliancequest__Status__c}</td>
+                                                       </tr>
+                   </apex:repeat>
+               </table>
+               
+               <hr style="border-top: 1px solid;"/>               
+               <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+                
+                <th style="width:25%">7.Effectivness Monitioring</th><td></td>
+                <tr>
+                    <th style="width:20%">Resolution:</th><td style="width:100%">{!Efr.compliancequest__Resolution__c}</td>
+                   </tr>
+                   <tr>
+                    <th style="width:20%">Status:</th><td style="width:100%">{!Efr.compliancequest__Status__c}</td>
+                   </tr>
+                   <tr>
+                    <th style="width:20%">Reviewed By:</th><td style="width:100%">{!Efr.compliancequest__Reviewed_By__c}</td>
+                </tr>
+                   <tr>
+                    <th style="width:20%">Target Review Date:</th><td style="width:100%">{!Efr.compliancequest__Review_Started_On__c}</td>
+                </tr>
+                   
+            </table>
+               
+               <hr style="border-top: 1px solid;"/>               
+               <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+                
+                <th style="width:25%">8.Team Individual Feedback And Recognition</th><td></td>
+                
+                   
+            </table>
+               <table style="height: 50px; width: 100%;  border-collapse: collapse;" border="2">
+                        <tr>
+                            <td align="left" width ="20%">
+                                Finalised On:
+                            </td>
+                             <td align="left" width ="10%" >
+                                 Initiator Sign:
+                            </td>
+                             <td align="left" width ="10%" >
+                                 Champion Signature:
+                            </td>
+                             
+                             <td align="left" width ="10%" >
+                                 Quality Manager Sign:
+                            </td>
+                        </tr>
+                   <tr><td align="left" width ="20%">
+                                
+                            </td>
+                             <td align="left" width ="10%" >
+                                 <br/>   
+                            </td>
+                             <td align="left" width ="10%" >
+                                 <br/> 
+                            </td>
+                             
+                             <td align="left" width ="10%" >
+                                 <br/>
+                            </td>
+                   </tr>
+                    </table>
+               <table style="height: 20px; width: 50%;  border-collapse: collapse;" border="2">
+               <div style="background-color: #d0dcdd;font-size:12pt;"><h1>
+                        <center>Response From SPM Oil And Gas</center>
+                        </h1></div><br/>
+               </table>
+               
+               <table style="height: 20px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+               <tr>
+                    <th style="width:25%">Accepted:</th><td style="width:25%">------</td>
+                   <th style="width:25%">Not Accepted</th><td style="width:25%">------</td>
+                   </tr>
+                   <tr>
+                    <th style="width:25%">Comments:</th><td style="width:25%">{!compliancequest__SQX_CAPA__c.compliancequest__Closure_Comment__c}</td>
+                   </tr>
+               </table>
+               <table style="height: 50px; width: 100%;  border-collapse: collapse;" border="2">
+                        <tr>
+                            <td align="left" width ="20%">
+                                Representative:
+                            </td>
+                   </tr>
+                   <tr>
+                             <td align="left" width ="10%" >
+                                 Name:
+                            </td>
+                       <td align="left" width ="10%" >
+                                 Sign:
+                            </td>
+                   </tr>
+                   <tr>
+                             <td align="left" width ="10%" >
+                                 Designation:
+                            </td>
+                        <td align="left" width ="10%" >
+                                 Date:
+                            </td>
+                   </tr>
+               </table>
+              </div></body></html>
+    </apex:form></apex:page>

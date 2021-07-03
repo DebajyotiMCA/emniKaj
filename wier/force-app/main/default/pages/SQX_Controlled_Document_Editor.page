@@ -1,0 +1,215 @@
+<apex:page standardcontroller="compliancequest__SQX_Controlled_Document__c" extensions="compliancequest.SQX_Extension_Controlled_Document" title="{!$Label.compliancequest__cq_ui_controlled_doc_edit}: {!$Label.compliancequest__cq_ui_new_controlled_document}">
+    <apex:variable var="IsTemplateDoc" value="{! BEGINS(RecordTypes['Template_Document'], compliancequest__SQX_Controlled_Document__c.RecordTypeId) }" />
+    <apex:variable var="IsStandardDoc" value="{! BEGINS(RecordTypes['Controlled_Document'], compliancequest__SQX_Controlled_Document__c.RecordTypeId) }" />
+    <apex:variable var="IsAuditCriteria" value="{! BEGINS(RecordTypes['Audit_Criteria'], compliancequest__SQX_Controlled_Document__c.RecordTypeId) }" />
+    <apex:variable var="IsInspectionCriteria" value="{! BEGINS(RecordTypes['Inspection_Criteria'], compliancequest__SQX_Controlled_Document__c.RecordTypeId) }" />
+    <apex:variable var="IsCourse" value="{! BEGINS(RecordTypes['Course'], compliancequest__SQX_Controlled_Document__c.RecordTypeId) }" />
+    <apex:variable var="ShowContentSection" value="{!NOT(OR(IsInspectionCriteria,IsAuditCriteria))}" />
+
+    <apex:sectionHeader title="{!$Label.compliancequest__cq_ui_controlled_doc_edit}" subtitle="{!$Label.compliancequest__cq_ui_new_controlled_document}"/>
+    <apex:pageMessages escape="false" />
+        <apex:form id="frm">
+            <apex:pageBlock title="{!$Label.compliancequest__cq_ui_new_document}" id="pbs">
+            <apex:outputPanel id="pb" >
+                <apex:actionRegion id="pbar">
+                    <apex:pageBlockSection columns="1" collapsible="false" title="{!$Label.compliancequest__cq_ui_document_type}" id="pbs1">
+                        <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.RecordTypeId.Name}" id="recordType" value="{!compliancequest__SQX_Controlled_Document__c.RecordTypeId}">
+                            <apex:actionSupport event="onchange" rerender="approverList,profile,pb,secFormatSetting,isScormFlag" immediate="false" oncomplete="recordTypeChanged(this)" status="actionStatus" />
+                            <apex:actionStatus startText=" {!$Label.compliancequest__cq_ui_loading}" stopText=" " id="actionStatus" />
+                        </apex:inputField>
+                        <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Document_Type__c.Name}" id="docType" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Document_Type__c}" rendered="{!OR(IsStandardDoc, IsAuditCriteria, IsInspectionCriteria, IsCourse)}"/>
+                        <apex:outputField value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__SQX_Change_Order__c}" rendered="{!NOT(ISBLANK(compliancequest__SQX_Controlled_Document__c.compliancequest__SQX_Change_Order__c))}" />
+                    </apex:pageBlockSection>
+                </apex:actionRegion>
+            </apex:outputPanel>
+
+            <apex:outputPanel id="profile">
+                <apex:pageBlockSection columns="2" collapsible="false" title="{!$Label.compliancequest__cq_ui_profile}" >
+                    <apex:repeat value="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.FieldSets.compliancequest__New_Document}" var="f">
+                        <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!f}" required="{!OR(f.DbRequired,f.Required)}" value="{!compliancequest__SQX_Controlled_Document__c[f]}"/>
+                    </apex:repeat>
+                    <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__SQX_Default_Approval_Matrix__c.Name}" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__SQX_Default_Approval_Matrix__c}" rendered="{!$Setup.compliancequest__SQX_Custom_Settings_Public__c.compliancequest__Use_Approval_Matrix_For_Document__c && IsTemplateDoc}"/>
+                    <!------OSI-10---->
+                    <!--apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.CQ_TH_Model_Number__c}" value="{!compliancequest__SQX_Controlled_Document__c.CQ_TH_Model_Number__c}" /--> 
+                   <!-- <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Secondary_Content__c}" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Secondary_Content__c}" /> -->
+                    <!--apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.CQ_TH_Model_Number__c}" value="{!compliancequest__SQX_Controlled_Document__c.Mail_Id_myn__c}" /--> 
+                    </apex:pageBlockSection>
+
+                <apex:pageBlockSection columns="1" title="{!$Label.compliancequest__cq_ui_controlled_document_content}" collapsible="false" id="pbs2" rendered="{!ShowContentSection}">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Fields.compliancequest__Draft_Vault__c.Label}" for="Draft_Vault__c"></apex:outputLabel>
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <div id ="requiredBlock" class="requiredBlock"></div>
+
+                            <apex:selectList html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Draft_Vault__c.Name}" id="Draft_Vault__c" size="1" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Draft_Vault__c}">
+                                <apex:selectOptions value="{!DraftLibraryNames}"></apex:selectOptions>
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Fields.compliancequest__Release_Vault__c.Label}" for="Release_Vault__c"></apex:outputLabel>
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <div id ="requiredBlock1" class="requiredBlock"></div>
+
+                            <apex:selectList html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Release_Vault__c.Name}" id="Release_Vault__c" size="1" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Release_Vault__c}">
+                                <apex:selectOptions value="{!ReleaseLibraryNames}"></apex:selectOptions>
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem rendered="{!$Setup.compliancequest__SQX_Custom_Settings_Public__c.compliancequest__Enable_Document_Distribution__c}" id="pbsi2">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Fields.compliancequest__Distribution_Vault__c.Label}" for="Distribution_Vault__c"></apex:outputLabel>
+                        <apex:selectList html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Distribution_Vault__c.Name}" id="Distribution_Vault__c" size="1" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Distribution_Vault__c}">
+                        <apex:selectOptions value="{!LibraryNames}"></apex:selectOptions>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+
+            </apex:outputPanel>
+
+            <!-- The component that contains the code for uploading the content. Previously 10MB VF restriction was present but using this component
+            any amount of data can be uploaded i.e. upto SF's max limit -->
+            <div id="contentUploadSection">
+                <compliancequest:SQX_Doc_Upload_Component Document="{!compliancequest__SQX_Controlled_Document__c}"
+                        SecondaryMode="{!$Component.frm.SecContent}"
+                        ContentRef="{!$Component.frm.ContentRef}"
+                        SecondaryContent="{!$Component.frm.SecContentRef}"
+                        JSCallBack="sqx.enableDisableButtonsOnUpload">
+                </compliancequest:SQX_Doc_Upload_Component>
+            </div>
+
+            <!-- Secondary Format Setting field
+            rendered only when recordtype is Template Doc-->
+            <apex:outputPanel id="secFormatSetting" >
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlockSectionItem rendered="{! isTemplateDoc }">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Fields.compliancequest__Secondary_Format_Setting__c.Label}" for="compliancequest__Secondary_Format_Setting__c" />
+                        <apex:selectList html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Secondary_Format_Setting__c.Name}" id="compliancequest__Secondary_Format_Setting__c" size="1" value="{! compliancequest__SQX_Controlled_Document__c.compliancequest__Secondary_Format_Setting__c }">
+                            <apex:selectOptions value="{! SecondaryFormatSettings }" />
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+
+            <!-- Scorm Content Flag to be checked for Course type only -->
+            <apex:outputPanel id="isScormFlag">
+                <apex:pageBlockSection id="pbsScorm" columns="1" rendered="{!IsCourse}">
+                    <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Is_Scorm_Content__c.Name}" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Is_Scorm_Content__c}" onchange="scormFlagClicked(this.checked)" />
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+
+            <apex:outputPanel id="approverList">
+                <apex:pageBlockSection columns="1" title="{!$Label.compliancequest__cq_ui_document_approvers}" collapsible="false" rendered="{!$Setup.compliancequest__SQX_Custom_Settings_Public__c.compliancequest__Use_Approval_Matrix_For_Document__c && IsTemplateDoc}">
+                    <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__SQX_Approval_Matrix__c.Name}" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__SQX_Approval_Matrix__c}" rendered="{!IsTemplateDoc}" />
+                </apex:pageBlockSection>
+                <apex:pageBlockSection columns="1" title="{!$Label.compliancequest__cq_ui_document_approvers}" collapsible="false" rendered="{!$Setup.compliancequest__SQX_Custom_Settings_Public__c.compliancequest__Use_Approval_Matrix_For_Document__c == false}">
+                    <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__First_Approver__c.Name}" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__First_Approver__c}" />
+                    <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Second_Approver__c.Name}" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Second_Approver__c}" />
+                    <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Third_Approver__c.Name}" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Third_Approver__c}" />
+                    <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Fourth_Approver__c.Name}" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Fourth_Approver__c}" />
+                    <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Fifth_Approver__c.Name}" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Fifth_Approver__c}" />
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="{!$Label.compliancequest__cq_ui_button_save}" action="{!Create}" styleClass="cmdbtn"/>
+                <apex:commandButton value="{!$Label.compliancequest__cq_ui_button_cancel}" action="{!Cancel}" styleClass="cmdbtn"/>
+            </apex:pageBlockButtons>
+        
+        </apex:pageBlock>
+        
+        <!-- 
+            These are hidden fields whose value specify which file/content represents what in the controlled document and the secondary content mode
+            The fields are used to bind the values.
+        -->
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Content_Reference__c}" id="ContentRef"/>
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Secondary_Content_Reference__c}" id="SecContentRef"/>
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Secondary_Content__c}" id="SecContent"/>
+
+    </apex:form>
+    
+    <!-- Change the content version remote object source if necessary to add fields that need to be retrieved -->
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="ContentVersion" fields="Id,Title,Description,FileType,FileExtension,PathOnClient,RecordTypeId,compliancequest__Controlled_Document__c,IsLatest,ContentDocumentId">
+        </apex:remoteObjectModel>
+    </apex:remoteObjects>
+
+    <script type="text/javascript">
+        function recordTypeChanged(sender){
+            var sender = document.getElementById(sender.id), //HACK: for IE since for some reason we have to reselect the dropdown.
+                value = $(sender).find('option:selected').val(),
+                isTemplateDoc = "{!JSENCODE(RecordTypes['Template_Document'])}".indexOf(value) == 0,
+                isAuditCriteria = "{!JSENCODE(RecordTypes['Audit_Criteria'])}".indexOf(value) == 0,
+                isInspectionCriteria = "{!JSENCODE(RecordTypes['Inspection_Criteria'])}".indexOf(value) == 0,
+                isCourse = "{!JSENCODE(RecordTypes['Course'])}".indexOf(value) == 0,
+                <distributionLib = $(document.getElementById('{!JSEncode($Component.frm.pbs.pbs2.pbsi2.Distribution_Vault__c)}'));>
+            // If the document is of audit criteria record type then make the libraries optional
+
+            if(isAuditCriteria || isInspectionCriteria){
+                $("#requiredBlock").removeClass("requiredBlock");
+                $("#requiredBlock1").removeClass("requiredBlock");
+                $("#contentUploadSection").hide();
+            }
+            else if(isCourse) {
+                $("#requiredBlock").removeClass("requiredBlock");
+                $("#requiredBlock1").removeClass("requiredBlock");
+                $("#contentUploadSection").show();
+            }
+            else{
+                $("#requiredBlock").addClass("requiredBlock");
+                $("#requiredBlock1").addClass("requiredBlock");
+                $("#contentUploadSection").show();
+            }
+            
+            // disable secondary content rendition in there record types are selected
+            enableCqUploadComponent(!(isTemplateDoc || isAuditCriteria || isInspectionCriteria));
+            showPrimaryContentRequiredIndicator(!(isAuditCriteria || isInspectionCriteria || isCourse));
+            
+
+            if(isTemplateDoc)
+                distributionLib.parents('tr:first').hide();
+            else
+                distributionLib.parents('tr:first').show();
+        }
+
+        $(function(){
+            var rType = document.getElementById('{!JSEncode($Component.frm.pbs.pbs1.recordType)}');
+
+            recordTypeChanged(rType);
+        });
+
+        /*
+            Method is evoked when user toggles 'scorm content?' flag
+            If checked, secondary content section has to be hidden
+            else, unhide secondary content section
+        */
+        function scormFlagClicked(checked){
+
+            // set secondary content mode to Auto if scorm content
+            if(checked){
+                var mode = document.getElementById('{!$Component.frm.SecContent}');
+                if(mode){
+                    $(mode).val('Auto');
+                }
+            }
+
+            // hide/unhide secondary content section
+            // hide if scorm content, unhide if not scorm content
+            toggleSecondaryContent(!checked);
+        }
+
+        /*
+            Show/Hide secondary content section
+        */
+        function toggleSecondaryContent(show){
+
+            var label = document.getElementsByClassName('secPbsLsc'),
+                data = document.getElementsByClassName('secPbsDsc');
+
+            if(label && data){
+                if(show) { $(label).show(); $(data).show(); }
+                else { $(label).hide(); $(data).hide(); }
+            }
+        }
+
+
+    </script>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page showHeader="true" lightningStylesheets="true" >
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="3">
+            <apex:pageBlockSectionItem >
+                <analytics:reportChart reportId="00O1w000000QG8aEAG" filter="[{column:'Account.Id',operator:'equals',value:'0011w00000wWLQN'}]" size="small" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <analytics:reportChart reportId="00O1w000000QG8aEAG" filter="[{column:'Account.Id',operator:'equals',value:'0011w00000wWLQN'}]" size="small" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+  
+  
+</apex:page>

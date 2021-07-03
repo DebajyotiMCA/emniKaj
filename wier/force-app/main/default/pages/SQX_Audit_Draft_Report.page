@@ -1,0 +1,351 @@
+<apex:page renderAs="{!IF($CurrentPage.Parameters.RenderAs = 'pdf', 'pdf', null)}" standardController="compliancequest__SQX_Audit__c" extensions="compliancequest.SQX_Extension_SObjectReport" showHeader="false" sidebar="false" standardStylesheets="false" title="{compliancequest__SQX_Audit__c.Name}" doctype="html-5.0" applyBodyTag="false">
+
+<apex:variable var="renderAsPdf" value="{!$CurrentPage.Parameters.RenderAs = 'pdf'}" />
+
+<head>
+    <style>
+        body {  background-color: white;
+                font-size: {!IF(renderAsPdf, '0.7em', '0.9em')};
+                font-family: Arial, Helvetica, sans-serif;
+                padding: {!IF(renderAsPdf, '0', '1.5em')};
+            }
+        #cqpdfbody .label {font-weight: bold; width: 14%;}
+        #cqpdfbody .fieldValue { width: 36%;}
+        #cqpdfbody .labelFind{font-weight:bold;width:25%;}
+        #cqpdfbody h1 {font-size: 2em; display: block;}
+        #cqpdfbody h2 {font-size: 1.5em; font-weight: normal; display: block;} 
+        #cqpdfbody h4 {font-size: 1.25em; font-weight: bold; border-top: solid 1px black; margin-top: 10px; display: block; padding-top: 10px;}
+        #cqpdfbody h5 {font-size: 1.1em; font-weight: bold;}
+
+        #cqpdfbody .cqReportContent { padding: 5px 0; }
+
+        #cqpdfbody .altRow {background-color: rgb(247, 247, 247);}
+        #cqpdfbody .normRow {background-color: white;}
+
+        #cqpdfbody .executiveSummary { border-bottom: solid 1px rgb(218, 218, 218); }
+        #cqpdfbody .noteHeader { font-weight: bold;}
+        #cqpdfbody .noteElement { border-bottom: solid 1px rgb(218, 218, 218); }
+    </style>
+</head>
+ 
+ 
+<!-- The extension that is related to the main page SQX_Extension_Audit is being used, this allows reuse of the follow configurations defined in the getCompleteData method-->
+            
+    <body id="cqpdfbody">
+         <apex:stylesheet value="{!URLFOR($Resource.compliancequest__cqUI, 'styles/cqui.min.css')}"/>
+
+        <apex:outputField value="{!compliancequest__SQX_Audit__c.compliancequest__Stage__c}" rendered="false" />
+
+<!-- Displaying data related to the main record -->
+        <div>
+            <h1><apex:outputText value="{!mainRecordNode.data['Name']}" /></h1> 
+            <h2><apex:outputText value="{!mainRecordNode.data['compliancequest__Title__c']}" /></h2>
+        </div>
+        
+        <!-- Displaying header data related to the main record -->
+       
+        <table id="auditHeader" width="100%">
+
+            <tr>
+                <td colspan="4">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.Name.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['Name']}" />
+                </td>
+
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.CreatedDate.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputField value="{!mainRecordNode.data['CreatedDate']}" />
+                </td>
+            </tr>
+    
+            
+            <tr>
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__Title__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__Title__c']}" />
+                </td>
+
+                <td class="label">
+                    {!$Label.compliancequest__CQ_UI_Lead_Auditor}
+                    <!-- Lead Auditor has been statically set because this Owner is same as lead auditor. Using the label of Owner field will display owner which isn't as required -->
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['Owner.Name']}" />
+                </td>
+            </tr>
+            
+           <tr>
+                <td class="label">
+                     <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__Audit_Result__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__Audit_Result__c']}" />
+                </td>
+            
+            </tr>
+
+            <tr>
+                <td colspan="4">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td colspan="4">
+                    <h3>{!$Label.compliancequest__CQ_UI_Auditee_Information}</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__Account__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__Account__r.Name']}" />
+                </td>
+
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__Primary_Contact_Name__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__Primary_Contact_Name__r.Name']}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__SQX_Auditee_Contact__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__SQX_Auditee_Contact__r.Name']}" />
+                </td>
+
+                <td class="label">&nbsp;</td>
+                <td class="fieldValue">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td colspan="4">&nbsp;</td>
+            </tr>
+
+
+            <tr>
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__Org_Division__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__Org_Division__c']}" />
+                </td>
+
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__Org_Business_Unit__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__Org_Business_Unit__c']}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__Org_Site__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__Org_Site__c']}" />
+                </td>
+
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__SQX_Department__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__SQX_Department__r.Name']}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label">
+                    <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__Location__c.label}" />
+                </td>
+                <td class="fieldValue">
+                    <apex:outputText value="{!mainRecordNode.data['compliancequest__Location__c']}" />
+                </td>
+
+                <td class="label">&nbsp;</td>
+                <td class="fieldValue">&nbsp;</td>
+            </tr>
+          
+            
+        </table>    
+        
+
+
+
+        <h4>{!$Label.compliancequest__CQ_UI_Scope_Summary}</h4>
+        <div class="cqReportContent">
+            <apex:outputText value="{!mainRecordNode.data['compliancequest__Scope_Description__c']}"/>
+        </div>
+
+        <h4>{!$Label.compliancequest__cq_ui_executive_summary}</h4>
+
+        <div class="cqReportContent">
+            <apex:outputPanel rendered="{!CONTAINS(mainRecordNode.childObjectsKeys, 'Notes')}"> 
+                <apex:repeat value="{!mainRecordNode.childObjects['Notes']}" var="note">
+                    <apex:outputPanel rendered="{!(note.data['Title'] == 'Executive Summary')}" layout="none">
+                        <p class="executiveSummary"><apex:outputText value="{!note.data['Body']}" /></p>
+                    </apex:outputPanel>
+                </apex:repeat>
+            </apex:outputPanel>
+        </div>
+    
+    
+        
+        <h4>{!$ObjectType.compliancequest__SQX_Finding__c.LabelPlural}</h4>
+
+        <apex:outputPanel rendered="{!CONTAINS(mainRecordNode.childObjectsKeys, 'compliancequest__SQX_Findings__r')}">
+
+            <table width="100%">
+                <apex:variable var="findingColor" value="normRow"/>
+                <apex:repeat value="{!mainRecordNode.childObjects['compliancequest__SQX_Findings__r']}" var="finding">
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Finding__c.fields.compliancequest__Finding_Type__c.label}" />
+                    </td>
+                    <td class="fieldValue">
+                        <apex:outputText value="{!finding.data['compliancequest__Finding_Type__c']}" />
+                    </td>
+
+                    <td class="label">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Finding__c.fields.Name.label}" />
+                    </td>
+                    <td class="fieldValue">
+                        <apex:outputText value="{!finding.data['Name']}" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Finding__c.fields.compliancequest__SQX_Assignee__c.label}" />
+                    </td>
+                    <td class="fieldValue">
+                        <apex:outputText value="{!finding.data['compliancequest__SQX_Assignee__r.Name']}"/>
+                    </td>
+
+                    <td class="label">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Finding__c.fields.compliancequest__CAPA_Required__c.label}" />
+                    </td>
+                    <td class="fieldValue">
+                        <apex:outputText value="{!IF(finding.data['compliancequest__CAPA_Required__c']==true,'Required','Not Required')}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Audit__c.fields.compliancequest__Title__c.label}" />
+                    </td>
+                    <td class="fieldValue">
+                        <apex:outputText value="{!finding.data['compliancequest__Title__c']}" />
+                    </td>
+                    <td class="label"></td>
+                    <td class="fieldValue"></td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Finding__c.fields.compliancequest__Description__c.label}" />
+                    </td>
+                    <td class="fieldValue">
+                        <apex:outputText value="{!finding.data['compliancequest__Description__c']}" />
+                    </td>
+                    <td class="label"></td>
+                    <td class="fieldValue"></td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Finding__c.fields.compliancequest__Recommended_Action__c.label}" />
+                    </td>
+                    <td class="fieldValue">
+                        <apex:outputText value="{!finding.data['compliancequest__Recommended_Action__c']}" />
+                    </td>
+                    <td class="label"></td>
+                    <td class="fieldValue"> </td>
+                </tr>
+                <tr>
+                    <td class="labelFind">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Finding__c.fields.compliancequest__Due_Date_Response__c.label}" />
+                    </td>
+                    <td class="fieldValue">
+                        <apex:outputField value="{!finding.data['compliancequest__Due_Date_Response__c']}"/>
+                    </td>
+                    <td class="label"></td>
+                    <td class="fieldValue"> </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Finding__c.fields.compliancequest__Due_Date_Containment__c.label}" />
+                    </td>
+                    <td class="fieldValue">
+                        <apex:outputField value="{!finding.data['compliancequest__Due_Date_Containment__c']}"/>
+                    </td>
+                    <td class="label"></td>
+                    <td class="fieldValue"></td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <apex:outputLabel value="{!$ObjectType.compliancequest__SQX_Finding__c.fields.compliancequest__Due_Date_Investigation__c.label}" />
+                    </td>
+                    <td class="fieldValue">  
+                        <apex:outputField value="{!finding.data['compliancequest__Due_Date_Investigation__c']}"/>
+                    </td>
+                    <td class="label"></td>
+                    <td class="fieldValue"> </td>
+                </tr>
+           <apex:outputPanel layout="none">
+                                <tr class="dataRow {!HTMLEncode(findingColor)}">
+                                    <td></td>
+                                    <td colspan="3">
+                                        <apex:outputPanel rendered="{!CONTAINS(mainRecordNode.childObjectsKeys, 'compliancequest__SQX_Objective_Evidences__r')}" layout="none">
+                                            <h5>{!$ObjectType.compliancequest__SQX_Objective_Evidence__c.LabelPlural}</h5>
+                                            <apex:repeat value="{!mainRecordNode.childObjects['compliancequest__SQX_Objective_Evidences__r']}" var="objectiveEvidence"> 
+                                                <apex:outputPanel rendered="{!AND(finding.data['compliancequest__SQX_Audit_Checklist__c'] != null,
+                                                 finding.data['compliancequest__SQX_Audit_Checklist__c'] == objectiveEvidence.data['compliancequest__SQX_Audit_Checklist__c'])}" layout="none">
+                                                    <p><strong><apex:outputText value="{!objectiveEvidence.data['Name']}" /></strong></p>
+                                                    <p><apex:outputText value="{!objectiveEvidence.data['compliancequest__Description__c']}" /></p>
+                                                </apex:outputPanel>  
+                                            </apex:repeat>
+                                        </apex:outputPanel>
+                                    </td>
+                                </tr>
+            </apex:outputPanel>
+                <apex:variable var="findingColor" value="{!IF(findingColor == 'normRow', 'altRow', 'normRow')}"/>
+                </apex:repeat>
+            </table>
+        </apex:outputPanel>
+
+
+        <!-- Displaying notes related to the main record -->
+        <h4>Notes</h4>
+
+        <!-- Displaying records of child data, note that CONTAINS evaluation prevents VF error if no child of particular type is present -->
+        <apex:outputPanel rendered="{!CONTAINS(mainRecordNode.childObjectsKeys, 'Notes')}">                
+            <!-- Accessing notes child objects from the main record -->
+            <apex:repeat value="{!mainRecordNode.childObjects['Notes']}" var="note">
+                <apex:outputPanel rendered="{!AND(note.data['Title'] != 'Executive Summary', NOT(note.data['IsPrivate']))}" layout="none">
+                    <div class="noteElement">
+                        <p class="noteHeader"><apex:outputText value="{!note.data['Title']}"/></p>
+                        <p class="noteBody"><apex:outputText value="{!note.data['Body']}" /></p>
+                    </div>
+                </apex:outputPanel>
+            </apex:repeat>
+        </apex:outputPanel>
+        
+      
+        
+    </body>
+</apex:page>

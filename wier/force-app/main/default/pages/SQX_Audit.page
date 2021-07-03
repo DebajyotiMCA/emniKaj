@@ -1,0 +1,318 @@
+<apex:page standardController="compliancequest__SQX_Audit__c" extensions="AuditExtensionclass" showHeader="{!IF($CurrentPage.parameters.printMode=='true', false, false)}" 
+           sidebar="{!IF($CurrentPage.parameters.printMode=='true', false, true)}">    
+    <html>
+        <head> 
+            <style>
+                table{
+                max-width: 20cm;
+                }
+                
+                .headerInfo {
+                
+                margin-left:5%;         
+                margin-bottom:1%; 
+                }
+                .hdrInfoLbl {
+                font-family:"Times New Roman";
+                font-weight: normal;
+                }
+                .hdrInfoData {
+                font-family:"Times New Roman";
+                font-weight: normal;
+                }
+                
+                @media print
+                {
+                table { page-break-after:auto }
+                tr    { page-break-inside:avoid; page-break-after:auto }
+                td    { page-break-inside:avoid; page-break-after:auto }
+                thead { display:table-header-group }
+                tfoot { display:table-footer-group }
+                }
+                .A4 {
+                background: white;
+                width: 21cm;
+                height: 29.7cm;
+                display: block;
+                margin: 0 auto;
+                padding: 10px 25px;
+                margin-bottom: 0.5cm;
+                box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+                overflow-y: auto;
+                box-sizing: border-box;
+                font-size: 11pt;
+                
+                
+                }
+                
+                @media print {
+                .page-break {
+                display: block;
+                page-break-before: always;
+                }
+                size: A4 portrait;
+                }
+                
+                @media print {
+                body {
+                margin: 0;
+                padding: 0;
+                }
+                .A4 {
+                box-shadow: none;
+                margin: 0;
+                width: auto;
+                height: auto;
+                
+                
+                }
+                .noprint {
+                display: none;
+                }
+                .enable-print {
+                display: block;
+                }
+                }
+                .alert {
+                padding: 20px;
+                background-color: #4caf50;
+                color: white;
+                font-size: 23px;
+                width: 21cm;
+                margin: 0 auto;
+                padding: 10px 25px;       
+                box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+                overflow-y: auto;
+                box-sizing: border-box;
+                }
+                .page-header{
+                
+                }
+                
+            </style>
+        </head>
+
+        <body>
+              <apex:form >
+            <apex:commandButton style="float:centre" value="Print" onclick="window.print();"/>
+            </apex:form>
+            <apex:variable var="Index" value="{!1}"/>.
+            <div class="A4" rendered="true">
+                <hr style="border-top: 2px solid;"/>
+                <div class="page-header" style="text-align: center">  
+                    <table style="height: 50px; width: 100%;  border-collapse: collapse;" border="0">
+                        <tr>
+                            <td align="left" width ="50%">
+                                <h1>INTERNAL AUDIT REPORT</h1>
+                                <br/><br/>
+                            </td>
+                            <td align="right" style="width: 080mm; height: 020mm; max-width: 080mm; max-height: 020mm; overflow: hidden;" rowspan = "2">
+                                <apex:image url="{!$Resource.logo}" width="75%" height="75%"/>
+                            </td>
+                            
+                        </tr>
+                    </table>
+                    <div style="background-color: #d0dcdd;font-size:15pt;"><h1>
+                        <center>Audit Information</center>
+                        </h1></div><br/>
+
+                    <table style="height: 50px; width: 100%;  border-collapse: collapse;" border="2">
+                        <tr>
+                            <td align="left" width ="20%">
+                                <h1> Date:</h1>
+                                <br/><br/>
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                                <apex:outputText value="{0,date,yyyy.MM.dd}">
+                                    <apex:param value="{!compliancequest__SQX_Audit__c.createddate}"/>
+                                </apex:outputText>
+                            </td>
+                        </tr>	
+                        <tr>
+                            <td align="left" width ="20%">
+                                <h1>Prepared by:</h1>
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                                                           <apex:outputText value="{!compliancequest__SQX_Audit__c.Owner.name}"/>
+
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td align="left" width ="20%">
+                                <h1>Facility Audited:</h1>
+                                <br/><br/>
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                              <apex:outputText value="{!compliancequest__SQX_Audit__c.Departments__c}"/>
+
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td align="left" width ="20%">
+                                <h1>Street Address:</h1>
+                                <br/><br/>
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                                <apex:outputText value="{!compliancequest__SQX_Audit__c.compliancequest__Location__c}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" width ="20%">
+                                <h1>City, State, Zip:</h1>
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                                <apex:outputText value="{!compliancequest__SQX_Audit__c.compliancequest__Org_Site__c}"/>
+
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td align="left" width ="20%">
+                                <h1>Contact – Name/Phone/ E-mail:</h1>
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                                <apex:outputText value="{!compliancequest__SQX_Audit__c.compliancequest__SQX_Auditee_Contact__r.name}"/>, <apex:outputText value="{!compliancequest__SQX_Audit__c.compliancequest__SQX_Auditee_Contact__r.phone}"/>, <apex:outputText value="{!compliancequest__SQX_Audit__c.compliancequest__SQX_Auditee_Contact__r.email}"/>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td align="left" width ="20%">
+                                <h1>Audit Dates:</h1>
+                                <br/><br/>
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                                 <apex:outputText value="{0,date,yyyy.MM.dd}">
+                                    <apex:param value="{!compliancequest__SQX_Audit__c.compliancequest__Start_Date__c}"/>
+                                </apex:outputText>
+                            </td>                            
+                        </tr>
+                        <tr>
+                            <td align="left" width ="20%">
+                                <h1>Auditor (s)<br/>Team Member (s)
+                                </h1>
+                                <br/><br/>
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                                {!team}
+                                
+                            </td>
+                            
+                        </tr>
+                            <tr>
+                            <td align="left" width ="20%">
+                                <h1>Facility Participant:</h1>
+                                <br/><br/>
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                               {!compliancequest__SQX_Audit__c.compliancequest__Primary_Contact_Name__r.name}
+                                
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td align="left" width ="20%">
+                                <h1>Audit Scope </h1>
+                                
+                            </td>
+                            
+                            <td align="left" width ="80%">
+                               {!compliancequest__SQX_Audit__c.compliancequest__SQX_Audit_Criteria_Document__r.name}
+                            </td>
+                            
+                        </tr>
+                         
+                        <tr>
+                            <td align="left" width ="20%" >
+                                <h1>Audit scope</h1>
+                            </td>
+                            <td align="left" width ="80%">
+                                {!compliancequest__SQX_Audit__c.compliancequest__Scope_Description__c}
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td align="left" width ="20%" >
+                                <h1>Audit Objectives</h1>
+                            </td>
+                            <td align="left" width ="80%">
+                                {!compliancequest__SQX_Audit__c.compliancequest__Title__c}
+                            </td>
+                            
+                        </tr>
+                    </table>
+                    <br/><br/>  
+                    <div style="background-color: #d0dcdd;font-size:15pt;"><h1>
+                        <center>Audit Summary</center>
+                        </h1></div><br/>
+                    <table style="height: 50px; width: 100%;  border-collapse: collapse;" border="2">
+                        <tr>
+                            <td align="left" width ="30%">
+                                Number of Findings:
+                            </td>
+                             <td align="left" width ="10%" >
+                                 Major (Systemic):
+                            </td>
+                            <td align="left" width ="10%" >
+                                {!Major}
+                            </td>
+                             <td align="left" width ="10%" >
+                                 Minor (Isolated):
+                            </td>
+                             <td align="left" width ="10%" >
+                                 {!Minor}
+                            </td>
+                             <td align="left" width ="10%" >
+                                 Observations
+                            </td>
+                             <td align="left" width ="10%" >
+                                 {!Observations}
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+        <br/>
+         <div style="background-color: #d0dcdd;font-size:15pt;"><h1>
+                        <center>Finding Summary</center>
+                        </h1></div><br/>
+         <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" border="2" >
+             <thead>
+            <tr>
+                <td><b>Finding Number</b></td>
+                <td><b>Type of Finding NC/ Observation/ OFI</b></td>
+                <td><b>API/ISO (Clause #, Title)</b></td>
+                <td><b>Summary</b></td>
+                <td><b>Auditor Initials</b></td>
+              
+            </tr>
+            </thead>
+            <apex:repeat var="change" value="{!fin_list}">
+                <tr>
+                    <td><apex:OutputText value="{!Index}"/></td>
+                    <td><apex:OutputText value="{!change.compliancequest__Finding_Type__c}"/></td> 
+                    <td><apex:OutputText value="{!change.compliancequest__Criterion_Section__c}"/><br/>
+                          <apex:OutputText value="{!change.compliancequest__Criterion_Sub_Section__c}"/><br/>
+                           <apex:OutputText value="{!change.compliancequest__Title__c}"/></td>
+                  
+ <apex:variable var="Index" value="{!Index+1}"/>                        
+                    <td><apex:OutputText value="{!change.compliancequest__Description__c}"/></td> 
+                    <td><apex:OutputText value="{!compliancequest__SQX_Audit__c.compliancequest__SQX_Lead_Auditor__r.name}"/></td> 
+                </tr>
+            </apex:repeat> 
+        </table>
+        <br/>
+                </div>
+            </div>
+        </body>
+    </html>
+</apex:page>

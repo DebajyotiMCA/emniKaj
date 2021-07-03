@@ -1,0 +1,172 @@
+{
+  "Tasks": [
+    {
+      "Type": "EPWF_PRINTER_CONVERT_TO_PDF",
+      "Revision": 1,
+      "PDF": {
+        "Font": {
+          "Embed": true,
+          "EmbedFullset": false,
+          "EmbedAsType0": false,
+          "Substitution": "PRN_FONT_SUBST_NONE"
+        },
+        "Image": {
+          "Compression": "PRN_IMAGE_COMPRESS_JPEG",
+          "Quality": 75,
+          "Downsizing": true,
+          "DownsizeResolution": 300
+        },
+        "MetaData": {
+          "Enable": false,
+          "Title": "",
+          "Author": "",
+          "Subject": "",
+          "Keywords": ""
+        },
+        "Standard": {
+          "PdfAConformance": "PRN_PDFA_CONFORM_NONE",
+          "PdfXConformance": "PRN_PDFX_CONFORM_NONE",
+          "CmykProfile": ""
+        },
+        "Viewer": {
+          "Panel": "PRN_VIEWER_PANEL_NONE",
+          "PageLayout": "PRN_VIEWER_PAGE_LAYOUT_DEFAULT",
+          "Magnification": "PRN_VIEWER_MAGNIFICATION_DEFAULT",
+          "HideMenuBar": false,
+          "HideToolBar": false,
+          "HideWinControls": false,
+          "Scaling": "PRN_VIEWER_PRINT_SCALING_DEFAULT"
+        }
+      },
+      "PageRange": {
+        "Specify": false,
+        "From": 1,
+        "To": -1
+      },
+      "Word": {
+        "ConvertHyperlinks": true,
+        "ConvertBookmarks": "PRN_BOOKMARKS_NONE",
+        "DocumentPassword": "",
+        "Paper": {
+          "Orientation": "PRN_PAPER_ORIENT_DEFAULT",
+          "Size": "PRN_MSO_PAPER_DEFAULT",
+          "Width": 8.5,
+          "Height": 11
+        },
+        "Margin": {
+          "Customize": false,
+          "Left": 1,
+          "Top": 1,
+          "Right": 1,
+          "Bottom": 1
+        },
+        "ConversionMethod": "EPWF_CONVERSION_METHOD_OFFICE_OPTIMIZED"
+      },
+      "Excel": {
+        "Scaling": "EPWF_EXCEL_SCALING_NONE"
+              },
+      "PowerPoint": {
+        "FrameSlides": false,
+        "HandoutOrder": "PRN_PP_HANDOUT_HORIZONTAL_FIRST",
+        "OutputType": "PRN_PP_OUTTYPE_SLIDES",
+        "PrintColorType": "PRN_PP_PRINT_COLOR",
+        "ConversionMethod": "EPWF_CONVERSION_METHOD_DEFAULT"
+      },
+      "Visio": {
+        "ConvertHyperlinks": false,
+        "Paper": {
+          "Orientation": "PRN_PAPER_ORIENT_DEFAULT",
+          "Size": "PRN_VIS_PAPER_DEFAULT"
+        },
+        "ConversionMethod": "EPWF_CONVERSION_METHOD_DEFAULT"
+      },
+      "HTML": {
+        "ApplyBGColorToPaper": true,
+        "AutoAdjustPaperSize": true,
+        "HorizontalStitching": true,
+        "Paper": {
+          "Orientation": "PRN_PAPER_ORIENT_PORTRAIT",
+          "Size": "PRN_MSO_PAPER_LETTER",
+          "Height": 8.5,
+          "Width": 11
+        },
+        "Margin": {
+          "Left": 0.5,
+          "Top": 0.5,
+          "Right": 0.5,
+          "Bottom": 0.5
+        },
+        "Zoom": 100
+      }
+    },
+    {
+      "Type": "EPWF_PROCESSOR_COMBINE_FILES",
+      "Revision": 1,
+      "OutputFileName": "CQ.pdf",
+      "CombineOrder": "EPWF_COMBINE_ORDER_DEFAULT"
+    },
+    {
+      "Type": "EPWF_PROCESSOR_ADD_WATERMARK",
+      "Revision": 1,
+      "Text": "",
+      "HPosition": "PRC_WMARK_HPOS_CENTER",
+      "VPosition": "PRC_WMARK_VPOS_CENTER",
+      "ZOrder": "PRC_WMARK_ZORDER_TOP",
+      "Alignment": "PRC_WMARK_ALIGN_CENTER",
+      "Angle": 45,
+      "FontName": "Arial",
+      "FontSize": 72,
+      "Color": {
+        "Red": 255,
+        "Green": 0,
+        "Blue": 0
+      },
+      "Opacity": 100,
+      "OutlineOnly": true,
+      "FirstPageOnly": false,
+      "ShowWhenDisplaying": true,
+      "ShowWhenPrinting": true
+    },
+    {
+      "Type": "EPWF_PROCESSOR_STAMP_PDF_ON_PDF",
+      "Revision": 1,
+      "StampFileName": "stamp.pdf",
+      "HPosition": "PRC_STAMP_HPOS_LEFT",
+      "VPosition": "PRC_STAMP_VPOS_TOP",
+      "ZOrder": "PRC_STAMP_ZORDER_TOP",
+      "Zoom": 100,
+      "ScaleToFit": true,
+      "PageRange": {
+        "Specify": false,
+        "From": 1,
+        "To": -1,
+        "ReverseOrder": false
+      }
+    },
+    {
+      "Type": "EPWF_PROCESSOR_FIND_AND_REPLACE_WORDS",
+      "Revision": 1,
+      "FontName": "Arial",
+      "Items": [
+        {
+          "SearchWord": "",
+          "ReplacementText": ""
+        }
+      ]
+    },
+    {
+      "Type": "EPWF_PROCESSOR_SET_DOCUMENT_JAVASCRIPT_FOR_PRINT_ACTION",
+      "Revision": 1,
+      "FieldName": "print_field",
+      "Position": {
+        "Left": 13,
+        "Top": 0,
+        "Right": 570,
+        "Bottom": 15
+      },
+      "ExternalSource": "EPWF_EXTERNAL_SOURCE_NONE",
+      "ScriptFileName": "script.js",
+      "ScriptContent": "var fldObj = this.getField(\"print_field\");\n\nvar dtFormat = \"##DATETIME_FORMAT##\",\n\tprintText = \"##PRINT_TEXT##\",\n\texpirationInterval = ##EXPIRATION_INTERVAL##;\n\nvar printDate = new Date();\nvar printDateStr = util.printd(dtFormat, printDate);\n\nvar expirationDate = new Date(printDate);\nexpirationDate.setHours(printDate.getHours() + expirationInterval);\nvar expirationDateStr = util.printd(dtFormat, expirationDate);\n\nprintText = printText.replace('{0}', printDateStr)\n\t\t\t\t\t .replace('{1}', expirationDateStr)\n\nfldObj.value = printText;\nfldObj.textFont = font.Cour;\nfldObj.textSize = 8;\nfldObj.alignment = \"center\";\nfldObj.readonly = false;\nfldObj.hidden = false;"
+    }
+  ]
+}

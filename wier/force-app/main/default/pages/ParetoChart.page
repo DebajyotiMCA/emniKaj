@@ -1,0 +1,93 @@
+<apex:page showHeader="false" standardStylesheets="false"
+           applyHtmlTag="true" applyBodyTag="true" docType="html-5.0" controller="ParetoChartClass">
+    <html>
+        <head>
+            <apex:stylesheet value="{!URLFOR($Resource.pareto_chart,'gantt_chart/ej2/material.css')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.pareto_chart,'gantt_chart/ej2/ej2.min.js')}"/>
+            
+            <title>Pareto Chart</title>
+        </head>
+        <style>
+    #control-element {
+        padding: 0px !important;
+    }
+</style>
+        <body>
+            <div class="control-section">
+                
+                    <div id="element" align="center">
+                    </div>
+               
+            </div>
+         <!--p>
+             {!JsonStr}
+            </p-->
+        </body>
+        <script >
+        //ej.chart.Chart.Inject(ej.chart.BarSeries);
+        //ej2.Chart.inject(BarSeries,LineSeries);
+         var ds = {!JsonStr};
+        var colors = ['#00bdae', '#404041', '#357cd2', '#e56590', '#f8b883',
+                '#70ad47', '#dd8abd', '#7f84e8', '#7bb4eb', '#ea7a57'];
+        var chart = new ej.charts.Chart({
+        //Initializing Primary X Axis
+        primaryXAxis: {
+            title: 'Defect Category NC > Type',
+            interval: 1,
+            valueType: 'Category',
+            majorGridLines: { width: 1 }, minorGridLines: { width: 0 },
+            majorTickLines: { width: 0 }, minorTickLines: { width: 1 },
+            lineStyle: { width: 0 },
+        },
+        //Initializing Primary X Axis
+        primaryYAxis: {
+            title: 'Frequency',
+            minimum: 0,
+            maximum: 50,
+            interval: 10,
+            lineStyle: { width: 0 },
+            majorTickLines: { width: 0 }, majorGridLines: { width: 1 },
+            minorGridLines: { width: 1 }, minorTickLines: { width: 0 }
+        },
+        chartArea: {
+            border: {
+                width: 0
+            }
+        },
+        //Initializing Chart Series
+           
+        series: [
+            {
+                type: 'Pareto',
+                dataSource:ds, marker: {dataLabel : { visible: true, width: 10, height: 10,position: 'Middle',template: '<div>${point.y}</div>' }},
+                xName: 'x', yName: 'y', name: 'Defect', width: 2
+            }
+             
+        ],
+                       /*  axisLabelRender: function (args) {
+            if (args.axis.name === 'primaryYAxis') {
+                args.text = '$' + Number(args.text) / 1000 + 'B';
+            }
+        },*/
+            pointRender: (function (args) {
+    args.fill = colors[args.point.index];
+}),
+           
+           
+        width: ej.base.Browser.isDevice ? '100%' : '60%',
+            
+        //Initializing Chart Title
+        title: 'Pareto chart For NC Defects',
+            //palettes: [ "#F6B53F", "#6FAAB0", "#C4C24A"],
+        legendSettings: { visible: true },
+        //Initializing Tooltip
+        tooltip: {
+            enable: true,
+            shared: true
+        },
+
+    });
+    chart.appendTo('#element');
+        </script>
+    </html>
+</apex:page>

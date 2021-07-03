@@ -1,0 +1,44 @@
+<apex:page standardController="CostSheet__c" extensions="wr_CostSheet">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+         <apex:sectionHeader title="CostSheet Edit" subtitle="New CostSheet"/>
+          <apex:pageBlock mode="Edit">
+             <apex:pageBlockButtons >
+                  <apex:commandButton value="Save" action="{!csave}"/>
+                  <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+             </apex:pageBlockButtons>
+             <apex:pageBlockSection title="Opportunity Details" columns="2">
+                 <apex:inputField value="{!cs.COpportunity__c}" required="true"/>
+                 </apex:pageBlockSection>
+                 <apex:pageBlockSection title="Cost Sheet" columns="2">
+                 <apex:inputField value="{!cs.CurrencyIsoCode}"/>
+                 <apex:inputField value="{!cs.Upsell_amount_if_any__c}"/>
+                 <apex:inputField value="{!cs.Labour_Cost__c}" required="true"/>
+                 <apex:inputField value="{!cs.Discount_amount_if_any__c}"/>
+                 <apex:inputField value="{!cs.Material_Cost__c}" required="true"/>
+                 <apex:inputField value="{!cs.Cost_Sheet_Amount__c}" required="true"/>
+                 <apex:inputField value="{!cs.Other_Cost__c}" required="true"/> 
+                <!-- <apex:inputField value="{!cs.Total_Cost__c}" required="true"/>-->
+                 <!--<apex:inputField value="{!cs.Gross_Margin__c}" required="true"/>-->
+                 <!--<apex:inputField value="{!cs.Cost_sales_ratio__c}" required="true"/>-->
+                 <apex:inputField value="{!cs.Cost_Sheet_Preparation_Date__c}" required="true"/>
+                 <apex:outputLabel ></apex:outputLabel>
+                
+              <apex:inputField value="{!cs.Comment_if_any__c}"/>
+         </apex:pageBlockSection>
+         <apex:pageBlockSection columns="1" title="Upload Costsheet">
+              <apex:outputPanel >    
+                    <table>
+                        <tr>
+                            <td>
+                                  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Select file: &nbsp;&nbsp; &nbsp;&nbsp;
+                                <apex:inputFile value="{!tAttachment.Body}" filename="{!tAttachment.Name}" filesize="{!tAttachment.BodyLength}" contentType="{!tAttachment.ContentType}"/>
+                                &nbsp;&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                 </apex:outputPanel>
+         </apex:pageBlockSection>
+          </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,55 @@
+<apex:page standardController="compliancequest__SQX_Controlled_Document__c" extensions="compliancequest.SQX_Extension_Controlled_Document" title="{!$Label.compliancequest__cq_ui_controlled_doc_edit_new_revision}">
+    <apex:sectionHeader title="{!$Label.compliancequest__cq_ui_controlled_doc_edit}" subtitle="{!$Label.compliancequest__cq_ui_new_doc_revision}"  />
+    <apex:variable var="docType" value="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Document_Type__c.Name}"/>
+    <apex:variable var="changeOrder" value="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__SQX_Change_Order__c.Name}"/>
+    <apex:pageMessages escape="false"/>
+    <apex:pageMessage severity="WARNING" strength="2" escape="false" rendered="{! HasLargePrimaryContent }"
+                      summary="<h4>{!$Label.compliancequest__cq_ui_warning_heading}</h4> {!$Label.compliancequest__cq_ui_controlled_document_clone_or_revise_large_content_warning}" />
+    <apex:form >
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Document_Number__c}"/>
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Document_Category__c}"/>
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Description__c}"/>
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Review_Interval__c}"/>
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Auto_Release__c}"/>
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Content_Reference__c}"/>
+        <apex:inputHidden value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Primary_Content_Check_In_Method__c}"/>
+
+        <apex:pageBlock title="{!$Label.compliancequest__cq_ui_new_doc_revision}"> 
+            <apex:pageBlockSection columns="1" collapsible="false" >               
+                
+                <!-- This field set contains read only field for document -->
+                <apex:repeat value="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.FieldSets.compliancequest__Revise_Document_Read_Only_Fields}" var="f">
+                        <apex:outputField value="{!compliancequest__SQX_Controlled_Document__c[f]}" rendered="{!IF(f==changeOrder, NOT(ISBLANK(compliancequest__SQX_Controlled_Document__c.compliancequest__SQX_Change_Order__c)), True)}"/>
+                </apex:repeat>
+                <!-- This field set contains editable field for document. It is specially used to support client side configuration -->
+                <apex:repeat value="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.FieldSets.compliancequest__Revise_Document_Edit_Fields}" var="f">
+                        <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!f}" value="{!revisionDoc[f]}" rendered="{!IF(f==docType, isStandardDoc, True)}" required="{!OR(f.Required, f.DbRequired)}"/>
+                </apex:repeat>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.compliancequest__cq_ui_new_revision}" for="Revision__c"></apex:outputLabel>
+                    <apex:outputText id="Revision__c" value="{!newRev}" />
+                </apex:pageBlockSectionItem>
+                <apex:inputField value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Document_Type__c}" rendered="{!isStandardDoc}"
+                    html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Document_Type__c.Name}" />
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.compliancequest__cq_ui_changes}" for="Changes__c" ></apex:outputLabel>
+                    <apex:inputTextarea id="Changes__c" cols="50" rows="4" value="{!changes}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.compliancequest__cq_ui_change_scope}" for="Change_Scope__c" ></apex:outputLabel>
+                 <apex:inputField html-data-sqx-field="{!$ObjectType.compliancequest__SQX_Controlled_Document__c.Name}.{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Change_Scope__c.Name}" id="Change_Scope__c" value="{!compliancequest__SQX_Controlled_Document__c.compliancequest__Change_Scope__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$Label.compliancequest__cq_ui_file}" for="file"></apex:outputLabel>
+                    <apex:inputFile id="file" value="{!file}" fileName="{!fileName}"></apex:inputFile>                
+                </apex:pageBlockSectionItem>
+               
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="{!$Label.compliancequest__cq_ui_button_save}" action="{!Revise}"/>
+                <apex:commandButton value="{!$Label.compliancequest__cq_ui_button_cancel}" action="{!Cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

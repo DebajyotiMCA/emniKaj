@@ -1,0 +1,91 @@
+<apex:page id="thepage" standardController="Contract_CheckList__c" extensions="wr_ContractHandoverCheckList" showHeader="false">
+    <script>
+        function check(input,assignstatus,assigncomm,button,date,assigned) 
+        {
+          
+           if(input.checked)
+            {
+               document.getElementById(assignstatus).style.visibility = 'visible';
+               document.getElementById(assigncomm).style.visibility = 'visible';
+               document.getElementById(button).style.visibility = 'visible';
+               document.getElementById(date).style.visibility = 'visible';
+               document.getElementById(assigned).style.visibility = 'visible'; 
+            }
+            else 
+            {
+              document.getElementById(assignstatus).style.visibility = 'hidden'; 
+              document.getElementById(assigncomm).style.visibility = 'hidden'; 
+              document.getElementById(button).style.visibility = 'hidden';
+              document.getElementById(date).style.visibility = 'hidden';
+              document.getElementById(assigned).style.visibility = 'hidden';   
+            }
+            
+        }
+
+    </script>
+
+   <apex:form >
+       <apex:pageBlock id="membAdd">
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!Csave}" />
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            <apex:outputPanel >
+                <table align="center">
+                    <tr>
+                        <td><apex:outputPanel > <b> PO Reference </b>&nbsp; </apex:outputPanel>
+                        </td>
+                        <td>
+                            <apex:inputField value="{!Contract_CheckList__c.PO_Attachments__c}" required="true"/>
+                        </td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+            <apex:pageBlockTable value="{!checklistresult}" var="chk">
+                <apex:column headerValue="S No">
+                    <apex:outputField value="{!chk.S_No__c}"/>
+                </apex:column>
+                <apex:column headerValue="Name">
+                     <apex:outputField value="{!chk.Name}"/>
+                </apex:column>
+                <apex:column headerValue="Whether Applicable">
+                    <apex:inputCheckbox id="applicable" value="{!chk.Wheather_Applicable__c}" onclick="check(this,'{!$Component.assigneestatus}','{!$Component.assigneecomment}','{!$Component.taskbutton}','{!$Component.Duedate}','{!$Component.assignedstatus}');"  />
+                </apex:column>
+                <apex:column headerValue="Status">
+                    <apex:inputField id="assigneestatus" value="{!chk.Assignee_status__c}" />
+                </apex:column>
+                 <apex:column headerValue="Comments">
+                    <apex:inputField id="assigneecomment" value="{!chk.Assignee_Comments__c}" />
+                </apex:column>
+                <apex:column headerValue="Assign task">
+                    <apex:commandButton id="taskbutton" value="Create Task" onclick="javascript:window.open('/00T/e?what_id={!chk.id}&tsk5={!chk.Name}','mywin',
+'left=20,top=20,width=700,height=500,toolbar=1,resizable=0')"/>
+                </apex:column>
+              
+              </apex:pageBlockTable> <apex:pageBlockTable value="{!checklistAddList }" var="chk">
+                <apex:column headerValue="S No">
+                    <apex:outputField value="{!chk.S_No__c}"/>
+                </apex:column>
+                <apex:column headerValue="Name">
+                     <apex:inputText value="{!chk.Name}" style="width:300px"/>
+                </apex:column>
+                <apex:column headerValue="Whether Applicable">
+                    <apex:inputCheckbox id="applicable" value="{!chk.Wheather_Applicable__c}" onclick="check(this,'{!$Component.assigneestatus}','{!$Component.assigneecomment}','{!$Component.taskbutton}','{!$Component.Duedate}','{!$Component.assignedstatus}');"  />
+                </apex:column>
+                <apex:column headerValue="Status">
+                    <apex:inputField id="assigneestatus" value="{!chk.Assignee_status__c}" />
+                </apex:column>
+                 <apex:column headerValue="Comments">
+                    <apex:inputField id="assigneecomment" value="{!chk.Assignee_Comments__c}" />
+                </apex:column>
+                
+               
+              </apex:pageBlockTable>
+              <br/><apex:commandLink value="Add Row" action="{!addRow}" reRender="membAdd"/>
+        
+              
+             
+        </apex:pageBlock>
+     </apex:form>
+</apex:page>

@@ -1,0 +1,67 @@
+<apex:page Controller="QuoteEmail" >
+<style type="text/css">
+    .emailaddress{ color: Red; font-weight: strong;}
+    .sub{ color: Red; font-weight: strong;}
+</style>
+ <apex:form >
+ 
+     <apex:pageBlock >
+             <apex:outputPanel >
+                  <b> <apex:messages styleClass="emailaddress" /> </b>
+                 <table align="center">
+                      <tr>
+                           <td colsopan="2">&nbsp;
+                           </td>
+                       </tr> 
+                      <tr>
+                         <td>
+                             <b> Address to:  </b>
+                         </td>
+                         <td>
+                              <apex:inputText value="{!cemail }" id="Addressto" required="true"/> <br/>
+                              <b> <apex:message for="Addressto" styleClass="emailaddress" /></b>
+                         </td>
+                       </tr>
+                       <tr>
+                           <td colsopan="2">&nbsp;
+                           </td>
+                       </tr>
+                       <tr>
+                         <td>
+                            <b>   Subject: </b>
+                         </td>
+                         
+                         <td>
+                             <apex:inputText value="{!subject}" id="subject" required="true" style="width:450px;"/><br/>
+                              <b><apex:message for="subject" styleClass="sub" /> </b>
+                         </td>
+                      </tr>
+                      <tr>
+                           <td colsopan="2">&nbsp;
+                           </td>
+                       </tr>
+                       <tr>
+                         <td>
+                             <b> Body :  </b>
+                         </td>
+                         
+                         <td>
+                             <apex:inputTextarea value="{!body}" id="body"  style="width:450px;Height:200px"/>
+                         </td>
+                      </tr>
+                      <tr>
+                           <td colsopan="2">&nbsp;
+                           </td>
+                       </tr>
+                     <tr>
+                         <td colspan="2" align="center">
+                             <apex:commandButton action="{!sendEmail}" value="Send an Email"/>
+                         </td>
+                     </tr>
+                 </table>
+                 
+             </apex:outputPanel>
+             
+     </apex:pageBlock>
+ </apex:form>
+</apex:page>

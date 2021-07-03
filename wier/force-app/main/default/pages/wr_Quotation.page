@@ -1,0 +1,32 @@
+<apex:page standardController="Quotation__c" extensions="wr_Quotation">
+ <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+         <apex:sectionHeader title="Quotation Edit" subtitle="New Quotation"/>
+          <apex:pageBlock mode="Edit">
+             <apex:pageBlockButtons >
+                  <apex:commandButton value="Save" action="{!csave}"/>
+                  <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+             </apex:pageBlockButtons>
+             <apex:pageBlockSection title="Quotation" columns="1">
+                 <apex:inputField value="{!q.COpportunity__c}" required="true"/>
+                  <apex:inputField value="{!q.CostSheet__c}" required="true"/>
+                 <apex:inputField value="{!q.Movex_Co_No__c}" required="true"/>
+                 <apex:inputField value="{!q.Movex_quotation_docs_serial_no__c}" required="true"/> 
+                 <apex:inputField value="{!q.Submit_for_review__c}" required="true"/>
+                 <apex:outputLabel ></apex:outputLabel>
+                 <apex:outputPanel >    
+                    <table>
+                        <tr>
+                            <td>
+                                  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Select file: &nbsp;&nbsp; &nbsp;&nbsp;
+                                <apex:inputFile value="{!tAttachment.Body}" filename="{!tAttachment.Name}" filesize="{!tAttachment.BodyLength}" contentType="{!tAttachment.ContentType}" />
+                                &nbsp;&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                 </apex:outputPanel>
+              <apex:inputField value="{!q.Comment_if_any__c}"/>
+         </apex:pageBlockSection>
+          </apex:pageBlock>
+    </apex:form>
+</apex:page>

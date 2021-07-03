@@ -1,0 +1,373 @@
+<!-- ========================================================================================
+* Class Name               : ComplaintsExtensionClass
+* Description              : Printing the complaint record and its related list
+* Created Date             : [22-03-2020]
+* Created By               : Srinivas C [Salesforce Developer]
+* Organization             : coServe Software Solutions
+*
+* Date Modified                Modified By                  Description of the update
+*    ----                         ----                              ----  ----
+============================================================================================ -->
+
+
+<apex:page standardController="compliancequest__SQX_Complaint__c" extensions="ComplaintsExtensionClass" showHeader="{!IF($CurrentPage.parameters.printMode=='true', false, false)}" 
+           sidebar="{!IF($CurrentPage.parameters.printMode=='true', false, true)}"   
+           standardStylesheets="true" Title="{!compliancequest__SQX_Complaint__c.Name}" doctype="html-5.0">
+    <apex:messages />
+    
+    
+    <head>
+        
+        <style type="text/css" media="print">
+            
+            
+            .header {
+            
+            top: 0px;
+            
+            position: fixed;
+            
+            }
+            .footer {
+            
+            bottom: 0px;
+            
+            position: fixed;
+            
+            
+            
+        </style>
+        
+    </head>
+    
+    <!--  
+<div class="header" style="text-align: center"> -->
+    <table style="height: 100px; width: 100%;  border-collapse: collapse;" border="0">
+        <tr>
+            <td align="center" width ="50">
+                <h1><apex:outputLabel value="FIELD NON-COMFORMITY REPORT FORM"  style="font-size: 20px;"/></h1>
+                <br/>
+                <h2><apex:outputLabel value="(INCORPORATING FIELD SERVICE MALFUNCTION AND/OR CUSTOMER DISSATISFACTION/COMPLAINT)"  style="font-size: 15px;"/></h2>
+                <br/><br/> 
+            </td>
+        </tr>
+    </table>
+    <!-- </div>
+-->
+    <div class="content">
+        <apex:form >
+            <apex:commandButton value="Print" onclick="window.print();"/> 
+            
+            
+            <hr style="border-top: 2px solid;"/>
+            
+            <table style="height: 50px; width: 100%;table-layout=auto;" align="center" >
+                <tr>
+                    <th style="width:25%">Customer Account:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__SQX_Account__r.Name}</td>
+                    <th style="width:25%">Incident Date:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__Occurrence_Date__c}</td>
+                </tr>
+                <tr>
+                    <th style="width:25%">Customer Contact:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__SQX_External_Contact__r.Name}</td>
+                    <th style="width:25%">Finish Time:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__Close_Date__c}</td>
+                </tr>
+                <tr>
+                    <th style="width:25%">Country:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.Country_Of_Originate__c}</td>
+                    <th style="width:25%"></th><td style="width:25%"></td>
+                </tr>
+                <!--<tr>
+<th style="width:25%">Project Name</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__Model_Name__c}</td>
+<th style="width:25%">Job With InOpp:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__Complaint_Quantity__c}</td>
+</tr>
+                <tr>
+                    <th style="width:25%"></th><td style="width:25%"></td>
+                    <th style="width:25%">Finish Time:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__Close_Date__c}</td>
+                </tr>
+                
+<tr>
+<th style="width:25%">Water Depth</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.Additional_Manhour_Cost__c}</td>
+<th style="width:25%">Customer Po:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__Send_Investigation_Result_to_Customer__c}</td>
+</tr> -->
+            </table>
+            <hr style="border-top: 2px solid;"/>
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >  
+                <tr>
+                    <!-- <th style="width:50%"><b>Equipment Description:</b></th><td>{!compliancequest__SQX_Complaint__c.Product_Description__c}</td> -->
+                    <th style="width:25%">Equipment Description:</th><td>{!compliancequest__SQX_Complaint__c.Product_Description__c}</td> </tr>
+            </table>
+                <!--           <th style="width:25%"><b>Equipment Identification:</b></th><td></td>
+                </tr>
+                
+                <tr>
+                    <th style="width:50%"><b></b></th><td></td>
+                    <th style="width:50%"><b>Assy Part Number:</b></th><td>{!compliancequest__SQX_Complaint__c.Part_Number__c}</td>
+                </tr>
+                
+                <tr>
+                    <th style="width:50%"><b></b></th><td></td>
+                    <th style="width:50%"><b>Assy Serial Number:</b></th><td>{!compliancequest__SQX_Complaint__c.Serial_Number__c}</td>
+                </tr>  -->
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >    
+            <tr>
+                <th style="width:25%">Equipment Identification</th><td></td>
+                </tr>
+                
+                <tr>
+                    <th style="width:25%">Assy Part Number:</th><td>{!compliancequest__SQX_Complaint__c.Part_Number__c}</td>   
+                </tr>
+                  <tr>
+                      <th style="width:25%">Assy Serial Number:</th><td>{!compliancequest__SQX_Complaint__c.Serial_Number__c}</td>
+                      <th style="width:25%"></th><td></td>
+                </tr>  
+                    
+                    
+                
+            </table>
+            <hr style="border-top: 2px solid;"/>
+            <body>
+                <h2>ADDITIONAL REVIEW NEED, OUT WITH FNCR TEAM:</h2>
+                
+                <table style="width:50%">
+                    <tr>
+                        <th>NO</th>
+                        <th>Title</th>
+                        <th>Name</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>--------</td>
+                        <td>--------</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>--------</td>
+                        <td>--------</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>--------</td>
+                        <td>--------</td>
+                    </tr>
+                </table>
+            </body>
+            
+            
+            
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >
+           <!--     <tr>
+                    <th style="width:10%">Fault Code:</th><td></td>
+                </tr>  
+-->
+                <tr>
+                    <th style="width:25%">RESPONSIBLE DEPARTMENT FOR INVESTIGATION:</th><td>{!compliancequest__SQX_Complaint__c.WEIR_Complaint_Department__c}</td>
+                </tr>
+            </table>
+            <hr style="border-top: 2px solid;"/>
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >
+                <tr>
+                    <th style="width:25%">Details Of Field Non-Conformance/Customer Complaint:</th>
+                    <td>{!compliancequest__SQX_Complaint__c.compliancequest__Description__c}</td>
+                </tr>
+                
+            </table>
+            <hr style="border-top: 2px solid;"/>
+            <table style="height: 50px; width: 100%;  border-collapse: collapse; table-layout=auto;" align="center" >
+                
+                <th style="width:25%">Immediate Correction Action/On-Site Action Taken:</th>
+                <td>{!Contment.compliancequest__Containment_Summary__c}</td>
+                
+            </table>
+            <hr style="border-top: 1px solid;"/>
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >
+                <tr>
+                    <th style="width:10%">FNCR Investigation/Root Cause Analysis:</th>
+                </tr>
+                <tr>
+                    <th style="width:25%">Analysis Method Applied:</th><td>{!Invtool.compliancequest__Investigation_Tool_Method_Used__r.name}</td>
+                </tr>   <tr>
+                <th style="width:25%">Problem:</th><td>{!compliancequest__SQX_Complaint__c.compliancequest__Description__c}</td>
+                </tr>
+                <tr>
+                    <th style="width:25%">Description:</th><td>{!Invtool.compliancequest__Description__c}</td>
+                </tr>  
+                <!--    <th style="width:10%">FNCR Investigation/Root Cause Analysis:</th>    
+<apex:repeat value="{!Invtool}" var="It">
+<tr>
+
+<th style="width:10%">Analysis Method Applied:</th><td>{!It.compliancequest__Investigation_Tool_Method_Used__r.name} </td>
+</tr>
+<tr>
+<th style="width:10%">Problem:</th><td>{!compliancequest__SQX_Complaint__c.compliancequest__Description__c}</td>
+</tr>
+<tr>
+<th style="width:10%">Description:</th><td>{!It.compliancequest__Description__c} </td>
+</tr>
+</apex:repeat>
+
+--> 
+            </table>
+            
+            <hr style="border-top: 1px solid;"/>
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >   
+                
+                <th style="width:25%">Root Cause Analysis</th>
+                <apex:repeat value="{!lstrootcause}" var="rc">
+                    <tr>
+                        <!--  <td>{!rc.Name} </td>&nbsp; -->
+                        <th style="width:25%">Root Cause Category:</th><td>{!rc.compliancequest__Category__c} </td>
+                    </tr>
+                    <tr>
+                        <th style="width:25%">Root Cause:</th><td>{!rc.compliancequest__Description__c} </td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            
+            <hr style="border-top: 1px solid;"/>
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >
+                <th style="width:25%">Proposed Corrective Actions / Preventive Actions</th>
+                <apex:repeat value="{!lstactionplans}" var="ap">
+                    <tr>
+                        <!--  <td>{!ap.Name} </td>&nbsp;<td> {!ap.compliancequest__Plan_Type__c} </td>&nbsp; <td>{!ap.compliancequest__Description__c} </td> -->
+                        <th style="width:10%">Plan Type:</th><td>{!ap.compliancequest__Plan_Type__c} </td> 
+                    </tr> 
+                    <tr>
+                        <th style="width:25%">Description:</th><td>{!ap.compliancequest__Description__c} </td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            <hr style="border-top: 2px solid;"/>
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >
+                <th style="width:10%">Attachments:</th>
+                <td>
+                    <apex:repeat value="{!mapForAttachmentsAndNames}" var="url">
+                        <apex:outputPanel rendered="{!IF(url=='Investigation', true, false)}">
+                            <h1 style='font-size: 12px'><b>Investigation::</b></h1><br/><br/>
+                            <apex:repeat value="{!mapForAttachmentsAndNames[url]}" var="data1">
+                               <apex:image url="{!data1}" width="180px" height="180px" /><br/><br/>
+                                <h2>{!mapForAttachmentsAndNames[url][data1]}</h2><br/><br/>
+                            </apex:repeat>
+                        </apex:outputPanel>
+                    </apex:repeat>
+                </td>
+                <td>
+                    <apex:repeat value="{!mapForAttachmentsAndNames}" var="url">
+                        <apex:outputPanel rendered="{!IF(url=='Investigation Tool', true, false)}">
+                            <h1 style='font-size: 12px'><b>Investigation Tool::</b></h1><br/><br/>
+                            <apex:repeat value="{!mapForAttachmentsAndNames[url]}" var="data1">
+                               <apex:image url="{!data1}" width="180px" height="180px" /><br/><br/>
+                                <h2>{!mapForAttachmentsAndNames[url][data1]}</h2><br/><br/>
+                            </apex:repeat>
+                        </apex:outputPanel>
+                    </apex:repeat>
+                </td>
+                <tr><th style="width:10%"></th>
+                <td>
+                    <apex:repeat value="{!mapForAttachmentsAndNames}" var="url">
+                        <apex:outputPanel rendered="{!IF(url=='Root Cause', true, false)}">
+                            <h1 style='font-size: 12px'><b>Root Cause::</b></h1><br/><br/>
+                            <apex:repeat value="{!mapForAttachmentsAndNames[url]}" var="data1">
+                               <apex:image url="{!data1}" width="180px" height="180px" /><br/><br/>
+                                <h2>{!mapForAttachmentsAndNames[url][data1]}</h2><br/><br/>
+                            </apex:repeat>
+                        </apex:outputPanel>
+                    </apex:repeat>
+                </td>
+                
+                <td>
+                    <apex:repeat value="{!mapForAttachmentsAndNames}" var="url">
+                        <apex:outputPanel rendered="{!IF(url=='Action Plan', true, false)}">
+                            <h1 style='font-size: 12px'><b>Action Plan::</b></h1><br/><br/>
+                            <apex:repeat value="{!mapForAttachmentsAndNames[url]}" var="data1">
+                               <apex:image url="{!data1}" width="180px" height="180px" /><br/><br/>
+                                <h2>{!mapForAttachmentsAndNames[url][data1]}</h2><br/><br/>
+                            </apex:repeat>
+                        </apex:outputPanel>
+                    </apex:repeat>
+                </td>
+          </tr>
+                </table>
+            
+            <hr style="border-top: 2px solid;"/>
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >
+                <th style="width:25%">CUSTOMER COMMENTS / REMARKS:</th>
+                <td></td>
+            </table>
+            
+            <hr style="border-top: 2px solid;"/>
+            <table style="height: 50px; width: 100%; table-layout=auto;" align="center" >
+                <tr>
+                    <th style="width:20%">Approved By:</th><td>Customer Internal/External</td>
+                    <th style="width:20%">Approved By:</th><td>Weir Quality Manager</td>
+                    
+                </tr>
+                <tr>
+                    <td>Date:</td>
+                    <td>--------</td>
+                    <td>Date:</td>
+                    <td>--------</td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>--------</td>
+                    <td>Name:</td>
+                    <td>--------</td>
+                </tr>
+                <tr>
+                    <td>Signature:</td>
+                    <td>--------</td>
+                    <td>Signature:</td>
+                    <td>--------</td>
+                </tr>
+                
+            </table>
+            
+            
+            <!--
+<tr>
+<th style="width:25%">Action Plan:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.Warranty_Cost__c}</td>
+<th style="width:25%">Investigation:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__SQX_Service__c}</td>
+</tr>
+<tr>
+<th style="width:25%">Containment:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__RMA_Number__c}</td>
+<th style="width:25%">Root Cause:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.Part_Number__c}</td>
+</tr>
+<tr>
+<th style="width:25%">Analysis Method:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__Org_Region__c}</td>
+<th style="width:25%">Root cause1:</th><td style="width:25%">{!compliancequest__SQX_Complaint__c.compliancequest__Open_Date__c}</td>
+</tr>
+<tr>
+<th style="width:25%">Root Cause2:</th><td style="width:25%"></td>
+<th style="width:25%">Prevention:</th><td style="width:25%"></td>
+</tr>
+</table>
+-->
+            
+            
+        </apex:form>   
+    </div>
+    <!--
+<div class="footer" style="text-align: Left">  
+<table style="height: 100px; width: 100%;  border-collapse: collapse;" border="0">
+<tr>
+<td align="Left" width ="50">
+<h1><apex:outputLabel value="{!compliancequest__SQX_Complaint__c.Owner.Name}"  style="font-size: 10px;"/></h1>
+<br/>
+<h1><apex:outputLabel value="QUALITY MANAGER"  style="font-size: 12px;"/></h1>
+<br/><br/> 
+</td>
+<!-- <td align="center" width ="50">
+<h1><apex:outputLabel value="{!compliancequest__SQX_Complaint__c.OwnerId}"  style="font-size: 10px;"/></h1>
+<br/>
+<h1><apex:outputLabel value="ENGINEERING MANAGER"  style="font-size: 12px;"/></h1>
+<br/><br/> 
+</td>
+<td align="center" width ="50">
+<h1><apex:outputLabel value="{!compliancequest__SQX_Complaint__c.OwnerId}" style="font-size: 10px;"/></h1>
+<br/>
+<h1><apex:outputLabel value="REGIONAL SALEMANAGER"  style="font-size: 12px;"/></h1>
+<br/><br/> 
+</td> -->
+    <!--</tr>
+</table>
+
+</div> -->    
+</apex:page>

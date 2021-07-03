@@ -1,0 +1,22 @@
+<apex:page standardController="Quotation__c">
+<apex:form >
+   <apex:detail relatedList="false" title="true"/> 
+   
+   <apex:pageBlock title="Quotation Attachments ">
+   <apex:pageBlockTable value="{!Quotation__c.CombinedAttachments}" var="a" title="sam"> 
+       <apex:column headerValue="Action">
+          <apex:commandLink value="View" onclick="Javascript:window.open('/servlet/servlet.FileDownload?file={!a.id}');"/>
+       </apex:column>    
+       <apex:column value="{!a.title}"/>
+       <apex:column headerValue="Created By">
+           <apex:outputLabel >{!a.createdby.name} </apex:outputLabel>
+       </apex:column>
+       <apex:column value="{!a.createddate}"/>
+       <apex:column value="{!a.LastModifieddate}"/>
+   </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+   <!--<apex:relatedList list="Call_Report__r"/>-->
+   <apex:relatedList list="OpenActivities" />
+  <!-- <apex:relatedList list="ProcessSteps" ></apex:relatedList>-->
+</apex:page>

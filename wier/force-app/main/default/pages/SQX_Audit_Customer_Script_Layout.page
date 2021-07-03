@@ -1,0 +1,124 @@
+<apex:page >
+     
+    
+    <script>
+    
+    // alias setup for the audit spreadsheet
+    var checkOutAliases = {
+            "AuditChecklist" : "compliancequest__SQX_Audit_Checklists__r",
+            "AuditChecklist1" : "compliancequest__SQX_Audit_Checklists__r",
+            "AuditChecklist2" : "compliancequest__SQX_Audit_Checklists__r",
+            "AuditChecklist3" : "compliancequest__SQX_Audit_Checklists__r",
+            "ObjectiveEvidence" : "compliancequest__SQX_Objective_Evidences__r",
+            "Finding": "compliancequest__SQX_Findings__r",
+            "ChecklistTarget" : "compliancequest__SQX_Checklist_Targets__r"                                   
+    };
+    
+    var checkOutWhiteList = {
+        "compliancequest__SQX_Audit_Checklists__r" : { 
+            "fields" :  ["compliancequest__Rationale__c",
+                         "compliancequest__Result__c"]
+        },
+        
+        "compliancequest__SQX_Findings__r" : {
+            "fields" :  ["compliancequest__Title__c",
+                         "compliancequest__Description__c"]
+        },
+        "compliancequest__SQX_Objective_Evidences__r" : {
+            "fields" :  ["Name",
+                         "compliancequest__Description__c"]
+        },
+        "compliancequest__SQX_Checklist_Targets__r" : {
+            "fields" :  ["Name",
+                         "compliancequest__Result__c",
+                         "compliancequest__Comment__c"]
+        },
+        'compliancequest__Status__c' : 'compliancequest__Status__c',   
+        "Owner.Name" : "OwnerId"    //special case
+    };
+        
+    var checkOutProtectedFields = [
+        {       
+            "sheet": "ObjectiveEvidence", 
+            "protected": ['compliancequest__SQX_Objective_Evidences__r']
+        },
+        {       
+            "sheet": "AuditChecklist_ObjEvidences", 
+            "protected": ['compliancequest__SQX_Audit_Checklists__r','compliancequest__SQX_Objective_Evidences__r']
+        },
+        {   "sheet": "AuditChecklist_Findings", 
+            "protected": ['compliancequest__SQX_Audit_Checklists__r','compliancequest__SQX_Findings__r']
+        },
+        {
+            "sheet": "Findings",
+            "protected": ["compliancequest__SQX_Findings__r"]
+        },
+        {   "sheet": "AuditChecklist_ChecklistTargets", 
+            "protected": ['compliancequest__SQX_Audit_Checklists__r']
+        }  
+    ];
+
+    
+    
+    //model for inserting customer correction
+    var customerCorrections ={
+        /*
+            compliancequest__SQX_Defect__c: function(schema){
+                        schema.canEdit = 
+                        schema.canDelete = function() {return false;}
+
+                    },
+
+            compliancequest__SQX_Nonconformance__c : function(schema){
+                        schema.canAddChildren = function(child){
+                            return this.isOpen() && (child == 'compliancequest__SQX_Disposition__c' || child == 'Note');
+
+                        }
+
+                        schema.canDeleteChildren = function(a){
+                            return true;
+                        }
+
+                        schema.canEdit =
+                        schema.rowEditable = 
+                        schema.rowDeletable = function () { return false; };
+
+                        schema.isLocked = function(){
+                            return !this.canEdit();
+                        }
+
+
+                    }
+      */
+      
+        compliancequest__SQX_Audit__c:function(schema){
+                schem.fields.compliancequest__Org_Division__c.validation.required=true;
+                schema.fields.compliancequest__Org_Business_Unit__c.validation.required=true;
+                schema.fields.compliancequest__Org_Region__c.validation.required=true;
+                schema.fields.compliancequest__Org_Site__c.validation.required=true;
+        
+        }
+        }
+        
+        //model for inserting custom security rules
+        function customSecurityRules(){
+            //SQXSchema.compliancequest__SQX_Nonconformance__c.canDelete=function(){return hasRecordDeleteAccess(this) && (!NC.isClosed()&& !NC.isComplete());};
+        }
+    
+    //model for inserting custom formRules: formrules can be used to set up conditonal requirement of a field, or conditional requirement of a 
+    var customFormRules=[];
+    /*customFormRules[0] = {
+                                objectName: "compliancequest__SQX_Nonconformance__c",
+                                rule:[
+                                    {
+                                        field: "compliancequest__Priority__c",
+                                        condition: "compliancequest__Priority__c == '1 - Low'",
+                                        toggleActions: [
+                                            {action: "setrequired", targetNode: "relatedList('compliancequest__SQX_Findings__r').at(0)", targetField: "compliancequest__Description__c"}
+                                        ]
+                                    }
+                                ]
+                            };
+        */
+    </script>
+</apex:page>

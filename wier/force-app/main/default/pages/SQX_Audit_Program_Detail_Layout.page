@@ -1,0 +1,318 @@
+<apex:page standardController="compliancequest__SQX_Audit_Program__c">
+            
+    <apex:variable var="PageSize" value="{!IF((JSENCODE($CurrentPage.parameters.printMode))=='true', 200, 5)}"/>
+
+    <div style="text-align:right;">
+        <a href= "{!URLFOR($Page.compliancequest__SQX_Audit_Program, null, [id=compliancequest__SQX_Audit_Program__c.Id, printMode='true'])}" id="printPage" data-bind="invisible: isNewObject">{!$Label.compliancequest__CQ_UI_Print}</a>
+    </div>
+    
+    <chatter:feedwithfollowers entityid="{!Id}" showheader="true"/>        
+    <div id="checkMobile"></div>
+    <div id="loadingBlock" data-role="cqloading"></div>
+    
+    <div data-role="cqtabstrip" 
+         id="mainTab" 
+         data-collapsible="true" 
+         data-show-grid-title="true" 
+         data-show-grid-count="true" 
+         class="cqMainTab" 
+         data-activate="setActionButtons" >
+        
+        <ul>
+            <li id="detailTab" data-title="{!$ObjectType.compliancequest__SQX_Audit_Program__c.Label}" class="k-state-active">{!$ObjectType.compliancequest__SQX_Audit_Program__c.Label}</li>
+            <li id="noteAndAttachmentTab" data-grid-sobject="Note,ContentDocumentLink"
+                data-title="{!$Label.compliancequest__CQ_UI_Notes_And_Attachments}">{!$Label.compliancequest__CQ_UI_Notes_And_Attachments}</li>
+            <li id="changeRecordActivityTab"
+                data-grid-sobject="compliancequest__SQX_Audit_Program_Record_Activity__c"
+                data-title="{!$Label.compliancequest__CQ_UI_Record_Activity}">{!$Label.compliancequest__CQ_UI_Record_Activity}</li>
+            <li id="workflowTab" data-title="{!$Label.compliancequest__CQ_UI_Workflow}" data-bind="invisible: mainRecord.isNewObject">{!$Label.compliancequest__CQ_UI_Workflow}</li>
+        </ul>
+        
+        <div id="detailSection" class="cqFormSection">
+            <div class="cqSectionContent section1col">
+                <div data-container="AuditProgram.Name"
+                    data-role='cqcompositefield'></div>
+                <div data-container="AuditProgram.compliancequest__Title__c"
+                    data-role='cqcompositefield'></div>
+                <div data-container="AuditProgram.compliancequest__Objective__c"
+                    data-role='cqcompositefield'></div>
+                <div data-container="AuditProgram.compliancequest__Calendar__c"
+                    data-role='cqcompositefield'></div>
+                <div class="clearFix"></div>
+            </div>
+            <div class="cqSectionContent section3col">
+                <div data-container="AuditProgram.compliancequest__Org_Division__c"
+                    data-role='cqcompositefield'></div>
+                <div data-container="AuditProgram.compliancequest__Org_Business_Unit__c"
+                    data-role='cqcompositefield'></div>
+                <div data-container="AuditProgram.compliancequest__Org_Region__c"
+                    data-role='cqcompositefield'></div>
+
+                <div class="formItem"></div>
+                <div class="formItem"></div>
+                <div data-container="AuditProgram.compliancequest__Org_Site__c"
+                    data-role='cqcompositefield'></div>
+                <div class="clearFix"></div>
+            </div>
+            
+            <div data-role = "cqgrid"
+                class="cq-topGrid subGrid"
+                data-source = "AuditProgram.relatedList('compliancequest__SQX_Audit_Program_Scope__r')"
+                data-collapsible="true"
+                data-editable = '{"mode" : "popup", "update" : true, "create" : true,"destroy" : true}'
+                data-columns = '[{"title" : "{!$Label.compliancequest__CQ_UI_Actions}", "command" : [{"name" : "edit", "text" : {"update" : "{!$Label.compliancequest__CQ_UI_Save}", "saveandnew" : "{!$Label.compliancequest__CQ_UI_Grid_Save_And_New}"} }, "destroy"], "width" : "100px"},
+                {"field" : "compliancequest__SQX_Audit_Criteria_Document__c"},
+                {"field" : "Name"}]'>
+                <div class="clearFix"></div>
+            </div>
+            
+            <div id="auditSection" class = "cqFormSection">
+                <div data-role = "cqgrid"
+                    class="cq-topGrid subGrid"
+                    data-detail-template="auditTeamDetailTemplate"
+                    data-detail-init="initGridDetail"
+                    data-source = "AuditProgram.internalAudit()"
+                     data-toolbar='[{"name" : "create", "text" : "{!$Label.compliancequest__CQ_UI_Add_Internal_Audit}"}, { template: kendo.template($("#internalAuditTemplate").html()) }]'
+                    data-title = '{!$Label.compliancequest__CQ_UI_Internal_Audits}'
+                    data-collapsible="true"
+                    data-editable = '{"mode" : "popup", "update" : true, "create" : true,"destroy" : true}'
+                    data-columns = '[{"title" : "{!$Label.compliancequest__CQ_UI_Actions}", "command" : [{"name" : "edit", "text" : {"update" : "{!$Label.compliancequest__CQ_UI_Save}"} }, "destroy"], "width" : "100px"},
+                    {"title" : "{!$Label.compliancequest__CQ_UI_Name_Status}", "template" : "#= concatenateNameStatusAndStage() #", "hideOnPopupEdit" : true},
+                    {"field" : "compliancequest__Title__c", "hidden" : true},
+                    {"field" : "compliancequest__Audit_Category__c", "hidden" : true},
+                    {"field" : "compliancequest__SQX_Audit_Criteria_Document__c"},
+                    {"field" : "compliancequest__Plan_Period__c"},
+                    {"field" : "compliancequest__Start_Date__c"},
+                    {"field" : "compliancequest__SQX_Auditee_Contact__c"},
+                    {"field" : "compliancequest__SQX_Lead_Auditor__c"},
+                    {"field" : "compliancequest__SQX_Department__c"},
+                    {"field" : "compliancequest__Org_Division__c"},
+                    {"field" : "compliancequest__Org_Business_Unit__c", "hidden" : true},
+                    {"field" : "compliancequest__Org_Region__c", "hidden" : true},
+                    {"field" : "compliancequest__Org_Site__c"},
+                    {"title" : "{!$ObjectType.compliancequest__SQX_Audit_Team__c.Label}", "template" : "#: showAuditTeamMembers() #", "hideOnPopupEdit" : true}]'>
+                    <div class="clearFix"></div>
+                </div>
+                
+                <div data-role = "cqgrid"
+                    class="cq-topGrid subGrid"
+                    data-detail-template="auditTeamDetailTemplate"
+                    data-detail-init="initGridDetail"
+                    data-source = "AuditProgram.customerAudit()"
+                    data-toolbar='[{"name" : "create", "text" : "{!$Label.compliancequest__CQ_UI_Add_Customer_Audit}"}, { template: kendo.template($("#customerAuditTemplate").html()) }]'
+                    data-title = '{!$Label.compliancequest__CQ_UI_Customer_Audits}'
+                    data-collapsible="true"
+                    data-edit = "changeAccountSourceToCustomersType"
+                    data-editable = '{"mode" : "popup", "update" : true, "create" : true,"destroy" : true}'
+                    data-columns = '[{"title" : "{!$Label.compliancequest__CQ_UI_Actions}", "command" : [{"name" : "edit", "text" : {"update" : "{!$Label.compliancequest__CQ_UI_Save}", "saveandnew" : "{!$Label.compliancequest__CQ_UI_Grid_Save_And_New}"} }, "destroy"], "width" : "100px"},
+                    {"title" : "{!$Label.compliancequest__CQ_UI_Name_Status}", "template" : "#= concatenateNameStatusAndStage() #", "hideOnPopupEdit" : true},
+                    {"field" : "compliancequest__Title__c","hidden" : true},
+                    {"field" : "compliancequest__Audit_Category__c","hidden" : true},
+                    {"field" : "compliancequest__Account__c"},
+                    {"field" : "compliancequest__Location__c"},
+                    {"field" : "compliancequest__SQX_Audit_Criteria_Document__c"},
+                    {"field" : "compliancequest__Plan_Period__c"},
+                    {"field" : "compliancequest__Start_Date__c"},
+                    {"field" : "compliancequest__Primary_Contact_Name__c", "hidden" : true},
+                    {"field" : "compliancequest__SQX_Auditee_Contact__c"},
+                    {"field" : "compliancequest__SQX_Lead_Auditor__c"},
+                    {"title" : "{!$ObjectType.compliancequest__SQX_Audit_Team__c.Label}", "template" : "#: showAuditTeamMembers() #", "hideOnPopupEdit" : true}]'>
+                    <div class="clearFix"></div>
+                </div>
+                <div data-role = "cqgrid"
+                    class="cq-topGrid subGrid"
+                    data-detail-template="auditTeamDetailTemplate"
+                    data-detail-init="initGridDetail"
+                    data-source = "AuditProgram.suplierAudit()"
+                    data-toolbar='[{"name" : "create", "text" : "{!$Label.compliancequest__CQ_UI_Add_Supplier_Audit}"}, { template: kendo.template($("#supplierAuditTemplate").html()) }]'
+                    data-title = '{!$Label.compliancequest__CQ_UI_Supplier_Audits}'
+                    data-collapsible="true"
+                    data-edit = "changeAccountSourceToSuppliersType"
+                    data-editable = '{"mode" : "popup", "update" : true, "create" : true,"destroy" : true}'
+                    data-columns = '[{"title" : "{!$Label.compliancequest__CQ_UI_Actions}", "command" : [{"name" : "edit", "text" : {"update" : "{!$Label.compliancequest__CQ_UI_Save}", "saveandnew" : "{!$Label.compliancequest__CQ_UI_Grid_Save_And_New}"} }, "destroy"], "width" : "100px"},
+                    {"title" : "{!$Label.compliancequest__CQ_UI_Name_Status}", "template" : "#= concatenateNameStatusAndStage() #", "hideOnPopupEdit" : true},
+                    {"field" : "compliancequest__Title__c", "hidden" : true},
+                    {"field" : "compliancequest__Audit_Category__c", "hidden" : true},
+                    {"field" : "compliancequest__Account__c"},
+                    {"field" : "compliancequest__Location__c"},
+                    {"field" : "compliancequest__SQX_Audit_Criteria_Document__c"},
+                    {"field" : "compliancequest__Plan_Period__c"},
+                    {"field" : "compliancequest__Start_Date__c"},
+                    {"field" : "compliancequest__Primary_Contact_Name__c", "hidden" : true},
+                    {"field" : "compliancequest__SQX_Auditee_Contact__c"},
+                    {"field" : "compliancequest__SQX_Lead_Auditor__c"},
+                    {"title" : "{!$ObjectType.compliancequest__SQX_Audit_Team__c.Label}", "template" : "#: showAuditTeamMembers() #", "hideOnPopupEdit" : true}]'>
+                    <div class="clearFix"></div>
+                </div>
+                <div class="clearFix"></div>
+            </div>
+            <div class="cqSectionContent section1col processStepInApproval" id="inApprovalPlan" data-bind="{visible:isApprovalPlan_Approval}">
+            </div>
+     
+            <div class="clearFix"></div>
+        </div>
+        <div id="noteAndAttachmentSection" class="cqFormSection">
+            <div data-role="cqgrid" 
+                class="cq-topGrid subGrid"
+                data-source="AuditProgram.relatedList('Notes')"
+                data-editable='{ "mode": "popup", "update":true, "create":true, "destroy":true}'
+                data-columns="[{title: '{!$Label.compliancequest__CQ_UI_Actions}',command: [{ name: 'edit', text: { update: '{!$Label.compliancequest__CQ_UI_Save}'} }, 'destroy'], width: '100px'},
+                                {field: 'IsPrivate', hidden: true},
+                                {field: 'Title'}, 
+                                {field: 'Body'},
+                                {field: 'LastModifiedDate',template : '#: convertToLocalDateTime(data.LastModifiedDate) #', hideOnPopupEdit: true},
+                                {field: 'LastModifiedById', template: getReferenceDisplayTemplate('LastModifiedById'), hideOnPopupEdit: true}]">
+            </div>
+             <div data-role="cqgrid" id="filesGrid" class="cq-topGrid subGrid"
+                 data-source="AuditProgram.relatedList('ContentDocumentLinks')"
+                 data-collapsible="true"
+                 data-editable='{"mode": "incell", "create":true, "update":true, "destroy":true}'
+                 data-toolbar="[{name: 'custom', text: '{!$Label.compliancequest__CQ_UI_Add_Files}', className: 'addFiles', enable: 'AuditProgram.canEdit()', action: 'sqx.commonActions.addFiles'}]"
+                 data-columns="[{title: '{!$Label.compliancequest__CQ_UI_Actions}', command: ['preview', 'destroy'], width: '110px'},
+                               {field: 'ContentTitle', template: '#: data.Title() #', editor: cq.getFileEditor},
+                               {field: 'ContentDescription', template: '#: data.Description() #', editor: cq.getFileEditor}]">
+            </div>
+            <div class="clearFix"></div>
+        </div>
+        <div id="auditProgramRecordHistoryTab" class="cqFormSection">
+            <div data-role="cqgrid" class="cq-topGrid subGrid"
+                data-source="AuditProgram.relatedList('compliancequest__SQX_Audit_Program_Record_Activities__r')"  
+                data-columns="[{field: 'compliancequest__Activity__c'},
+                            {field: 'compliancequest__Comment__c'},
+                            {field: 'compliancequest__Modified_By__c'},
+                            {field: 'CreatedDate', template: '#: convertToLocalDateTime(CreatedDate) #'}]">
+            </div>
+            <div class="clearFix"></div>     
+        </div>
+        <div id="workflowSection" class="cqFormSection">
+            <div class="cqSectionContent section1col" id ="processStep">
+                <apex:relatedList list="ProcessSteps" pageSize="{!IF((JSENCODE($CurrentPage.parameters.printMode))=='true', PageSize, 100)}"></apex:relatedList>
+            </div>
+            <div class="cqSectionContent section1col">
+                <apex:relatedList list="OpenActivities" pageSize="{!PageSize}"/>
+            </div>
+            <div class="clearFix"></div>
+        </div>
+    </div>
+    <style>
+        .refreshBtnContainer {
+            display: inline-block;
+        }
+    </style>
+    
+    <script id="internalAuditTemplate" type="text/x-kendo-template">
+        # if(!AuditProgram.isNewObject() && AuditProgram.canAddChildren('compliancequest__SQX_Audit__c')){ #
+            <span class="cq-grid-row-button">
+                <a href="{!URLFOR($Page.compliancequest__SQX_Audit_Plan, null, [id=compliancequest__SQX_Audit_Program__c.Id, type='internal'])}">{!$Label.compliancequest__CQ_UI_PLAN_INTERNAL_AUDIT}</a>
+            </span>
+        # } #
+    </script>
+    
+    <script id="customerAuditTemplate" type="text/x-kendo-template">
+        # if(!AuditProgram.isNewObject() && AuditProgram.canAddChildren('compliancequest__SQX_Audit__c')){ #
+            <span class="cq-grid-row-button">
+                <a href="{!URLFOR($Page.compliancequest__SQX_Audit_Plan, null, [id=compliancequest__SQX_Audit_Program__c.Id, type='customer'])}">{!$Label.compliancequest__CQ_UI_PLAN_CUSTOMER_AUDIT}</a>
+            </span>
+        # } #
+    </script>
+    
+    <script id="supplierAuditTemplate" type="text/x-kendo-template">
+        # if(!AuditProgram.isNewObject() && AuditProgram.canAddChildren('compliancequest__SQX_Audit__c')){ #
+            <span class="cq-grid-row-button">
+                <a href="{!URLFOR($Page.compliancequest__SQX_Audit_Plan, null, [id=compliancequest__SQX_Audit_Program__c.Id, type='supplier'])}">{!$Label.compliancequest__CQ_UI_PLAN_SUPPLIER_AUDIT}</a>
+            </span>
+        # } #
+    </script>
+    
+    <script type="text/x-kendo-template" id="AttachmentEditTemplate">
+        <iframe class="attachmentFrame" id="Attachment#= data.Id #" src="{!$Page.compliancequest__SQX_Upload_Attachment}?callback=attachmentCallBack&parentId=#= currentUser.Id #&uid=#= data.parentEntity().Id #&recordid=#= data.Id #" style="height: 145px;border: none;width: 100%;">
+            {!$Label.compliancequest__CQ_UI_Nothing_Yet}
+        </iframe>
+    </script>
+    
+     <!-- for approval -->
+    <script id="approveRejectAuditProgramTemplate" type="text/x-jquery-tmpl">
+        <div id="approveRejectAuditProgram">
+            <div style="padding:10px 20px 10px 10px;">
+                <div class="section1col">
+                    <!-- Meaning of signature -->
+                    <div class="formItem">
+                        <div class="formLabel"><label for="respondMeaningOfSignature">{!$Label.compliancequest__CQ_UI_Purpose_Of_Signature}</label></div>
+                        <div class='formField' id ="respondMeaningOfSignature" name='respondMeaningOfSignature'><span></span></div>
+                    </div>
+                    <!-- ****** -->
+                    <div class="formItem">
+                        <div class="formLabel"><label for="approvalRemark">{!$Label.compliancequest__CQ_UI_Comment}</label></div>
+                        <div class="formField">
+                            <div class="editableElement">
+                                <textarea id="approvalRemark" class="cq-multi-line-textarea" name="Comment" data-required-msg="{!SUBSTITUTE($Label.compliancequest__CQ_UI_Field_Is_Required, '{fieldName}', $Label.compliancequest__CQ_UI_Comment)}"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div  data-current-user-details-var="userDetails"  data-role='cqelectronicsignature'></div>
+                </div>
+                <div class="clearFix"></div>
+                <div class="commandSection" style="text-align:center;margin-top:10px">
+                    <div>
+                        <div class="errorStyle errorDiv">
+                            <span class="k-icon k-warning"> </span> <span class="msg"></span>
+                        </div>
+                    </div>
+                    <button type="button" id="btnApproveApproval" onclick="approveRejectAuditProgram(event, 'approveapproval', '#= data.workItemId #')" class="cqCommandButton k-button approve" data-role="button" role="button" aria-disabled="false" tabindex="0">{!$Label.compliancequest__CQ_UI_Approve}</button>
+                    <button type="button" id="btnRejectApproval" onclick="approveRejectAuditProgram(event, 'rejectapproval', '#= data.workItemId #')" class="cqCommandButton k-button reject" data-role="button" role="button" aria-disabled="false" tabindex="0">{!$Label.compliancequest__CQ_UI_Reject}</button>
+                    <button type="button" id="btnCancelApproval" onclick="cancelAuditProgramApproval(event)" class="cqCommandButton k-button" data-role="button" role="button" aria-disabled="false" tabindex="0">{!$Label.compliancequest__CQ_UI_Cancel}</button>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- for audit team-->
+    <script type="text/x-kendo-template" id="auditTeamDetailTemplate">
+        <div data-role="cqtabstrip" data-collapsible="true" data-show-grid-title="true" data-show-grid-count="true" class="tabStrip">
+            <ul>
+                <li data-grid-sobject="compliancequest__SQX_Audit_Team__c" class="k-state-active" data-title="{!$ObjectType.compliancequest__SQX_Audit_Team__c.Label}">{!$ObjectType.compliancequest__SQX_Audit_Team__c.Label}</li>
+            </ul>
+            <div>
+                <div class="auditTeam">
+                    <div class="subGrid"
+                         data-relatedlist="compliancequest__SQX_Audit_Team__r"
+                         data-options='{"editable":{"mode":"popup","update":#= data.canEdit() #,"create":#= data.canEdit() #,"destroy":#= data.canEdit() #},"showTitle":false,"showCount":false, "collapsible":false,"initialRows":0,"expandOnSave":false}'
+                         data-columns='[{"title": "{!$Label.compliancequest__CQ_UI_Actions}", "command" : ["edit", "destroy"], "width": "100px"},
+                        {"field": "compliancequest__SQX_User__c"}]'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- template for voiding the audit program-->
+    <script type="text/x-kendo-template" id="voidAuditProgramTemplate">
+        <div>
+            <div class="cqSectionContent section1col">
+            <!-- to define fields in the esig window if any-->
+            </div>
+        </div>
+    </script>
+    <!-- template for closing the audit program-->
+    <script type="text/x-kendo-template" id="closeAuditProgramTemplate">
+        <div>
+            <div class="cqSectionContent section1col">
+            <!-- to define fields in the esig window if any-->
+            </div>
+        </div>
+    </script>
+    
+    <script id="DocumentDropdownTemplate" type="text/x-kendo-template">
+        <div>
+            <p>
+                <strong>{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.Name.Label}:</strong>
+                #: Name #
+            </p>
+            <p>
+                <strong>{!$ObjectType.compliancequest__SQX_Controlled_Document__c.fields.compliancequest__Title__c.Label}:</strong>
+                #: compliancequest__Title__c #
+            </p>
+        </div>
+    </script>
+
+</apex:page>

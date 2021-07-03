@@ -1,0 +1,26 @@
+<apex:page standardController="Quotation__c" renderAs="PDF">
+  <apex:form id="form1">
+      <apex:pageBlock id="Pageblock1">
+          <apex:outputPanel id="logo">
+              <table border="1">
+                  <tr>
+                      <td>fdfgf
+                      </td>
+                  </tr>
+              </table>
+          </apex:outputPanel>
+      </apex:pageBlock>
+       <apex:pageBlock id="Pageblock2">
+           <apex:outputPanel >
+           </apex:outputPanel>
+      </apex:pageBlock>
+       <apex:pageBlock id="Pageblock3">
+           <apex:outputPanel >
+           </apex:outputPanel>
+      </apex:pageBlock>
+       <apex:pageBlock id="Pageblock4">
+            <apex:outputPanel >
+           </apex:outputPanel>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

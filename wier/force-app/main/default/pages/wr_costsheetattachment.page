@@ -1,0 +1,21 @@
+<apex:page standardController="CostSheet__c">
+<apex:form >
+   <apex:detail relatedList="false" title="true"/> 
+   <!--<apex:relatedList list="CombinedAttachments">
+    <apex:facet name="header" ><b> CostSheet Attachments  </b></apex:facet>
+   </apex:relatedList>-->
+  <apex:pageBlock title="CostSheet Attachments ">
+   <apex:pageBlockTable value="{!CostSheet__c.CombinedAttachments}" var="a" title="sam">
+       <apex:column headerValue="Action">
+          <apex:commandLink value="View" onclick="Javascript:window.open('/servlet/servlet.FileDownload?file={!a.id}');"/>
+       </apex:column>
+       <apex:column value="{!a.title}"/>
+       <apex:column headerValue="Created By">
+           <apex:outputLabel >{!a.createdby.name} </apex:outputLabel>
+       </apex:column>
+       <apex:column value="{!a.createddate}"/>
+       <apex:column value="{!a.LastModifieddate}"/>
+   </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

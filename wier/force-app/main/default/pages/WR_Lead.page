@@ -1,0 +1,200 @@
+<apex:page standardController="Lead"  extensions="WE_LeadController" >
+<apex:pagemessages ></apex:pagemessages>
+ <style type="text/css">
+         .requiredFieldBlock {
+               border-left: 3px solid #c00;
+               font-size: 130%;
+               vertical-align: 1px;
+               width: 100%;
+               margin-right: 1px;              
+              
+            } 
+        .custPopup
+        {
+            background-color: white;
+            border-width: 2px;
+            border-style: solid;
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup 
+            displays in the center of the screen. First set the width. Then set 
+            margin-left to negative half of what the width is. You can add 
+            the height property for a fixed size pop up if you want.*/
+            width: 500px;
+            margin-left: -250px;
+            top:100px;
+        }
+        .popupBackground{
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+        }
+
+    </style>
+<apex:form >
+<apex:sectionHeader title="Lead" subtitle="Lead Edit"/>
+<apex:pageBlock title="Lead Edit" mode="Edit" id="SalesHead" >
+   <apex:pageBlockButtons >
+       <apex:commandButton value="Save" action="{!Csave}"/>
+       <apex:commandButton value="Cancel" action="{!Cancel}"/>
+       <apex:commandButton value="To follow up" action="{!showPopupFollowup}" rerender="tstpopup" rendered="{!if(selectedstatus=='Contacted' || selectedstatus=='FollowUp'|| selectedstatus=='UnQualified',TRUE,FALSE)}"/>
+       <apex:commandButton value="Recommend not to follow up" action="{!showPopupunqualified}" rerender="tstpopup" rendered="{!if(selectedstatus=='Contacted' || selectedstatus=='FollowUp',TRUE,FALSE)}" />
+       <apex:commandButton value="Close" action="{!showPopupclosedlead}" rerender="tstpopup" rendered="{!if(selectedstatus=='UnQualified' && (profilename =='HeadOfSales' || profilename =='Non DXB Iraq Team member'|| profilename =='Non DXB Non Iraq Team member'),TRUE,FALSE)}" />
+        
+   </apex:pageBlockButtons>
+   <apex:outputPanel id="tstpopup">
+        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                <apex:pageblock >
+                    <apex:pageBlockSection rendered="{!if(selectedvalue=='FollowUp',TRUE,FALSE)}">
+                         &nbsp;&nbsp;<apex:selectRadio value="{!selectedvalue}" rendered="false">
+                            <apex:selectOptions value="{!items}" /> 
+                         </apex:selectRadio><br/>
+                          <apex:pageBlockSectionItem >
+                             <apex:outputLabel >Enter Comment if any :</apex:outputLabel>
+                             <apex:inputTextarea value="{!reason}"/>
+                         </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection rendered="{!if(selectedvalue =='UnQualified',TRUE,FALSE)}">
+                         &nbsp;&nbsp;
+                         <apex:selectRadio value="{!selectedvalue}" rendered="false">
+                                       <apex:selectOptions value="{!items}" /> 
+                         </apex:selectRadio><br/>
+                         <apex:inputField id="csrdisqualified" value="{!l.CSR_Unqualified__c}" rendered="{!if(profilename  =='CSR'|| profilename =='Non DXB Iraq Team member'|| profilename =='Non DXB Non Iraq Team member',TRUE,FALSE)}"/>
+                         <apex:inputField id="hosdisqualified" value="{!l.HOS_Unqualified__c}" rendered="{!if(profilename  =='HeadOfSales' || profilename =='Non DXB Iraq Team member'|| profilename =='Non DXB Non Iraq Team member',TRUE,FALSE)}"/>
+                         <br/>
+                         <apex:pageBlockSectionItem >
+                                    <apex:outputLabel >Enter the Reason :</apex:outputLabel>
+                                    <apex:inputTextarea id="unreasonid" value="{!unreason}" required="true" styleClass="requiredFieldBlock "/>
+                         </apex:pageBlockSectionItem>
+                   </apex:pageBlockSection>
+                   
+                   <apex:pageBlockSection rendered="{!if(selectedvalue =='Closed',TRUE,FALSE)}">
+                         &nbsp;&nbsp;
+                         <apex:selectRadio value="{!selectedvalue}" rendered="false">
+                                       <apex:selectOptions value="{!items}" /> 
+                         </apex:selectRadio><br/>
+                         <apex:inputField id="Closedid" value="{!l.Hos_Closed__c}"/>
+                         <br/>
+                         <apex:pageBlockSectionItem >
+                                    <apex:outputLabel >Reason for Closed :</apex:outputLabel>
+                                    <apex:inputTextarea id="Closedreasonid" value="{!Closedreason}" required="true" styleClass="requiredFieldBlock "/>
+                         </apex:pageBlockSectionItem>
+                   </apex:pageBlockSection>
+                </apex:pageblock>
+                <apex:outputPanel >
+                    <table align="center">
+                        <tr>
+                            <td>
+                                <apex:commandButton value="Save" action="{!closePopup}" rerender="tstpopup,SalesHead"/>
+                                <apex:commandButton value="Cancel" action="{!cancelPopup}" rerender="tstpopup,SalesHead" immediate="true"/>
+                            </td>
+                        </tr>
+                    </table>
+                </apex:outputPanel>
+                
+                
+            </apex:outputPanel>
+   </apex:outputPanel>
+   
+   <apex:pageBlockSection id="head" title="Lead Information" columns="2">
+      
+        <apex:inputField value="{!l.LastName}" required="True"/>
+       <apex:inputField value="{!l.Expected_Date_of_Input__c}" required="True"/>
+       <apex:inputField value="{!l.CurrencyIsoCode}" required="true"/>
+       <apex:inputField value="{!l.Expected_Value__c}" required="true"/>
+       <apex:inputField value="{!l.Probability__c}" required="true"/>
+       <apex:outputPanel > 
+           <table align="left">
+               <tr>
+                   <td width="115x">
+                   </td>
+                   <td>
+                        Lead Status
+                   </td>
+                   <td>
+                        <apex:selectList id="statusid" value="{!selectedstatus }" multiselect="false" size="1">
+                            <apex:selectOptions value="{!LeadStatusItems}"/>
+                       </apex:selectList>
+                       <script> document.getElementById('{!$Component.statusid}').disabled={!status}; </script>
+                   </td>
+               </tr>
+           </table>           
+       </apex:outputPanel>
+       <apex:inputField value="{!l.CSR_Unqualified__c}" rendered="{!if(selectedstatus =='UnQualified'  &&  profilename  =='CSR Profile' ,TRUE,FALSE)}"/>
+       <apex:inputField value="{!l.CSR_Unqualified_Reason__c}"  rendered="{!if(selectedstatus =='UnQualified' && profilename  =='CSR Profile' ,TRUE,FALSE)}"/>
+       <apex:inputField value="{!l.CSR_Followup_Reason__c}" rendered="{!if(selectedstatus =='FollowedUp' && profilename  =='CSR Profile',TRUE,FALSE)}"/>
+       <apex:inputField value="{!l.CSR_Unqualified__c}" rendered="{!if(selectedstatus =='UnQualified'  && profilename  =='Sales Head',TRUE,FALSE)}"/>
+       <apex:inputField value="{!l.HOS_Closed_Reason__c}" rendered="{!if(selectedstatus =='UnQualified'  && profilename  =='Sales Head',TRUE,FALSE)}"/> 
+       <apex:inputField value="{!l.Hos_Closed__c}" rendered="{!if(selectedstatus =='FollowedUp' && profilename  =='Sales Head',TRUE,FALSE)}"/>
+       <apex:inputField value="{!l.LeadSource}"  required="true"/>
+       <apex:inputField value="{!l.Type_of_Business__c}"  required="true"/>
+       <apex:inputField value="{!l.Revenue_Stream__c}"  required="true"/>
+       <apex:inputField value="{!l.Type_of_Activity__c}"  required="true"/>
+       <apex:inputField value="{!l.Type_of_Lead__c}"  required="true"/>
+       <apex:inputField value="{!l.Type_of_Customer__c}" required="true"/>
+       <apex:inputField value="{!l.industry}" required="true"/>
+       <!-- <apex:inputField value="{!l.Strategic__c}" required="true"/> -->
+       <apex:inputField value="{!l.Additional_Commments__c}"/>
+   </apex:pageBlockSection> 
+   <apex:pageBlockSection title="Customer Status" columns="1">
+       <apex:outputPanel id="customersectionid">
+           <table align="center" width="900px">
+               <tr>
+                   <td colspan="2">
+                   (If the Lead relates to a new customer and the customer is known, please create a new customer through 'Customers' tab and then select the option 'Existing Customer' on this page )
+                   <br/>
+                   <br/>
+                   </td>
+               </tr> 
+               <tr>
+                   <td colspan="2">
+                  
+                   </td>
+               </tr>
+               <tr>
+                   <td width="115x">
+                   </td>
+                   <td>
+                       Customer status: 
+                       <apex:actionRegion >
+                        <apex:selectList id="customerid" value="{!customerselection}" multiselect="false" size="1">
+                            <apex:selectOptions value="{!Customer}"/>
+                            <apex:actionSupport event="onchange" action="{!customervisible}"  reRender="customersectionid,customerid,newcustomerid,existingcustomerid,unknowncustomerid" />
+                       </apex:selectList>
+                       </apex:actionRegion>
+                   </td>
+               </tr>
+               
+               <tr>
+                   <td colspan="2">&nbsp;
+                   </td>
+               </tr>
+          
+               <tr>
+                   <td colspan="2">
+                        <apex:outputPanel id="existingcustomerid" rendered="{!existingcustomervisible }">
+                        <apex:pageBlockSection title="Account Information" collapsible="false">
+                             <apex:inputField value="{!l.Account_Name__c}" required="true" />
+                        </apex:pageBlockSection>
+                        </apex:outputPanel>
+                   </td>
+               </tr>
+           </table>
+       <apex:outputPanel id="unknowncustomerid" rendered="{!unknowncustomervisible }">
+       </apex:outputPanel>
+       </apex:outputPanel>           
+      
+   </apex:pageBlockSection>      
+</apex:pageBlock>
+</apex:form>
+</apex:page>

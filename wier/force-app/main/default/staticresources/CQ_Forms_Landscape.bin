@@ -1,0 +1,17 @@
+{
+"Word":
+
+{ "ConversionMethod": "EPWF_CONVERSION_METHOD_OFFICE_OPTIMIZED" }
+,
+"PowerPoint":
+
+{ "ConversionMethod": "EPWF_CONVERSION_METHOD_OFFICE_OPTIMIZED" }
+,
+"Excel": {
+  "Scaling": "EPWF_EXCEL_SCALING_NONE",
+  "ConversionMethod": "EPWF_CONVERSION_METHOD_OFFICE_OPTIMIZED",
+  "Paper": {
+    "Orientation": "PRN_PAPER_ORIENT_Portrait"
+  }
+}
+}
