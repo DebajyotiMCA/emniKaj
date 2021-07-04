@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Upsell_amount_Discount_amount</fullName>
+    <active>true</active>
+    <description>Upsell_amount_(if_any)_Discount_amount_(</description>
+    <errorConditionFormula>OR(AND(ISBLANK( Upsell_amount_if_any__c ), 
+       ISBLANK( Discount_amount_if_any__c )
+   ) ,
+   AND(!ISBLANK( Upsell_amount_if_any__c ), 
+       !ISBLANK( Discount_amount_if_any__c )))</errorConditionFormula>
+    <errorMessage>Please provide either Discount Amount or Upsell Amount but not both.</errorMessage>
+</ValidationRule>

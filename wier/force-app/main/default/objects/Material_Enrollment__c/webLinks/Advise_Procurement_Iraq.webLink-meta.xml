@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Advise_Procurement_Iraq</fullName>
+    <availability>online</availability>
+    <description>Advise Procurement (Iraq)</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Advise Procurement (Iraq)</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&apos;/soap/ajax/28.0/connection.js&apos;)}
+var pid = &quot;{!User.ProfileId}&quot;;
+if( pid ==&quot;00eb0000000s2Jy&quot; || pid ==&quot;00eb0000000QsY1&quot; || pid ==&quot;00eb0000000QsY2&quot; || pid ==&quot;00eb0000000RDHT&quot; || pid ==&quot;00eb0000000RDHT&quot; )
+{
+  var createRecords = [];
+  var records = {!GETRECORDIDS($ObjectType.Material_Enrollment__c)};
+  if(records[0]==null)
+  {
+     alert(&quot;Please select at least one record to update.&quot;);
+  }
+  else
+  {
+     var answer = confirm(&quot;Are you Sure you want to assign task to Procurement&quot;);
+     if (answer)  
+     {
+        for (var a=0; a&lt;records.length; a++)
+        {
+          var qr = sforce.connection.query(&quot;SELECT Id,Name,opportunity__r.Name,Item_Name__c,Material__r.Name,Quantity__c,Unit_of_Measurment__c FROM Material_Enrollment__c where Id=&apos;&quot; + records[a] + &quot;&apos;&quot;);
+           var chkname =qr.records.Item_Name__c;
+           var checkdesc = qr.records.Name;
+           if(chkname ==null)
+           {   
+              var itemname =qr.records.Material__r.Name;
+             
+           }
+           else
+           {   
+                var itemname= qr.records.Item_Name__c;
+           }
+          
+           if(checkdesc ==null)
+           {
+               var itemdesc =qr.records.Material__r.Name;
+           }
+           else
+           {
+               var itemdesc =qr.records.Name;
+           }
+
+           var sub =itemname+&apos; &apos;+&apos;*&apos;+&apos; &apos;+itemdesc +&apos; &apos;+&apos;*&apos;+&apos; &apos;+qr.records.Quantity__c +&apos; &apos;+ qr.records.Unit_of_Measurment__c +&apos; &apos;+&apos;*&apos;+&apos; &apos;+qr.records.opportunity__r.Name;
+          /*Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+           var toAddresses = new String[] {&apos;manjeet.singh@weirservices.com&apos;}; 
+           var ccAddresses = new String[] {&apos;sampath@aphidas.com&apos;};
+           mail.setToAddresses(toAddresses);
+           mail.setCcAddresses(ccAddresses);
+           mail.setReplyTo(&apos;sampath@aphidas.com&apos;);
+           mail.setSenderDisplayName(&apos;Weir Services&apos;);
+           mail.setSubject(sub);
+           mail.setBccSender(false);
+           mail.setUseSignature(false);
+           mail.setPlainTextBody(&apos;New procurement task&apos;);
+           Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });*/
+
+           
+        }
+        //alert(createRecords);
+        //result = sforce.connection.create(createRecords);    
+        if (!result[0].getBoolean(&quot;success&quot;))
+        {
+           alert(&quot;Failed to create task: &quot; + result[0]);
+        }
+        else
+        {
+           alert(&quot;Successfully task assigned to Procurement department&quot;);
+        }
+        window.location.reload();
+     }
+  }
+}
+else
+{
+   alert(&quot;You don&apos;t have sufficient privileges to assign the Task, Contact TR or TM or System Administrator&quot;);
+}</url>
+</WebLink>

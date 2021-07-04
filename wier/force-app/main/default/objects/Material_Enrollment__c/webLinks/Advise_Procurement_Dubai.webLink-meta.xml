@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Advise_Procurement_Dubai</fullName>
+    <availability>online</availability>
+    <description>Advise Procurement (dubai)</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Advise Procurement</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&apos;/soap/ajax/28.0/connection.js&apos;)}
+var pid = &quot;{!User.ProfileId}&quot;;
+if( pid ==&quot;00eb0000000QsY1&quot; || pid ==&quot;00eb0000000QsY2&quot; || pid ==&quot;00eb00000010Rfc&quot; )
+{  
+  var answer = confirm(&quot;Are you Sure you want to assign task to procurement&quot;);
+  if (answer)  
+  {
+    // identify the record
+   
+    var o = new sforce.SObject(&quot;COpportunity__c&quot;);
+    o.id = &quot;{!COpportunity__c.Id}&quot;; 
+    var t1= new sforce.SObject(&quot;Task&quot;);
+    t1.WhatId = o.id;
+    t1.Subject = &quot;Advise delivery lead time.&quot;;
+    t1.Status = &quot;Open&quot;; 
+    t1.Priority = &quot;Normal&quot;;
+    t1.OwnerId= &quot;005b0000001NW4v&quot;;
+    var currentDateTime = new Date();
+    t1.ActivityDate =currentDateTime; 
+    result = sforce.connection.create([t1]);
+    if (!result[0].getBoolean(&quot;success&quot;))
+    {
+      alert(&quot;Failed to create task: &quot; + result[0]);
+    }
+    else
+    {
+      alert(&quot;Successfully task assigned to Procurement department&quot;);
+    }
+  }
+ }
+else if( pid ==&quot;00eb00000011ijx&quot; || pid ==&quot;00eb00000011ijE&quot; || pid ==&quot;00eb00000011ijO&quot; || pid ==&quot;00eb00000011ik2&quot; || pid ==&quot;00eb00000011ijJ&quot; || pid ==&quot;00eb00000011ikC&quot; || pid ==&quot;00eb00000011iif&quot; || pid ==&quot;00eb00000011iiL&quot; || pid ==&quot;00eb00000011iik&quot; )
+{  
+  var answer = confirm(&quot;Are you Sure you want to assign task to procurement&quot;);
+  if (answer)  
+  {
+    // identify the record
+   
+    var o = new sforce.SObject(&quot;COpportunity__c&quot;);
+    o.id = &quot;{!COpportunity__c.Id}&quot;; 
+    var t1= new sforce.SObject(&quot;Task&quot;);
+    t1.WhatId = o.id;
+    t1.Subject = &quot;Advise delivery lead time.&quot;;
+    t1.Status = &quot;Open&quot;; 
+    t1.Priority = &quot;Normal&quot;;
+    t1.OwnerId= &quot;005b000000520H0&quot;;
+    var currentDateTime = new Date();
+    t1.ActivityDate =currentDateTime; 
+    result = sforce.connection.create([t1]);
+    if (!result[0].getBoolean(&quot;success&quot;))
+    {
+      alert(&quot;Failed to create task: &quot; + result[0]);
+    }
+    else
+    {
+      alert(&quot;Successfully task assigned to procurement department&quot;);
+    }
+  }
+ } 
+ 
+ else
+{
+   alert(&quot;You don&apos;t have sufficient privileges to assign the Task, Contact TR or TM or System Administrator&quot;);
+}
+  window.location.reload();</url>
+</WebLink>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Weir_contact_for_the_order__c</fullName>
+    <defaultValue>$User.FirstName +&apos; &apos;+ $User.LastName</defaultValue>
+    <externalId>false</externalId>
+    <label>Weir contact person for the order</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

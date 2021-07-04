@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_delivered_validation</fullName>
+    <active>false</active>
+    <errorConditionFormula>if(Job_delivered__c ==TRUE,if( Draft_invoice_sent_to_Finance__c ==FALSE,TRUE,FALSE),FALSE)</errorConditionFormula>
+    <errorDisplayField>Draft_invoice_sent_to_Finance__c</errorDisplayField>
+    <errorMessage>You must send draft invoice to Finance and confirm that action as completed  in this screen.</errorMessage>
+</ValidationRule>

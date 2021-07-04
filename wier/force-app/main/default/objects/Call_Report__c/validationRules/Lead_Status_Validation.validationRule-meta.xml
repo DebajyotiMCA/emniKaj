@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Status_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>if( 
+    ( Contacted_Spoken__c  ==TRUE &amp;&amp;  Contacted_but_not_reached__c ==TRUE &amp;&amp;  Not_Contacted__c ==TRUE)
+    ||(Contacted_Spoken__c ==TRUE &amp;&amp;  Contacted_but_not_reached__c ==TRUE) 
+    ||(Contacted_Spoken__c ==TRUE &amp;&amp;  Not_Contacted__c ==TRUE) 
+    ||(Contacted_but_not_reached__c ==TRUE &amp;&amp;  Not_Contacted__c ==TRUE),TRUE,FALSE)</errorConditionFormula>
+    <errorDisplayField>Contacted_Spoken__c</errorDisplayField>
+    <errorMessage>Please select only one status</errorMessage>
+</ValidationRule>

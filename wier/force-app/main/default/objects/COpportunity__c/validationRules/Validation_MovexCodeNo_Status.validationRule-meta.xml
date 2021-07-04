@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validation_MovexCodeNo_Status</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND
+( OR(ISPICKVAL(Status__c, &quot;Initial Review&quot;),
+ISPICKVAL(Status__c, &quot;Bid/No Bid&quot;),
+ISPICKVAL(Status__c, &quot;Approved for Tendering&quot;),
+ISPICKVAL(Status__c, &quot;Quotation under compilation&quot;),
+ISPICKVAL(Status__c, &quot;Tender Under Review&quot;),
+ISPICKVAL(Status__c, &quot;Tender Under Approval&quot;),
+ISPICKVAL(Status__c, &quot;Approved, Make Quotation ready for submitial&quot;),
+ISPICKVAL(Status__c, &quot;Quote Ready for Submital&quot;),
+ISPICKVAL(Status__c, &quot;Quote Submitted to Customer&quot;),
+ISPICKVAL(Status__c, &quot;Customer Contacted for Submitted quote&quot;),
+ISPICKVAL(Status__c, &quot;Quotation under clarification with Customer&quot;),
+ISPICKVAL(Status__c, &quot;PO received&quot;),
+ISPICKVAL(Status__c, &quot;PO Under Clarification&quot;),
+ISPICKVAL(Status__c, &quot;PO under Review with Contract&quot;),
+ISPICKVAL(Status__c, &quot;PO Approved by Contract&quot;),
+ISPICKVAL(Status__c, &quot;Customer order acknowledged&quot;),
+ISPICKVAL(Status__c, &quot;PO handover to Planning&quot;),
+ISPICKVAL(Status__c, &quot;Job handover to Operations&quot;),
+ISPICKVAL(Status__c, &quot;Job done awaiting contracts sign-off&quot;),
+ISPICKVAL(Status__c, &quot;Job ready for Delivery&quot;),
+ISPICKVAL(Status__c, &quot;job delivered&quot;),
+ISPICKVAL(Status__c, &quot;Opportunity closed&quot;),
+ISPICKVAL(Status__c, &quot;Quote accepted but PO awaited&quot;),
+ISPICKVAL(Status__c, &quot;Customer notified of a Completed Job&quot;),
+ISPICKVAL(Status__c, &quot;Invoicing onhold&quot;),
+ISPICKVAL(Status__c, &quot;Job invoiced in movex&quot;),
+ISPICKVAL(Status__c, &quot;Partial Collected&quot;),
+ISPICKVAL(Status__c, &quot;Fully Collected&quot;),
+ISPICKVAL(Status__c, &quot;Invoice sent&quot;),
+ISPICKVAL(Status__c, &quot;Quoted &amp; Lost&quot;)
+					
+),
+NOT(ISCHANGED(Movex_CO_No__c))
+
+)</errorConditionFormula>
+    <errorDisplayField>Movex_CO_No__c</errorDisplayField>
+    <errorMessage>Editable only when the status is &quot;PO Handed over to Contracts&quot;.</errorMessage>
+</ValidationRule>

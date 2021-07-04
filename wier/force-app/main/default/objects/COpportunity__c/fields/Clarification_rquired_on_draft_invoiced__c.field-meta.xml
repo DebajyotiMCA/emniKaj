@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clarification_rquired_on_draft_invoiced__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Clarification required on draft invoiced</description>
+    <externalId>false</externalId>
+    <label>Clarification required on draft invoice</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

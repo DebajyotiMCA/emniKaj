@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_met_expectations_score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT( Delivery_install_met_expectations__c), 
+&apos;Strongly Agree&apos;,100, 
+&apos;Agree&apos;,100, 
+&apos;Neutral&apos;,0, 
+&apos;Disagree&apos;,-100, 
+&apos;Strongly Disagree&apos;,-100, 
+0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Delivery met expectations score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

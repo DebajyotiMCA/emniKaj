@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>opportunity__c</columns>
+    <columns>Material__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Item_Name__c</columns>
+    <columns>Quantity__c</columns>
+    <columns>Unit_of_Measurment__c</columns>
+    <columns>Submission_due_date__c</columns>
+    <columns>Tendering_Comments__c</columns>
+    <columns>Delivery_Lead_Time_Weeks__c</columns>
+    <columns>Delivery_Lead_Time_Order_stage__c</columns>
+    <columns>Procurement_Comments__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

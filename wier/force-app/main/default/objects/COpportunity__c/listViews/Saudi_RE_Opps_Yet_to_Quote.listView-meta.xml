@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Saudi_RE_Opps_Yet_to_Quote</fullName>
+    <booleanFilter>1 AND 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Customer__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Opportunity_description__c</columns>
+    <columns>Contents_of_customer_communication__c</columns>
+    <columns>Win_Prob__c</columns>
+    <columns>Selling_price_in_Quotation__c</columns>
+    <columns>Expected_date_of_input__c</columns>
+    <columns>Assign_Tendering_Representative__c</columns>
+    <columns>Close_Date__c</columns>
+    <columns>Quotation_submittal_date__c</columns>
+    <columns>Expected_Quotation_value__c</columns>
+    <columns>Strategic_Initiative__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>,Initial Review,Bid/No Bid,Approved for Tendering,Quotation under compilation</value>
+    </filters>
+    <filters>
+        <field>Tendering_Manager_Role__c</field>
+        <operation>equals</operation>
+        <value>Saudi - RE Head of Tendering</value>
+    </filters>
+    <label>Saudi RE Opps (Yet to Quote)</label>
+    <sharedTo>
+        <roleAndSubordinates>Saudi_RE_Head_of_Tendering</roleAndSubordinates>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>COpportunity__c</columns>
+    <columns>Opportunity_Description__c</columns>
+    <columns>NAME</columns>
+    <columns>CostSheet__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Reason_for_lost_quote_as_per_CSR__c</columns>
+    <columns>Movex_quotation_docs_serial_no__c</columns>
+    <columns>Quotation_version__c</columns>
+    <columns>Final__c</columns>
+    <columns>PO_received_from_customer__c</columns>
+    <columns>Selling_price_in_Quotation__c</columns>
+    <columns>Movex_Co_No__c</columns>
+    <columns>Tendering_Representative__c</columns>
+    <columns>Comment_if_any__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+    <sharedTo>
+        <role>FD</role>
+        <role>Financial_Controller</role>
+        <role>General_Manager</role>
+        <role>Head_of_Sales</role>
+        <role>Managing_Director</role>
+    </sharedTo>
+</ListView>

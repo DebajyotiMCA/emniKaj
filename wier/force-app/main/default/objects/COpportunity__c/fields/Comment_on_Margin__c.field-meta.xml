@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Comment_on_Margin__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF ((OR(
+( Gross_Roundup__c  &lt; 1500  &amp;&amp;  ISPICKVAL(Revenue_stream__c, &apos;Trading&apos;)),
+(OR(
+(Gross_Roundup__c  &lt; 2000  &amp;&amp; ISPICKVAL(Revenue_stream__c, &apos;APS&apos;)),
+(Gross_Roundup__c  &lt; 2000  &amp;&amp; ISPICKVAL(Revenue_stream__c, &apos;Field Service&apos;)),
+(Gross_Roundup__c  &lt; 2000  &amp;&amp; ISPICKVAL(Revenue_stream__c, &apos;Projects (O&amp;M)&apos;)),
+(Gross_Roundup__c  &lt; 2000  &amp;&amp; ISPICKVAL(Revenue_stream__c, &apos;Rental&apos;)),
+(Gross_Roundup__c  &lt; 2000  &amp;&amp; ISPICKVAL(Revenue_stream__c, &apos;Rotating Equipment&apos;)),
+(Gross_Roundup__c  &lt; 2000  &amp;&amp; ISPICKVAL(Revenue_stream__c, &apos;Valves&apos;)),
+(Gross_Roundup__c  &lt; 2000  &amp;&amp; ISPICKVAL(Revenue_stream__c, &apos;Workshop&apos;)),
+(Gross_Roundup__c  &lt; 2000  &amp;&amp; ISPICKVAL(Revenue_stream__c, &apos;Rental - Mathena&apos;)))))), &apos;Price does not meet criteria of minimum margin%. Approval is required one level above normally applicable authorization for this tender value.&apos;, &apos;Price meets criteria of minimum margin %.&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Comment on Margin</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_lost_quote__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason for lost quote (as per Tendering)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Customer_feedback_on_quotation_sent__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Better priced by competition</fullName>
+                <default>false</default>
+                <label>Better priced by competition</label>
+            </value>
+            <value>
+                <fullName>Competitor&apos;s better track record</fullName>
+                <default>false</default>
+                <label>Competitor&apos;s better track record</label>
+            </value>
+            <value>
+                <fullName>Competitor&apos;s relationship strength</fullName>
+                <default>false</default>
+                <label>Competitor&apos;s relationship strength</label>
+            </value>
+            <value>
+                <fullName>Customer didn&apos;t win the project</fullName>
+                <default>false</default>
+                <label>Customer didn&apos;t win the project</label>
+            </value>
+            <value>
+                <fullName>Customer&apos;s preference for OEM</fullName>
+                <default>false</default>
+                <label>Customer&apos;s preference for OEM</label>
+            </value>
+            <value>
+                <fullName>Delivery lead time</fullName>
+                <default>false</default>
+                <label>Delivery lead time</label>
+            </value>
+            <value>
+                <fullName>End-user cancelled the project</fullName>
+                <default>false</default>
+                <label>End-user cancelled the project</label>
+            </value>
+            <value>
+                <fullName>Disagreement on terms / conditions</fullName>
+                <default>false</default>
+                <label>Disagreement on terms / conditions</label>
+            </value>
+            <value>
+                <fullName>Late quote</fullName>
+                <default>false</default>
+                <label>Late quote</label>
+            </value>
+            <value>
+                <fullName>Not qualified / registered with the customer</fullName>
+                <default>false</default>
+                <label>Not qualified / registered with the customer</label>
+            </value>
+            <value>
+                <fullName>Quote not matching customer specs</fullName>
+                <default>false</default>
+                <label>Quote not matching customer specs</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <label>Unknown</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Better priced by competition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Competitor&apos;s better track record</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Competitor&apos;s relationship strength</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Customer didn&apos;t win the project</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Customer&apos;s preference for OEM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Delivery lead time</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>End-user cancelled the project</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Disagreement on terms / conditions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Late quote</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Not qualified / registered with the customer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Quote not matching customer specs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Unknown</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Opportunity lost</controllingFieldValue>
+            <valueName>Others</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

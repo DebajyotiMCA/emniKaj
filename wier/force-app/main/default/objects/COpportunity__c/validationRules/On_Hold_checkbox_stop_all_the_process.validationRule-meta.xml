@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>On_Hold_checkbox_stop_all_the_process</fullName>
+    <active>true</active>
+    <description>On_Hold_Validation</description>
+    <errorConditionFormula>AND( ISCHANGED( Status__c ) , On_Hold__c =TRUE)</errorConditionFormula>
+    <errorMessage>The opportunity has been put &quot;On Hold&quot;. You cannot proceed further until the opportunity is unlocked for further processing.</errorMessage>
+</ValidationRule>

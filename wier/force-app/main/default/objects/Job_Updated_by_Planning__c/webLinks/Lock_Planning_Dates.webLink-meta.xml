@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lock_Planning_Dates</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Lock Planing Dates</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&apos;/soap/ajax/28.0/connection.js&apos;)}
+var pid = &quot;{!User.ProfileId}&quot;;
+if( pid ==&quot;00eb0000000s2Jy&quot; || pid ==&quot;00eb0000000RDHR&quot; || pid ==&quot;00eb0000000RDHQ&quot;)
+{
+   var createRecords = [];
+   var records = {!GETRECORDIDS($ObjectType.Job_Updated_by_Planning__c)};
+   if(records[0]==null)
+   {
+      alert(&quot;Please select all the records to update.&quot;);
+   }
+  else
+  {
+     var answer = confirm(&quot;Are you Sure you want to lock the planning dates&quot;);
+     if (answer)
+     {
+        var o = new sforce.SObject(&quot;COpportunity__c&quot;);
+        o.id = &quot;{!COpportunity__c.Id}&quot;; 
+        o.Jod_Update_locked__c = true;
+        var result1 = sforce.connection.update([o]);
+        for (var a=0; a&lt;records.length; a++)
+        { 
+            var t1= new sforce.SObject(&quot;Job_Updated_by_Planning__c&quot;); 
+            t1.id = records[a];
+            t1.Jod_Update_locked__c =true;
+            result = sforce.connection.update([t1]); 
+        }
+        if (!result[0].getBoolean(&quot;success&quot;))
+        {
+           alert(&quot;Failed to create task: &quot; + result[0]);
+        }
+        else
+        {
+           alert(&quot;Planning Dates have been locked.&quot;);
+        }
+        window.location.reload(); 
+     }
+  } 
+}
+else
+{
+       alert(&quot;You don&apos;t have sufficient privileges to assign the Task, Contact TR or TM or System Administrator&quot;);
+}</url>
+</WebLink>

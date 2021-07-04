@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CQ Forms Landscape</label>
+    <protected>false</protected>
+    <values>
+        <field>compliancequest__DateTime_Format__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>compliancequest__Date_Format__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>compliancequest__Default_Setting__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>compliancequest__Enable_Stamping_When_Printed__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>compliancequest__Merge_Fields_Set_1__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>compliancequest__Merge_Fields_Set_2__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>compliancequest__Page_Namespace__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>compliancequest__Print_Stamp_Coordinate__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>compliancequest__Print_Stamp_DateTime_Format__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>compliancequest__Print_Stamp_Expiration__c</field>
+        <value xsi:type="xsd:double">24.0</value>
+    </values>
+    <values>
+        <field>compliancequest__Profile_Page_Inclusion_Type__c</field>
+        <value xsi:type="xsd:string">Prepend</value>
+    </values>
+    <values>
+        <field>compliancequest__Profile_Page_Parameter__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>compliancequest__Profile_Page__c</field>
+        <value xsi:type="xsd:string">CQ_CCC_Controlled_Document_Profile_Page</value>
+    </values>
+    <values>
+        <field>compliancequest__Stamping_PDF__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>compliancequest__Text_To_Stamp_When_Printed__c</field>
+        <value xsi:type="xsd:string">Printed on {0}, Expires on {1}</value>
+    </values>
+    <values>
+        <field>compliancequest__Watermark_Angle__c</field>
+        <value xsi:type="xsd:double">45.0</value>
+    </values>
+    <values>
+        <field>compliancequest__Watermark_Color__c</field>
+        <value xsi:type="xsd:string">0,230,230,250</value>
+    </values>
+    <values>
+        <field>compliancequest__Watermark_Horizontal_Position__c</field>
+        <value xsi:type="xsd:string">Center</value>
+    </values>
+    <values>
+        <field>compliancequest__Watermark_Text_Size__c</field>
+        <value xsi:type="xsd:double">72.0</value>
+    </values>
+    <values>
+        <field>compliancequest__Watermark_Vertical_Position__c</field>
+        <value xsi:type="xsd:string">Center</value>
+    </values>
+    <values>
+        <field>compliancequest__Watermark_Z_Order__c</field>
+        <value xsi:type="xsd:string">Send to back</value>
+    </values>
+    <values>
+        <field>compliancequest__Watermark__c</field>
+        <value xsi:type="xsd:string">{!Document_Status__c}</value>
+    </values>
+</CustomMetadata>

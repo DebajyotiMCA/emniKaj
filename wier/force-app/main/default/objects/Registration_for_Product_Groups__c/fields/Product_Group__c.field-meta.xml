@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Group__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Group</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>206 / 602 - Flow Iron</fullName>
+                <default>false</default>
+                <label>206 / 602 - Flow Iron</label>
+            </value>
+            <value>
+                <fullName>API 16A - BOP Repairs</fullName>
+                <default>false</default>
+                <label>API 16A - BOP Repairs</label>
+            </value>
+            <value>
+                <fullName>API 16A - Drilling Spools, Adapters, Clamps, Hubs</fullName>
+                <default>false</default>
+                <label>API 16A - Drilling Spools, Adapters, Clamps, Hubs</label>
+            </value>
+            <value>
+                <fullName>API 16 C - Supply, Inspection, Repair &amp; Recertification of C&amp;K Manifolds &amp; Hard Lines</fullName>
+                <default>false</default>
+                <label>API 16 C - Supply, Inspection, Repair &amp; Recertification of C&amp;K Manifolds &amp; Hard Lines</label>
+            </value>
+            <value>
+                <fullName>API 16 D - BOP Control Systems</fullName>
+                <default>false</default>
+                <label>API 16 D - BOP Control Systems</label>
+            </value>
+            <value>
+                <fullName>API 5CT - Supply, Inspection &amp; Repair of Casing, Tubing, X-Over and Pup Joints</fullName>
+                <default>false</default>
+                <label>API 5CT - Supply, Inspection &amp; Repair of Casing, Tubing, X-Over and Pup Joints</label>
+            </value>
+            <value>
+                <fullName>API 6A - Chokes</fullName>
+                <default>false</default>
+                <label>API 6A - Chokes</label>
+            </value>
+            <value>
+                <fullName>API 6A - Pressure Boundary Products (Flanges, Double Studded Adapters, Studed Blocks, Flanged Blocks, Spools, BOP Test Stump)</fullName>
+                <default>false</default>
+                <label>API 6A - Pressure Boundary Products (Flanges, Double Studded Adapters, Studed Blocks, Flanged Blocks, Spools, BOP Test Stump)</label>
+            </value>
+            <value>
+                <fullName>API 6A - Standpipe Manifold</fullName>
+                <default>false</default>
+                <label>API 6A - Standpipe Manifold</label>
+            </value>
+            <value>
+                <fullName>API 6A - Surface Safety Valves</fullName>
+                <default>false</default>
+                <label>API 6A - Surface Safety Valves</label>
+            </value>
+            <value>
+                <fullName>API 6A - Valves</fullName>
+                <default>false</default>
+                <label>API 6A - Valves</label>
+            </value>
+            <value>
+                <fullName>API 6A - Wellhead &amp; Valve Maintenance</fullName>
+                <default>false</default>
+                <label>API 6A - Wellhead &amp; Valve Maintenance</label>
+            </value>
+            <value>
+                <fullName>API 6 A - Wellhead &amp; X-mas Tree Supply</fullName>
+                <default>false</default>
+                <label>API 6 A - Wellhead &amp; X-mas Tree Supply</label>
+            </value>
+            <value>
+                <fullName>API 6A - Wellhead Accessories Inc Spools/ DSA&apos;s,  Tees &amp; Xs, X-over connectors</fullName>
+                <default>false</default>
+                <label>API 6A - Wellhead Accessories Inc Spools/ DSA&apos;s,  Tees &amp; Xs, X-over connectors</label>
+            </value>
+            <value>
+                <fullName>API 6A - Well Test Manifold</fullName>
+                <default>false</default>
+                <label>API 6A - Well Test Manifold</label>
+            </value>
+            <value>
+                <fullName>API 7-1 - Supply, Inspection &amp; Repair of Drill Pipes &amp; Crossovers</fullName>
+                <default>false</default>
+                <label>API 7-1 - Supply, Inspection &amp; Repair of Drill Pipes &amp; Crossovers</label>
+            </value>
+            <value>
+                <fullName>APS - Pump, Compressors, Turbine</fullName>
+                <default>false</default>
+                <label>APS - Pump, Compressors, Turbine</label>
+            </value>
+            <value>
+                <fullName>Cement and Frac Heads</fullName>
+                <default>false</default>
+                <label>Cement and Frac Heads</label>
+            </value>
+            <value>
+                <fullName>Customer Training</fullName>
+                <default>false</default>
+                <label>Customer Training</label>
+            </value>
+            <value>
+                <fullName>Drilling Stabilizers &amp; Fishing tools Tungsten Carbide Hard facing services</fullName>
+                <default>false</default>
+                <label>Drilling Stabilizers &amp; Fishing tools Tungsten Carbide Hard facing services</label>
+            </value>
+            <value>
+                <fullName>Electric Motor Repairs</fullName>
+                <default>false</default>
+                <label>Electric Motor Repairs</label>
+            </value>
+            <value>
+                <fullName>Fabrication (Baskets, skids, fittings)</fullName>
+                <default>false</default>
+                <label>Fabrication (Baskets, skids, fittings)</label>
+            </value>
+            <value>
+                <fullName>Fabrication - Pump / Compressor Skids</fullName>
+                <default>false</default>
+                <label>Fabrication - Pump / Compressor Skids</label>
+            </value>
+            <value>
+                <fullName>Field Service - Downstream</fullName>
+                <default>false</default>
+                <label>Field Service - Downstream</label>
+            </value>
+            <value>
+                <fullName>Field Service - Upstream</fullName>
+                <default>false</default>
+                <label>Field Service - Upstream</label>
+            </value>
+            <value>
+                <fullName>Flow Iron (Hammer Unions, X-ovrs, pup joints and caps</fullName>
+                <default>false</default>
+                <label>Flow Iron (Hammer Unions, X-ovrs, pup joints and caps</label>
+            </value>
+            <value>
+                <fullName>Flow Metering Skids</fullName>
+                <default>false</default>
+                <label>Flow Metering Skids</label>
+            </value>
+            <value>
+                <fullName>Hard Banding</fullName>
+                <default>false</default>
+                <label>Hard Banding</label>
+            </value>
+            <value>
+                <fullName>In Situ Machining Services</fullName>
+                <default>false</default>
+                <label>In Situ Machining Services</label>
+            </value>
+            <value>
+                <fullName>Maintenance Engineering</fullName>
+                <default>false</default>
+                <label>Maintenance Engineering</label>
+            </value>
+            <value>
+                <fullName>Mathena Products</fullName>
+                <default>false</default>
+                <label>Mathena Products</label>
+            </value>
+            <value>
+                <fullName>Mechanical Seal Service/Repair</fullName>
+                <default>false</default>
+                <label>Mechanical Seal Service/Repair</label>
+            </value>
+            <value>
+                <fullName>Mud Pump Fluid Module Repairs</fullName>
+                <default>false</default>
+                <label>Mud Pump Fluid Module Repairs</label>
+            </value>
+            <value>
+                <fullName>Mud Pump Fluid Module Spares (Novatech)</fullName>
+                <default>false</default>
+                <label>Mud Pump Fluid Module Spares (Novatech)</label>
+            </value>
+            <value>
+                <fullName>OCTG &amp; BHA Inspections</fullName>
+                <default>false</default>
+                <label>OCTG &amp; BHA Inspections</label>
+            </value>
+            <value>
+                <fullName>Operation &amp; Maint (O&amp;M)</fullName>
+                <default>false</default>
+                <label>Operation &amp; Maint (O&amp;M)</label>
+            </value>
+            <value>
+                <fullName>Packers</fullName>
+                <default>false</default>
+                <label>Packers</label>
+            </value>
+            <value>
+                <fullName>Pipe Line Integrity &amp; Maintenance Services</fullName>
+                <default>false</default>
+                <label>Pipe Line Integrity &amp; Maintenance Services</label>
+            </value>
+            <value>
+                <fullName>Process Valve Supply, Repair &amp; Test</fullName>
+                <default>false</default>
+                <label>Process Valve Supply, Repair &amp; Test</label>
+            </value>
+            <value>
+                <fullName>Production Manifold</fullName>
+                <default>false</default>
+                <label>Production Manifold</label>
+            </value>
+            <value>
+                <fullName>Repair &amp; Recertifications of Rig Equipment (Pulsation Dampeners, Mud Pump Relief Valves, Flow Iron, Choke &amp; Kill Coflex Hose Pipes etc.)</fullName>
+                <default>false</default>
+                <label>Repair &amp; Recertifications of Rig Equipment (Pulsation Dampeners, Mud Pump Relief Valves, Flow Iron, Choke &amp; Kill Coflex Hose Pipes etc.)</label>
+            </value>
+            <value>
+                <fullName>Sucker Rod BOPs</fullName>
+                <default>false</default>
+                <label>Sucker Rod BOPs</label>
+            </value>
+            <value>
+                <fullName>Supply of Allen Steam Turbine</fullName>
+                <default>false</default>
+                <label>Supply of Allen Steam Turbine</label>
+            </value>
+            <value>
+                <fullName>Upgrade &amp; Overhaul of Compressors</fullName>
+                <default>false</default>
+                <label>Upgrade &amp; Overhaul of Compressors</label>
+            </value>
+            <value>
+                <fullName>Upgrade &amp; Overhaul of Gas Turbines</fullName>
+                <default>false</default>
+                <label>Upgrade &amp; Overhaul of Gas Turbines</label>
+            </value>
+            <value>
+                <fullName>Upgrade &amp; Overhaul of Pumps</fullName>
+                <default>false</default>
+                <label>Upgrade &amp; Overhaul of Pumps</label>
+            </value>
+            <value>
+                <fullName>Upgrade &amp; Overhaul of Steam Turbines</fullName>
+                <default>false</default>
+                <label>Upgrade &amp; Overhaul of Steam Turbines</label>
+            </value>
+            <value>
+                <fullName>Well Services PCE Recertification (Wireline, Slickline, Coil Tubing)</fullName>
+                <default>false</default>
+                <label>Well Services PCE Recertification (Wireline, Slickline, Coil Tubing)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

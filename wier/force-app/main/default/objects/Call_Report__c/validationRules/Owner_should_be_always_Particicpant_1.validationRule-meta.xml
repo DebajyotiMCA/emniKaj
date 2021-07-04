@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Owner_should_be_always_Particicpant_1</fullName>
+    <active>false</active>
+    <description>Owner should be always Participant1</description>
+    <errorConditionFormula>if($User.Id    &lt;&gt;  Participant1__r.Id , True, False )</errorConditionFormula>
+    <errorMessage>Participant 1 should be the owner of the report</errorMessage>
+</ValidationRule>

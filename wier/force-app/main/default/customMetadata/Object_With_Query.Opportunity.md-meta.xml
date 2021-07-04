@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Opportunity</label>
+    <protected>false</protected>
+    <values>
+        <field>Query_String__c</field>
+        <value xsi:type="xsd:string">select id, name,Value_for_pipeline__c from COpportunity__c where Customer__c =: AccId and status__c in (&apos;Approved&apos;, &apos;Make Quotation ready for submitial&apos;,&apos;Quote Ready for Submital&apos;,&apos;Quote Submitted to Customer&apos;,&apos;Customer Contacted for Submitted quote&apos;,&apos;Quotation under clarification with Customer&apos;) and Business_Unit__c not in (&apos;Aberdeen&apos;,&apos;Barton&apos;) order by Value_for_pipeline__c desc limit 10</value>
+    </values>
+</CustomMetadata>

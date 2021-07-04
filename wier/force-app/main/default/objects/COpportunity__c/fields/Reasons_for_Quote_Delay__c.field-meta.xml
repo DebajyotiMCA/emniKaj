@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reasons_for_Quote_Delay__c</fullName>
+    <externalId>false</externalId>
+    <label>Reasons for Quote Delay</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CSR Delayed Processing</fullName>
+                <default>false</default>
+                <label>CSR Delayed Processing</label>
+            </value>
+            <value>
+                <fullName>Hold - Lack of Data</fullName>
+                <default>false</default>
+                <label>Hold - Lack of Data</label>
+            </value>
+            <value>
+                <fullName>Hold - No Movex Customer</fullName>
+                <default>false</default>
+                <label>Hold - No Movex Customer</label>
+            </value>
+            <value>
+                <fullName>No Vendor Quote</fullName>
+                <default>false</default>
+                <label>No Vendor Quote</label>
+            </value>
+            <value>
+                <fullName>Operational Issue</fullName>
+                <default>false</default>
+                <label>Operational Issue</label>
+            </value>
+            <value>
+                <fullName>TR Delayed</fullName>
+                <default>false</default>
+                <label>TR Delayed</label>
+            </value>
+            <value>
+                <fullName>Declined</fullName>
+                <default>false</default>
+                <label>Declined</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

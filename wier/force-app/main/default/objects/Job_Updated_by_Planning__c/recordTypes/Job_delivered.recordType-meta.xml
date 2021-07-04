@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_delivered</fullName>
+    <active>true</active>
+    <description>Job delivered</description>
+    <label>Job delivered</label>
+    <picklistValues>
+        <picklist>Reason_for_change_in_delivery_date__c</picklist>
+        <values>
+            <fullName>Await consumables</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Await customer confirmation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Await spares</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Await technical info from Tendering %2F Sales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change of work scope</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cutting capacity constraint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Machine break down</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Material delay %2F Material late arrival</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Material supplied not as per reqd spacs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PWHT delay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Process delay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rework %2F NCR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sickness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sub contract delay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Third party witness delay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Urgent %2F Unplanned jobs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work center over capacity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Workshop space constraint %3A transport%2Fmotion%2Fwaiting waste</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

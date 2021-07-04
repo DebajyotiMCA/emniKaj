@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default_Currency</fullName>
+    <active>true</active>
+    <errorConditionFormula>TEXT(COpportunity__r.CurrencyIsoCode)  &lt;&gt; TEXT(CurrencyIsoCode)</errorConditionFormula>
+    <errorDisplayField>CurrencyIsoCode</errorDisplayField>
+    <errorMessage>Currency selection does not match with the currency selected on opportunity page.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>equire_Changes_and_Approva_Manager</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(  Final_Approval__c =TRUE,  Require_Changes__c  =TRUE)</errorConditionFormula>
+    <errorMessage>You can select either CM Requires Changes/ Clarification  or Customer PO approved BUT NOT BOTH.</errorMessage>
+</ValidationRule>

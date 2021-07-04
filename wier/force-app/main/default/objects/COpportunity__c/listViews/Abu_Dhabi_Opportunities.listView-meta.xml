@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Abu_Dhabi_Opportunities</fullName>
+    <columns>NAME</columns>
+    <columns>Opportunity_description__c</columns>
+    <columns>Status__c</columns>
+    <columns>Expected_date_of_input__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Win_Probability__c</columns>
+    <columns>Opportunity_Name__c</columns>
+    <columns>Assign_Tendering_Representative__c</columns>
+    <columns>Tendering_Manager__c</columns>
+    <columns>Movex_CO_No__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Business_Unit__c</field>
+        <operation>equals</operation>
+        <value>Abu Dhabi</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>11/18/2020 12:00 AM</value>
+    </filters>
+    <label>Abu Dhabi Opportunities (All)</label>
+    <sharedTo>
+        <role>Abu_Dhabi_CSR</role>
+        <role>FD</role>
+        <role>Financial_Controller</role>
+        <role>MD_Abu_Dhabi</role>
+        <role>Managing_Director</role>
+        <role>Team_Lead_RE</role>
+        <role>Tendering_Manager_Abu_Dhabi</role>
+        <role>Tendering_Rep_Abu_Dhabi</role>
+    </sharedTo>
+</ListView>

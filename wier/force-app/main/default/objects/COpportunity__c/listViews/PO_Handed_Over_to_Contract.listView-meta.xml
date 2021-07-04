@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PO_Handed_Over_to_Contract</fullName>
+    <columns>NAME</columns>
+    <columns>Opportunity_description__c</columns>
+    <columns>Type_of_Business__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Close_Date__c</columns>
+    <columns>Ref_if_any_in_customer_communication__c</columns>
+    <columns>Assign_Tendering_Representative__c</columns>
+    <columns>Selling_price_in_Quotation__c</columns>
+    <columns>Gross_Margin__c</columns>
+    <columns>Movex_CO_No__c</columns>
+    <columns>Customer_PO__c</columns>
+    <columns>Is_the_job_to_be_executed_in_Dubai__c</columns>
+    <columns>End__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Contents_of_customer_communication__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>PO handed over to Contract</value>
+    </filters>
+    <filters>
+        <field>Business_Unit__c</field>
+        <operation>equals</operation>
+        <value>Iraq,NAI,Dubai - Oilfield,Dubai - APS/RE,Oman</value>
+    </filters>
+    <label>PO Handed Over to Contract</label>
+    <sharedTo>
+        <roleAndSubordinates>Contracts_Manager</roleAndSubordinates>
+    </sharedTo>
+</ListView>

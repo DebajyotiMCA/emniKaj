@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_source__c</fullName>
+    <externalId>false</externalId>
+    <label>Opportunity source</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+                <label>Advertisement</label>
+            </value>
+            <value>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+                <label>Employee Referral</label>
+            </value>
+            <value>
+                <fullName>External Referral</fullName>
+                <default>false</default>
+                <label>External Referral</label>
+            </value>
+            <value>
+                <fullName>Partner</fullName>
+                <default>false</default>
+                <label>Partner</label>
+            </value>
+            <value>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+                <label>Public Relations</label>
+            </value>
+            <value>
+                <fullName>Website</fullName>
+                <default>false</default>
+                <label>Website</label>
+            </value>
+            <value>
+                <fullName>Word of mouth</fullName>
+                <default>false</default>
+                <label>Word of mouth</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Customer enquiry</fullName>
+                <default>false</default>
+                <label>Customer enquiry</label>
+            </value>
+            <value>
+                <fullName>Collaboration</fullName>
+                <default>false</default>
+                <label>Collaboration</label>
+            </value>
+            <value>
+                <fullName>Customer Visit</fullName>
+                <default>false</default>
+                <label>Customer Visit</label>
+            </value>
+            <value>
+                <fullName>Email Enquiry</fullName>
+                <default>false</default>
+                <label>Email Enquiry</label>
+            </value>
+            <value>
+                <fullName>Installed Base</fullName>
+                <default>false</default>
+                <label>Installed Base</label>
+            </value>
+            <value>
+                <fullName>Frame Agreement</fullName>
+                <default>false</default>
+                <label>Frame Agreement</label>
+            </value>
+            <value>
+                <fullName>Existing Contract</fullName>
+                <default>false</default>
+                <label>Existing Contract</label>
+            </value>
+            <value>
+                <fullName>Trade Show / Exhibition</fullName>
+                <default>false</default>
+                <label>Trade Show / Exhibition</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

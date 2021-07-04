@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PO_Attachments__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>PO Attachments</label>
+    <referenceTo>PO_Attachments__c</referenceTo>
+    <relationshipLabel>Abu Dhabi Contract Checklists</relationshipLabel>
+    <relationshipName>Abu_Dhabi_Contract_Checklists</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

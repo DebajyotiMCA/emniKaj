@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View_Contract_Handover_CheckList</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>View PO Checklist</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/19.0/connection.js&quot;)}
+var records = {!GETRECORDIDS($ObjectType.Contract_CheckList__c)};
+var updateRecords = [];
+if (records[0] == null)
+{
+
+   window.open(&apos;/apex/Weir_ContractHandoverCheckList?oid={! COpportunity__c.Id}&apos;,&apos;name&apos;,&apos;height=400,width=650,sidebar=yes&apos;);
+}
+else
+{
+alert(&apos;Please Uncheck the records&apos;);
+}</url>
+</WebLink>

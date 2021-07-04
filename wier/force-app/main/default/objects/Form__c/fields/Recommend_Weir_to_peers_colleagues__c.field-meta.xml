@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recommend_Weir_to_peers_colleagues__c</fullName>
+    <externalId>false</externalId>
+    <label>Recommend Weir to peers/colleagues</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Very likely</fullName>
+                <default>false</default>
+                <label>Very likely</label>
+            </value>
+            <value>
+                <fullName>Somewhat likely</fullName>
+                <default>false</default>
+                <label>Somewhat likely</label>
+            </value>
+            <value>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+                <label>Neutral</label>
+            </value>
+            <value>
+                <fullName>Somewhat unlikely</fullName>
+                <default>false</default>
+                <label>Somewhat unlikely</label>
+            </value>
+            <value>
+                <fullName>Very unlikely</fullName>
+                <default>false</default>
+                <label>Very unlikely</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

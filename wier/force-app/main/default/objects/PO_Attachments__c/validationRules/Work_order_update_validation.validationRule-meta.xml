@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Work_order_update_validation</fullName>
+    <active>true</active>
+    <description>Work_order_update_validation</description>
+    <errorConditionFormula>IF(
+   Text( Opportunity__r.Type_of_Business__c )==&quot;O &amp; M&quot; ||
+   Text( Opportunity__r.Type_of_Business__c )==&quot;Manufacturing&quot; ||
+   Text( Opportunity__r.Type_of_Business__c )==&quot;Workshop Service&quot; ||
+   
+
+   Text( Opportunity__r.Revenue_stream__c )==&quot;APS&quot; ||
+   Text( Opportunity__r.Revenue_stream__c )==&quot;Projects (O&amp;M)&quot; ||
+   Text( Opportunity__r.Revenue_stream__c )==&quot;Rotating Equipment&quot; ||
+   Text( Opportunity__r.Revenue_stream__c )==&quot;Valves&quot; ||
+   Text( Opportunity__r.Revenue_stream__c )==&quot;Workshop&quot;,IF(AND(PO_handed_over_to_contract__c ==TRUE, Text(Opportunity__r.Is_the_job_to_be_executed_in_Dubai__c) ==&apos;Yes&apos;, 
+     Opportunity__r.Total_Workorder__c ==0),TRUE,FALSE),FALSE)</errorConditionFormula>
+    <errorDisplayField>PO_handed_over_to_contract__c</errorDisplayField>
+    <errorMessage>Planning must advise job delivery date before you could hand over the order to Contract. Please notify Planning for the required update.</errorMessage>
+</ValidationRule>

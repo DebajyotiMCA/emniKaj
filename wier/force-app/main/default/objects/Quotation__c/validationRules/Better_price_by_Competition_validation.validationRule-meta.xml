@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Better_price_by_Competition_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(TEXT( Reasons_for_opportunity_lost__c )=&quot;Better priced by competition&quot;, ISBLANK( Completion_price_better_by__c ) )</errorConditionFormula>
+    <errorDisplayField>Completion_price_better_by__c</errorDisplayField>
+    <errorMessage>Please provide Completion price better by other competitors.</errorMessage>
+</ValidationRule>

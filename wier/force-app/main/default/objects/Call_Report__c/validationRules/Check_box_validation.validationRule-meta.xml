@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_box_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>if( $UserRole.Name =&quot;Customer Service Representative&quot;,if(AND( Contacted_Spoken__c ==FALSE, Contacted_but_not_reached__c ==FALSE, Not_Contacted__c ==FALSE),TRUE,FALSE),FALSE)</errorConditionFormula>
+    <errorMessage>you have to select at least one check box to conform this action.</errorMessage>
+</ValidationRule>

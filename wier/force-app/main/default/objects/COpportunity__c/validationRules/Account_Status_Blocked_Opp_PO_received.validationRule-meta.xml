@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Status_Blocked_Opp_PO_received</fullName>
+    <active>true</active>
+    <description>When Account Status is &quot;Blocked&quot; and Opportunity Stage is &quot;PO received&quot;, Opportunity should be freezed then</description>
+    <errorConditionFormula>AND( Text(Customer__r.Account_Status__c ) == &apos;Suspended&apos;, IsChanged(  Status__c  ))</errorConditionFormula>
+    <errorMessage>Opportunity cannot be edited, Account is Suspended</errorMessage>
+</ValidationRule>

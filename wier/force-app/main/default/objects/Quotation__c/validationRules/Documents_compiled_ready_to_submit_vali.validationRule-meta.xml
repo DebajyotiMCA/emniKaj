@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Documents_compiled_ready_to_submit_vali</fullName>
+    <active>true</active>
+    <description>Documents compiled, ready to submit validation</description>
+    <errorConditionFormula>AND(COpportunity__r.Quote_ready_for_Submit__c ==FALSE, Quote_Submitted_to_Customer__c == TRUE)</errorConditionFormula>
+    <errorMessage>You must confirm about &apos;Documents compiled, ready to Submit&apos; on the Opportunity Detail page before you could email the quotation.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_CM_RequireFinalApproval</fullName>
+    <active>true</active>
+    <description>Validatin_Contract_Manager_and_require_c</description>
+    <errorConditionFormula>AND( Final_Approval__c =TRUE, Contract_Manager_requires_changes__c =TRUE)</errorConditionFormula>
+    <errorMessage>You can select either CM Requires Changes/ Clarification  or Customer PO approved BUT NOT BOTH.</errorMessage>
+</ValidationRule>

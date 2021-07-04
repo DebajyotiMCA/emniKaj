@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Status_is_Blocked</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(OR(Text(  COpportunity__r.Customer__r.Account_Status__c  ) == &apos;Blocked&apos;,Text( COpportunity__r.Customer__r.Account_Status__c ) == &apos;InActive&apos;),IsNew(), False)</errorConditionFormula>
+    <errorMessage>Account is Blocked</errorMessage>
+</ValidationRule>

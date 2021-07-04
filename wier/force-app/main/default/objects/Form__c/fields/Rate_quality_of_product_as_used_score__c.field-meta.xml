@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rate_quality_of_product_as_used_score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(  Rate_the_quality_of_our_product_as_used__c ), 
+&apos;Very Good&apos;,100, 
+&apos;Good&apos;,100, 
+&apos;Acceptable&apos;,0, 
+&apos;Poor&apos;,-100, 
+&apos;Very Poor&apos;,-100, 
+0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Rate quality of product as used score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

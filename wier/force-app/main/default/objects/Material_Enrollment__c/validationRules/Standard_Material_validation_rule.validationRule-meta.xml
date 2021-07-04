@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Standard_Material_validation_rule</fullName>
+    <active>true</active>
+    <description>Standard_Material_validation_rule</description>
+    <errorConditionFormula>AND( RecordTypeId =&apos;012b0000000DcKd&apos;, Material__r.Name =&apos;Non Standard&apos;)</errorConditionFormula>
+    <errorDisplayField>Material__c</errorDisplayField>
+    <errorMessage>Please select the standard Material.</errorMessage>
+</ValidationRule>

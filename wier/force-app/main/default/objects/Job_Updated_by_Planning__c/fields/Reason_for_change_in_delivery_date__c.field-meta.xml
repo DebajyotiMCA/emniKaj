@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_change_in_delivery_date__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason for change in delivery date</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Await consumables</fullName>
+                <default>false</default>
+                <label>Await consumables</label>
+            </value>
+            <value>
+                <fullName>Await customer confirmation</fullName>
+                <default>false</default>
+                <label>Await customer confirmation</label>
+            </value>
+            <value>
+                <fullName>Await spares</fullName>
+                <default>false</default>
+                <label>Await spares</label>
+            </value>
+            <value>
+                <fullName>Await technical info from Tendering / Sales</fullName>
+                <default>false</default>
+                <label>Await technical info from Tendering / Sales</label>
+            </value>
+            <value>
+                <fullName>Change of work scope</fullName>
+                <default>false</default>
+                <label>Change of work scope</label>
+            </value>
+            <value>
+                <fullName>Cutting capacity constraint</fullName>
+                <default>false</default>
+                <label>Cutting capacity constraint</label>
+            </value>
+            <value>
+                <fullName>Machine break down</fullName>
+                <default>false</default>
+                <label>Machine break down</label>
+            </value>
+            <value>
+                <fullName>Material delay / Material late arrival</fullName>
+                <default>false</default>
+                <label>Material delay / Material late arrival</label>
+            </value>
+            <value>
+                <fullName>Material supplied not as per reqd spacs</fullName>
+                <default>false</default>
+                <label>Material supplied not as per reqd spacs</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Process delay</fullName>
+                <default>false</default>
+                <label>Process delay</label>
+            </value>
+            <value>
+                <fullName>PWHT delay</fullName>
+                <default>false</default>
+                <label>PWHT delay</label>
+            </value>
+            <value>
+                <fullName>Rework / NCR</fullName>
+                <default>false</default>
+                <label>Rework / NCR</label>
+            </value>
+            <value>
+                <fullName>Sickness</fullName>
+                <default>false</default>
+                <label>Sickness</label>
+            </value>
+            <value>
+                <fullName>Sub contract delay</fullName>
+                <default>false</default>
+                <label>Sub contract delay</label>
+            </value>
+            <value>
+                <fullName>Third party witness delay</fullName>
+                <default>false</default>
+                <label>Third party witness delay</label>
+            </value>
+            <value>
+                <fullName>Urgent / Unplanned jobs</fullName>
+                <default>false</default>
+                <label>Urgent / Unplanned jobs</label>
+            </value>
+            <value>
+                <fullName>Work center over capacity</fullName>
+                <default>false</default>
+                <label>Work center over capacity</label>
+            </value>
+            <value>
+                <fullName>Workshop space constraint : transport/motion/waiting waste</fullName>
+                <default>false</default>
+                <label>Workshop space constraint : transport/motion/waiting waste</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

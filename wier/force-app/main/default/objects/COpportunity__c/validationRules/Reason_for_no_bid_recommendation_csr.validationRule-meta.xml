@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_no_bid_recommendation_csr</fullName>
+    <active>true</active>
+    <errorConditionFormula>if(AND( Text(CSRDecisionOnBid__c) =&apos;No&apos;, Text(  Reason_for_no_bid_recommendation_csr__c )=&apos;&apos;),TRUE,FALSE)</errorConditionFormula>
+    <errorDisplayField>Reason_for_no_bid_recommendation_csr__c</errorDisplayField>
+    <errorMessage>Please provide the Reason for no bid recommendation.</errorMessage>
+</ValidationRule>

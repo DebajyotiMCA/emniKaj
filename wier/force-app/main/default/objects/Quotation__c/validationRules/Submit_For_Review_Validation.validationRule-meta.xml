@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Submit_For_Review_Validation</fullName>
+    <active>true</active>
+    <description>Submit_For_Review_Validation</description>
+    <errorConditionFormula>Submit_for_review__c == FALSE</errorConditionFormula>
+    <errorDisplayField>Comment_if_any__c</errorDisplayField>
+    <errorMessage>You must select the Submit for Review checkbox.</errorMessage>
+</ValidationRule>

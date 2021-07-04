@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tendering_Documents_fully_complied__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Tendering Documents fully compiled</description>
+    <externalId>false</externalId>
+    <label>Tendering Documents fully compiled</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

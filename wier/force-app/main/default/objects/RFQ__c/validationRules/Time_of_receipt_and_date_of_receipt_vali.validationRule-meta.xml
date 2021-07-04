@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_of_receipt_and_date_of_receipt_vali</fullName>
+    <active>false</active>
+    <errorConditionFormula>Date_on_Enquiry__c &lt;&gt; DATEVALUE( Time_of_Email_Receipt__c )</errorConditionFormula>
+    <errorDisplayField>Time_of_Email_Receipt__c</errorDisplayField>
+    <errorMessage>Date entered for &quot;Time of receipt&quot; must be same as &quot;Date of receipt&quot;.</errorMessage>
+</ValidationRule>

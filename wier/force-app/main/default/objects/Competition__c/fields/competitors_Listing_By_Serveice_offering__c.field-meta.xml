@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>competitors_Listing_By_Serveice_offering__c</fullName>
+    <externalId>false</externalId>
+    <label>competitors Listing By Serveice offering</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Oilfield - mfg</fullName>
+                <default>false</default>
+                <label>Oilfield - mfg</label>
+            </value>
+            <value>
+                <fullName>Oilfield - repairs</fullName>
+                <default>false</default>
+                <label>Oilfield - repairs</label>
+            </value>
+            <value>
+                <fullName>BOP - Hydril</fullName>
+                <default>false</default>
+                <label>BOP - Hydril</label>
+            </value>
+            <value>
+                <fullName>BOP - Others</fullName>
+                <default>false</default>
+                <label>BOP - Others</label>
+            </value>
+            <value>
+                <fullName>APS</fullName>
+                <default>false</default>
+                <label>APS</label>
+            </value>
+            <value>
+                <fullName>Rot Equipment</fullName>
+                <default>false</default>
+                <label>Rot Equipment</label>
+            </value>
+            <value>
+                <fullName>Valves - mfg</fullName>
+                <default>false</default>
+                <label>Valves - mfg</label>
+            </value>
+            <value>
+                <fullName>Valves - repaire</fullName>
+                <default>false</default>
+                <label>Valves - repaire</label>
+            </value>
+            <value>
+                <fullName>Field service - oilFields</fullName>
+                <default>false</default>
+                <label>Field service - oilFields</label>
+            </value>
+            <value>
+                <fullName>Field service - Valves</fullName>
+                <default>false</default>
+                <label>Field service - Valves</label>
+            </value>
+            <value>
+                <fullName>Field service - rot.Equipments</fullName>
+                <default>false</default>
+                <label>Field service - rot.Equipments</label>
+            </value>
+            <value>
+                <fullName>Trading</fullName>
+                <default>false</default>
+                <label>Trading</label>
+            </value>
+            <value>
+                <fullName>Pup Joint - mfg</fullName>
+                <default>false</default>
+                <label>Pup Joint - mfg</label>
+            </value>
+            <value>
+                <fullName>Well Head</fullName>
+                <default>false</default>
+                <label>Well Head</label>
+            </value>
+            <value>
+                <fullName>Projects</fullName>
+                <default>false</default>
+                <label>Projects</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

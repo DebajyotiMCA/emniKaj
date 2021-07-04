@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_Manager_Approval</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISPICKVAL(Assignee_status__c, &quot;Outstanding&quot; ),
+Whether_Applicable__c =TRUE, Final_Approval__c =TRUE
+)</errorConditionFormula>
+    <errorMessage>You cannot approve the record until all outstanding task completed.</errorMessage>
+</ValidationRule>

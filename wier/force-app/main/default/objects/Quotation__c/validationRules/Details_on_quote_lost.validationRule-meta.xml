@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Details_on_quote_lost</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISPICKVAL( Reason_for_lost_quote_as_per_CSR__c , &apos;&apos;) ) &amp;&amp;  ISBLANK( Comments_by_Sales__c )</errorConditionFormula>
+    <errorDisplayField>Comments_by_Sales__c</errorDisplayField>
+    <errorMessage>Please enter your comments for lost quote</errorMessage>
+</ValidationRule>

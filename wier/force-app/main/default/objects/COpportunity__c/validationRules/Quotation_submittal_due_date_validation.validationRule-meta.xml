@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quotation_submittal_due_date_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>if( !ISBLANK(Quotation_submittal_date__c),if( Expected_date_of_input__c  &lt; Quotation_submittal_date__c ,TRUE,FALSE),FALSE)</errorConditionFormula>
+    <errorDisplayField>Quotation_submittal_date__c</errorDisplayField>
+    <errorMessage>Quotation submittal due date must be on or before expected date of input.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flag__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( AND(Product_Code__c  &lt;&gt; &apos;P01002&apos;,Product_Code__c  &lt;&gt; &apos;P01023&apos;,  NOT(ISBLANK( Arabic_ID__c ) ) ), &apos;Code&apos;, &apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Flag</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

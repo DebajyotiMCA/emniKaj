@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quotation_upload_after_receiving_PO</fullName>
+    <active>true</active>
+    <description>Quotation_upload_after_receiving_PO</description>
+    <errorConditionFormula>AND( TEXT(COpportunity__r.Status__c) ==&apos;PO received&apos;, ISNEW() )</errorConditionFormula>
+    <errorMessage>Before uploading another version of the quotation, you must go to the quotation already marked as &apos;Final&apos; and select the option as &apos;Needs Changes/Clarification&apos;.</errorMessage>
+</ValidationRule>

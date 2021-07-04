@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_cost_validation</fullName>
+    <active>true</active>
+    <description>Other_cost_validation</description>
+    <errorConditionFormula>Other_Cost__c &lt; 0</errorConditionFormula>
+    <errorMessage>Other cost must be greater than or equal to zero.</errorMessage>
+</ValidationRule>

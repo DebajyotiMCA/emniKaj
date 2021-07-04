@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dubai_APS_RE_Opportunities_All</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Customer__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Opportunity_description__c</columns>
+    <columns>Contents_of_customer_communication__c</columns>
+    <columns>Win_Prob__c</columns>
+    <columns>Selling_price_in_Quotation__c</columns>
+    <columns>Expected_date_of_input__c</columns>
+    <columns>Assign_Tendering_Representative__c</columns>
+    <columns>Close_Date__c</columns>
+    <columns>Quotation_submittal_date__c</columns>
+    <columns>Expected_Quotation_value__c</columns>
+    <columns>Strategic_Initiative__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Business_Unit__c</field>
+        <operation>equals</operation>
+        <value>Dubai - APS/RE</value>
+    </filters>
+    <label>Dubai APS/RE Opportunities (All)</label>
+    <sharedTo>
+        <role>Dubai_APS_RE_Head_of_Tendering</role>
+        <role>Dubai_APS_RE_Tendering_Rep</role>
+        <role>Dxb_RE_General_Manager</role>
+        <role>HOS_RE</role>
+        <role>Managing_Director</role>
+    </sharedTo>
+</ListView>

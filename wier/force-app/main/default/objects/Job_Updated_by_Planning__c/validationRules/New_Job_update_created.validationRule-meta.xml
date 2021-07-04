@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Job_update_created</fullName>
+    <active>true</active>
+    <description>New_Job_update_created</description>
+    <errorConditionFormula>AND( ISNEW() , Job_handed_over_to_Operation__c ==TRUE)</errorConditionFormula>
+    <errorDisplayField>Job_handed_over_to_Operation__c</errorDisplayField>
+    <errorMessage>Please do not check the &apos;Job handed over to Operation&apos; option and/or select revised job delivery date and its reason unless it is applicable.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Not yet Started</fullName>
+                <default>false</default>
+                <label>Not yet Started</label>
+            </value>
+            <value>
+                <fullName>Documents under compilation</fullName>
+                <default>false</default>
+                <label>Documents under compilation</label>
+            </value>
+            <value>
+                <fullName>Documents Submitted</fullName>
+                <default>false</default>
+                <label>Documents Submitted</label>
+            </value>
+            <value>
+                <fullName>Registered with the Customer</fullName>
+                <default>false</default>
+                <label>Registered with the Customer</label>
+            </value>
+            <value>
+                <fullName>Rejected by Customer</fullName>
+                <default>false</default>
+                <label>Rejected by Customer</label>
+            </value>
+            <value>
+                <fullName>Registration Expired</fullName>
+                <default>false</default>
+                <label>Registration Expired</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

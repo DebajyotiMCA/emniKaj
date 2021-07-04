@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Executed_in_non_Dubai</fullName>
+    <active>true</active>
+    <description>Job_Executed_in_non_Dubai</description>
+    <errorConditionFormula>AND(ISPICKVAL(Is_the_job_to_be_executed_in_Dubai__c,&apos;NO&apos;), PO_handover_to_planing__c ==TRUE)</errorConditionFormula>
+    <errorDisplayField>PO_handover_to_planing__c</errorDisplayField>
+    <errorMessage>You can not handed over to planning, because this job is not executed in Dubai.</errorMessage>
+</ValidationRule>

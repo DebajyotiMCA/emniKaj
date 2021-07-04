@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Key_Production_Figures__c</fullName>
+    <externalId>false</externalId>
+    <label>Key Production Figures</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Desalination production</fullName>
+                <default>false</default>
+                <label>Desalination production</label>
+            </value>
+            <value>
+                <fullName>Sewage capacity</fullName>
+                <default>false</default>
+                <label>Sewage capacity</label>
+            </value>
+            <value>
+                <fullName>power generation</fullName>
+                <default>false</default>
+                <label>power generation</label>
+            </value>
+            <value>
+                <fullName>Oil production</fullName>
+                <default>false</default>
+                <label>Oil production</label>
+            </value>
+            <value>
+                <fullName>Refining capacity</fullName>
+                <default>false</default>
+                <label>Refining capacity</label>
+            </value>
+            <value>
+                <fullName>Output in tonnage</fullName>
+                <default>false</default>
+                <label>Output in tonnage</label>
+            </value>
+            <value>
+                <fullName>Rig new build per year</fullName>
+                <default>false</default>
+                <label>Rig new build per year</label>
+            </value>
+            <value>
+                <fullName>Drilling footage</fullName>
+                <default>false</default>
+                <label>Drilling footage</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

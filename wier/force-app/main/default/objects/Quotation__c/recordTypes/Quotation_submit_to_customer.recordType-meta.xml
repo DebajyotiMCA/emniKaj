@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quotation_submit_to_customer</fullName>
+    <active>true</active>
+    <description>Quotation submit to customer</description>
+    <label>Quotation submit to customer</label>
+    <picklistValues>
+        <picklist>Customer_feedback_on_quotation_sent__c</picklist>
+        <values>
+            <fullName>Needs Changes%2FClarification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opportunity lost</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_for_lost_quote__c</picklist>
+        <values>
+            <fullName>Better priced by competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor%27s better track record</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor%27s relationship strength</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer didn%27t win the project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer%27s preference for OEM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivery lead time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Disagreement on terms %2F conditions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End-user cancelled the project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Late quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not qualified %2F registered with the customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote not matching customer specs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_for_lost_quote_as_per_CSR__c</picklist>
+        <values>
+            <fullName>Better priced by competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor%27s better track record</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor%27s relationship strength</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer didn%27t win the project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer%27s preference for OEM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivery lead time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Disagreement on terms %2F conditions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End-user cancelled the project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Late quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not qualified %2F registered with the customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote not matching customer specs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reasons_for_opportunity_lost__c</picklist>
+        <values>
+            <fullName>Better price as well as Delivery by competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Better priced by competition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor%27s better track record</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor%27s relationship strength</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer didn%27t win the project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivery lead time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Disagreement on terms %2F conditions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End-user cancelled the project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Late quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not qualified %2F registered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reasons_for_quotation_revision__c</picklist>
+        <values>
+            <fullName>Change of technical scope %2F specification by customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Errors %2F omissions - tendering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information %2F intelligence gap - sales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead time revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Line item quantity revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P%2EO%2E  for partial items</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P%2EO%2E for additional items - customer request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment terms revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Schedule change - Weir initiated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Schedule change - customer request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supplier quote received with better price</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terms and conditions revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Validity period revision</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tendering_Manager_Review__c</picklist>
+        <values>
+            <fullName>Requires Changes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submit for Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

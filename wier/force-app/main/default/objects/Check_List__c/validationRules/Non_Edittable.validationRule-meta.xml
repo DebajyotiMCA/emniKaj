@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Non_Edittable</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( Assignee_Comments__c!=null, AND(S_No__c = 25, ISCHANGED(Assignee_Comments__c )),FALSE)</errorConditionFormula>
+    <errorMessage>Only Procurement manager can edit the record</errorMessage>
+</ValidationRule>

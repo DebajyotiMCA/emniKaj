@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Initial Review</fullName>
+                <default>false</default>
+                <label>Initial Review</label>
+            </value>
+            <value>
+                <fullName>Bid/No Bid</fullName>
+                <default>false</default>
+                <label>Bid/No Bid</label>
+            </value>
+            <value>
+                <fullName>Approved for Tendering</fullName>
+                <default>false</default>
+                <label>Approved for Tendering</label>
+            </value>
+            <value>
+                <fullName>Quotation under compilation</fullName>
+                <default>false</default>
+                <label>Quotation under compilation</label>
+            </value>
+            <value>
+                <fullName>Tender Under Review</fullName>
+                <default>false</default>
+                <label>Tender Under Review</label>
+            </value>
+            <value>
+                <fullName>Tender Under Approval</fullName>
+                <default>false</default>
+                <label>Tender Under Approval</label>
+            </value>
+            <value>
+                <fullName>Approved, Make Quotation ready for submitial</fullName>
+                <default>false</default>
+                <label>Approved, Make Quotation ready for submitial</label>
+            </value>
+            <value>
+                <fullName>Quote Ready for Submital</fullName>
+                <default>false</default>
+                <label>Quote Ready for Submital</label>
+            </value>
+            <value>
+                <fullName>Quote Submitted to Customer</fullName>
+                <default>false</default>
+                <label>Quote Submitted to Customer</label>
+            </value>
+            <value>
+                <fullName>Customer Contacted for Submitted quote</fullName>
+                <default>false</default>
+                <label>Customer Contacted for Submitted quote</label>
+            </value>
+            <value>
+                <fullName>Quotation under clarification with Customer</fullName>
+                <default>false</default>
+                <label>Quotation under clarification with Customer</label>
+            </value>
+            <value>
+                <fullName>PO received</fullName>
+                <default>false</default>
+                <label>PO received</label>
+            </value>
+            <value>
+                <fullName>PO Under Clarification</fullName>
+                <default>false</default>
+                <label>PO Under Clarification</label>
+            </value>
+            <value>
+                <fullName>PO handed over to Contract</fullName>
+                <default>false</default>
+                <label>PO handed over to Contract</label>
+            </value>
+            <value>
+                <fullName>PO under Review with Contract</fullName>
+                <default>false</default>
+                <label>PO under Review with Contract</label>
+            </value>
+            <value>
+                <fullName>PO Approved by Contract</fullName>
+                <default>false</default>
+                <label>PO Approved by Contract</label>
+            </value>
+            <value>
+                <fullName>Customer order acknowledged</fullName>
+                <default>false</default>
+                <label>Customer order acknowledged</label>
+            </value>
+            <value>
+                <fullName>PO handover to Planning</fullName>
+                <default>false</default>
+                <label>PO handover to Planning</label>
+            </value>
+            <value>
+                <fullName>Job handover to Operations</fullName>
+                <default>false</default>
+                <label>Job handover to Operations</label>
+            </value>
+            <value>
+                <fullName>Job done awaiting contracts sign-off</fullName>
+                <default>false</default>
+                <label>Job done awaiting contracts sign-off</label>
+            </value>
+            <value>
+                <fullName>Job ready for Delivery</fullName>
+                <default>false</default>
+                <label>Job ready for Delivery</label>
+            </value>
+            <value>
+                <fullName>job delivered</fullName>
+                <default>false</default>
+                <label>job delivered</label>
+            </value>
+            <value>
+                <fullName>Opportunity closed</fullName>
+                <default>false</default>
+                <label>Opportunity closed</label>
+            </value>
+            <value>
+                <fullName>Quote accepted but PO awaited</fullName>
+                <default>false</default>
+                <label>Quote accepted but PO awaited</label>
+            </value>
+            <value>
+                <fullName>Customer notified of a Completed Job</fullName>
+                <default>false</default>
+                <label>Customer notified of a Completed Job</label>
+            </value>
+            <value>
+                <fullName>Invoicing onhold</fullName>
+                <default>false</default>
+                <label>Invoicing onhold</label>
+            </value>
+            <value>
+                <fullName>Job invoiced in movex</fullName>
+                <default>false</default>
+                <label>Job invoiced in movex</label>
+            </value>
+            <value>
+                <fullName>Partial Collected</fullName>
+                <default>false</default>
+                <label>Partial Collected</label>
+            </value>
+            <value>
+                <fullName>Fully Collected</fullName>
+                <default>false</default>
+                <label>Fully Collected</label>
+            </value>
+            <value>
+                <fullName>Invoice sent</fullName>
+                <default>false</default>
+                <label>Invoice sent</label>
+            </value>
+            <value>
+                <fullName>Quoted &amp; Lost</fullName>
+                <default>false</default>
+                <label>Quoted &amp; Lost</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

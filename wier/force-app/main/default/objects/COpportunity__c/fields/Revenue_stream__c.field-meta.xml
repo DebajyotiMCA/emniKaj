@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revenue_stream__c</fullName>
+    <externalId>false</externalId>
+    <label>Revenue stream</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type_of_Business__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Valves 6A</fullName>
+                <default>false</default>
+                <label>Valves 6A</label>
+            </value>
+            <value>
+                <fullName>Valves - SSV</fullName>
+                <default>false</default>
+                <label>Valves - SSV</label>
+            </value>
+            <value>
+                <fullName>Wellhead</fullName>
+                <default>false</default>
+                <label>Wellhead</label>
+            </value>
+            <value>
+                <fullName>Frac-tree</fullName>
+                <default>false</default>
+                <label>Frac-tree</label>
+            </value>
+            <value>
+                <fullName>Chokes</fullName>
+                <default>false</default>
+                <label>Chokes</label>
+            </value>
+            <value>
+                <fullName>Manifolds - Production</fullName>
+                <default>false</default>
+                <label>Manifolds - Production</label>
+            </value>
+            <value>
+                <fullName>OCTG Pup Joints (free issue material)</fullName>
+                <default>false</default>
+                <label>OCTG Pup Joints (free issue material)</label>
+            </value>
+            <value>
+                <fullName>Crossover &amp; Subs (casing &amp; tubing)</fullName>
+                <default>false</default>
+                <label>Crossover &amp; Subs (casing &amp; tubing)</label>
+            </value>
+            <value>
+                <fullName>OCTG Plain end threading</fullName>
+                <default>false</default>
+                <label>OCTG Plain end threading</label>
+            </value>
+            <value>
+                <fullName>Casing and Tubing</fullName>
+                <default>false</default>
+                <label>Casing and Tubing</label>
+            </value>
+            <value>
+                <fullName>Packers</fullName>
+                <default>false</default>
+                <label>Packers</label>
+            </value>
+            <value>
+                <fullName>Inspection Service</fullName>
+                <default>false</default>
+                <label>Inspection Service</label>
+            </value>
+            <value>
+                <fullName>Connector welding</fullName>
+                <default>false</default>
+                <label>Connector welding</label>
+            </value>
+            <value>
+                <fullName>Drillstem Subs (rotary)</fullName>
+                <default>false</default>
+                <label>Drillstem Subs (rotary)</label>
+            </value>
+            <value>
+                <fullName>Drill Pipe / Drill Collar</fullName>
+                <default>false</default>
+                <label>Drill Pipe / Drill Collar</label>
+            </value>
+            <value>
+                <fullName>Hard Banding</fullName>
+                <default>false</default>
+                <label>Hard Banding</label>
+            </value>
+            <value>
+                <fullName>BHA Repair</fullName>
+                <default>false</default>
+                <label>BHA Repair</label>
+            </value>
+            <value>
+                <fullName>Scholler Blackman (DSI)</fullName>
+                <default>false</default>
+                <label>Scholler Blackman (DSI)</label>
+            </value>
+            <value>
+                <fullName>LES</fullName>
+                <default>false</default>
+                <label>LES</label>
+            </value>
+            <value>
+                <fullName>Other OEM tools</fullName>
+                <default>false</default>
+                <label>Other OEM tools</label>
+            </value>
+            <value>
+                <fullName>BOP</fullName>
+                <default>false</default>
+                <label>BOP</label>
+            </value>
+            <value>
+                <fullName>BOP Control Unit (Koomey)</fullName>
+                <default>false</default>
+                <label>BOP Control Unit (Koomey)</label>
+            </value>
+            <value>
+                <fullName>Pulsation Dampener</fullName>
+                <default>false</default>
+                <label>Pulsation Dampener</label>
+            </value>
+            <value>
+                <fullName>API Products</fullName>
+                <default>false</default>
+                <label>API Products</label>
+            </value>
+            <value>
+                <fullName>Manifolds - D&amp;C</fullName>
+                <default>false</default>
+                <label>Manifolds - D&amp;C</label>
+            </value>
+            <value>
+                <fullName>Flow Iron</fullName>
+                <default>false</default>
+                <label>Flow Iron</label>
+            </value>
+            <value>
+                <fullName>SPM Flow Iron</fullName>
+                <default>false</default>
+                <label>SPM Flow Iron</label>
+            </value>
+            <value>
+                <fullName>Mathena Products</fullName>
+                <default>false</default>
+                <label>Mathena Products</label>
+            </value>
+            <value>
+                <fullName>Novatech Products</fullName>
+                <default>false</default>
+                <label>Novatech Products</label>
+            </value>
+            <value>
+                <fullName>Fabrication</fullName>
+                <default>false</default>
+                <label>Fabrication</label>
+            </value>
+            <value>
+                <fullName>Compressors</fullName>
+                <default>false</default>
+                <label>Compressors</label>
+            </value>
+            <value>
+                <fullName>Motors</fullName>
+                <default>false</default>
+                <label>Motors</label>
+            </value>
+            <value>
+                <fullName>Gas Turbines</fullName>
+                <default>false</default>
+                <label>Gas Turbines</label>
+            </value>
+            <value>
+                <fullName>Gearbox</fullName>
+                <default>false</default>
+                <label>Gearbox</label>
+            </value>
+            <value>
+                <fullName>Valves - non API</fullName>
+                <default>false</default>
+                <label>Valves - non API</label>
+            </value>
+            <value>
+                <fullName>Electrical &amp; Instrumentation</fullName>
+                <default>false</default>
+                <label>Electrical &amp; Instrumentation</label>
+            </value>
+            <value>
+                <fullName>Mechanical Seals</fullName>
+                <default>false</default>
+                <label>Mechanical Seals</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>O&amp;M</fullName>
+                <default>false</default>
+                <label>O&amp;M</label>
+            </value>
+            <value>
+                <fullName>Pumps - Others</fullName>
+                <default>false</default>
+                <label>Pumps - Others</label>
+            </value>
+            <value>
+                <fullName>Steam Turbines - AST</fullName>
+                <default>false</default>
+                <label>Steam Turbines - AST</label>
+            </value>
+            <value>
+                <fullName>Pumps - Clyde</fullName>
+                <default>false</default>
+                <label>Pumps - Clyde</label>
+            </value>
+            <value>
+                <fullName>Pumps - Weir</fullName>
+                <default>false</default>
+                <label>Pumps - Weir</label>
+            </value>
+            <value>
+                <fullName>Steam Turbines - Others</fullName>
+                <default>false</default>
+                <label>Steam Turbines - Others</label>
+            </value>
+            <value>
+                <fullName>Tubular</fullName>
+                <default>false</default>
+                <label>Tubular</label>
+            </value>
+            <value>
+                <fullName>V&amp;WH</fullName>
+                <default>false</default>
+                <label>V&amp;WH</label>
+            </value>
+            <value>
+                <fullName>RE</fullName>
+                <default>false</default>
+                <label>RE</label>
+            </value>
+            <value>
+                <fullName>Tubular PS - Non-Aramco premium</fullName>
+                <default>false</default>
+                <label>Tubular PS - Non-Aramco premium</label>
+            </value>
+            <value>
+                <fullName>Tubular PS - Non-Aramco non-premium</fullName>
+                <default>false</default>
+                <label>Tubular PS - Non-Aramco non-premium</label>
+            </value>
+            <value>
+                <fullName>Tubular S - Non-Aramco premium</fullName>
+                <default>false</default>
+                <label>Tubular S - Non-Aramco premium</label>
+            </value>
+            <value>
+                <fullName>Tubular S - Non-Aramco non-premium</fullName>
+                <default>false</default>
+                <label>Tubular S - Non-Aramco non-premium</label>
+            </value>
+            <value>
+                <fullName>APS</fullName>
+                <default>false</default>
+                <label>APS</label>
+            </value>
+            <value>
+                <fullName>IKM</fullName>
+                <default>false</default>
+                <label>IKM</label>
+            </value>
+            <value>
+                <fullName>OFS Commercial</fullName>
+                <default>false</default>
+                <label>OFS Commercial</label>
+            </value>
+            <value>
+                <fullName>RE commercial</fullName>
+                <default>false</default>
+                <label>RE commercial</label>
+            </value>
+            <value>
+                <fullName>RE service</fullName>
+                <default>false</default>
+                <label>RE service</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>Fabrication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Compressors</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Motors</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Gas Turbines</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Gearbox</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Valves - non API</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Electrical &amp; Instrumentation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Mechanical Seals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Others</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Pumps - Others</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Steam Turbines - AST</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Pumps - Clyde</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Pumps - Weir</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <valueName>Steam Turbines - Others</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <controllingFieldValue>O&amp;M</controllingFieldValue>
+            <controllingFieldValue>Pressure Control</controllingFieldValue>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>Tubular</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <controllingFieldValue>O&amp;M</controllingFieldValue>
+            <controllingFieldValue>Pressure Control</controllingFieldValue>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>V&amp;WH</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rotating Equipment</controllingFieldValue>
+            <controllingFieldValue>O&amp;M</controllingFieldValue>
+            <controllingFieldValue>Pressure Control</controllingFieldValue>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>RE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>O&amp;M</controllingFieldValue>
+            <valueName>O&amp;M</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pressure Control</controllingFieldValue>
+            <valueName>Valves 6A</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pressure Control</controllingFieldValue>
+            <valueName>Valves - SSV</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pressure Control</controllingFieldValue>
+            <valueName>Wellhead</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pressure Control</controllingFieldValue>
+            <valueName>Frac-tree</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pressure Control</controllingFieldValue>
+            <valueName>Chokes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pressure Control</controllingFieldValue>
+            <valueName>Manifolds - Production</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>OCTG Pup Joints (free issue material)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Crossover &amp; Subs (casing &amp; tubing)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>OCTG Plain end threading</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Casing and Tubing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Packers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Inspection Service</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Connector welding</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Drillstem Subs (rotary)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Drill Pipe / Drill Collar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Hard Banding</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>BHA Repair</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Scholler Blackman (DSI)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>LES</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OCTG</controllingFieldValue>
+            <valueName>Other OEM tools</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>BOP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>BOP Control Unit (Koomey)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>Pulsation Dampener</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>API Products</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>Manifolds - D&amp;C</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>Flow Iron</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>SPM Flow Iron</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>Mathena Products</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>API Oilfield</controllingFieldValue>
+            <valueName>Novatech Products</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

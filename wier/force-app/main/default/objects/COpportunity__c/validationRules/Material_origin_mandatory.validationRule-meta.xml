@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Material_origin_mandatory</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL( Customer_requires_material_from_particul__c , &apos;Yes&apos;)  &amp;&amp;  ISPICKVAL( Material_origin__c , &apos;&apos;)</errorConditionFormula>
+    <errorDisplayField>Material_origin__c</errorDisplayField>
+    <errorMessage>Material origin is mandatory if Customer requires material origin is Yes</errorMessage>
+</ValidationRule>

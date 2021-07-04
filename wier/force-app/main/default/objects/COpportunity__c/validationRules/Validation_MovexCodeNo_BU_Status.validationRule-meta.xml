@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validation_MovexCodeNo_BU_Status</fullName>
+    <active>false</active>
+    <errorConditionFormula>!(TEXT(Status__c)=&apos;PO handed over to Contract&apos; &amp;&amp; TEXT(Business_Unit__c)=&apos;Saudi&apos;) &amp;&amp; (!ISBLANK(Movex_CO_No__c))</errorConditionFormula>
+    <errorDisplayField>Movex_CO_No__c</errorDisplayField>
+    <errorMessage>Editable only for Saudi Business Unit and Status PO handed over to Contract.</errorMessage>
+</ValidationRule>

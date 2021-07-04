@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery__c</fullName>
+    <externalId>false</externalId>
+    <label>Delivery Terms</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CFR - Cost &amp; Freight</fullName>
+                <default>false</default>
+                <label>CFR - Cost &amp; Freight</label>
+            </value>
+            <value>
+                <fullName>CIF - CIF</fullName>
+                <default>false</default>
+                <label>CIF - CIF</label>
+            </value>
+            <value>
+                <fullName>CIP - Carriage&amp;Ins paid</fullName>
+                <default>false</default>
+                <label>CIP - Carriage&amp;Ins paid</label>
+            </value>
+            <value>
+                <fullName>CPT - Carr Paid To</fullName>
+                <default>false</default>
+                <label>CPT - Carr Paid To</label>
+            </value>
+            <value>
+                <fullName>DAF - Delivered A Fr</fullName>
+                <default>false</default>
+                <label>DAF - Delivered A Fr</label>
+            </value>
+            <value>
+                <fullName>DAP - Delivered at Place</fullName>
+                <default>false</default>
+                <label>DAP - Delivered at Place</label>
+            </value>
+            <value>
+                <fullName>DDP - Del. Duty Paid</fullName>
+                <default>false</default>
+                <label>DDP - Del. Duty Paid</label>
+            </value>
+            <value>
+                <fullName>DDU - Del Duty Unpaid</fullName>
+                <default>false</default>
+                <label>DDU - Del Duty Unpaid</label>
+            </value>
+            <value>
+                <fullName>DDW - Deliver to WES</fullName>
+                <default>false</default>
+                <label>DDW - Deliver to WES</label>
+            </value>
+            <value>
+                <fullName>DEQ - Del Ex Quay</fullName>
+                <default>false</default>
+                <label>DEQ - Del Ex Quay</label>
+            </value>
+            <value>
+                <fullName>DES - Del Ex Ship</fullName>
+                <default>false</default>
+                <label>DES - Del Ex Ship</label>
+            </value>
+            <value>
+                <fullName>EXW - Ex Works</fullName>
+                <default>false</default>
+                <label>EXW - Ex Works</label>
+            </value>
+            <value>
+                <fullName>FAS - Free Alongside</fullName>
+                <default>false</default>
+                <label>FAS - Free Alongside</label>
+            </value>
+            <value>
+                <fullName>FCA - Free Carrier</fullName>
+                <default>false</default>
+                <label>FCA - Free Carrier</label>
+            </value>
+            <value>
+                <fullName>FOB - Free On Board</fullName>
+                <default>false</default>
+                <label>FOB - Free On Board</label>
+            </value>
+            <value>
+                <fullName>As mentioned below</fullName>
+                <default>false</default>
+                <label>As mentioned below</label>
+            </value>
+            <value>
+                <fullName>N/A - Not Applicable</fullName>
+                <default>false</default>
+                <label>N/A - Not Applicable</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

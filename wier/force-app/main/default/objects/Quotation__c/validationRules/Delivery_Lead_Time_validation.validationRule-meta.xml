@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Lead_Time_validation</fullName>
+    <active>true</active>
+    <description>Delivery_Lead_Time_validation</description>
+    <errorConditionFormula>AND(TEXT( Reasons_for_opportunity_lost__c )=&quot;Delivery lead time&quot;, ISBLANK(  Competition_s_delivery_lead_time_weeks__c ) )</errorConditionFormula>
+    <errorDisplayField>Completion_price_better_by__c</errorDisplayField>
+    <errorMessage>Please provide Competition&apos;s delivery lead time.</errorMessage>
+</ValidationRule>

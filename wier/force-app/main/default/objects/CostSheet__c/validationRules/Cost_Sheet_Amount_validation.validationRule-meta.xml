@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cost_Sheet_Amount_validation</fullName>
+    <active>true</active>
+    <description>Cost_Sheet_Amount_validation</description>
+    <errorConditionFormula>Cost_Sheet_Amount__c  &lt; 0</errorConditionFormula>
+    <errorMessage>Cost Sheet Amount must be greater than or equal to zero.</errorMessage>
+</ValidationRule>

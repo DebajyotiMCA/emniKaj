@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Walk_in_Jobs_Customer_Name</fullName>
+    <active>true</active>
+    <errorConditionFormula>(Customer__r.Name = &apos;Walk In Jobs - Dxb&apos;  ||   Customer__r.Name = &apos;Walk In Jobs - Iraq&apos;) &amp;&amp;  Customer_Name_If_Walkin_jobs__c = &apos;&apos;  &amp;&amp;  !ISPICKVAL( Business_Unit__c , &apos;&apos;)</errorConditionFormula>
+    <errorDisplayField>Customer_Name_If_Walkin_jobs__c</errorDisplayField>
+    <errorMessage>Please enter the Customer name for Walk in Jobs</errorMessage>
+</ValidationRule>

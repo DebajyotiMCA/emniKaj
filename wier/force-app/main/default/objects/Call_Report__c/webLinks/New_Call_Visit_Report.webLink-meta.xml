@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Call_Visit_Report</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Call/Visit Report</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>/a02/e?CF00Nb000000916uy={!Lead.LastName}&amp;CF00Nb000000916ux={!Lead.Account_Name__c}&amp;CF00Nb000000916uy_lkid={!Lead.Id} &amp;retURL=%2F{!Lead.Id}&amp;test={!$User.Id}</url>
+</WebLink>

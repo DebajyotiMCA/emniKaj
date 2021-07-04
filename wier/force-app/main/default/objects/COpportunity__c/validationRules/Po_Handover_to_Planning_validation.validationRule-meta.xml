@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Po_Handover_to_Planning_validation</fullName>
+    <active>true</active>
+    <description>Po_Handover_to_Planning_validation</description>
+    <errorConditionFormula>AND( PO_handover_to_planing__c ==TRUE, Jod_Update_locked__c ==FALSE)</errorConditionFormula>
+    <errorMessage>You must lock the planning dates in the job update section before job handover to planning.</errorMessage>
+</ValidationRule>

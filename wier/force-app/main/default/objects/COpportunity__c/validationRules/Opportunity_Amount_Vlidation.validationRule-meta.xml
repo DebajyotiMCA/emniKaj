@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Amount_Vlidation</fullName>
+    <active>false</active>
+    <errorConditionFormula>1=1</errorConditionFormula>
+    <errorMessage>Need to confirm &quot;Final&apos; quotation before submitting for approval. Go to respective Quotation and check the box for &apos;Final&apos;</errorMessage>
+</ValidationRule>

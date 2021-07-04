@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quotes_Under_Compilation_Arun</fullName>
+    <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10)</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Opportunity_description__c</columns>
+    <columns>Status__c</columns>
+    <columns>Customer__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Close_Date__c</columns>
+    <columns>Quotation_submittal_date__c</columns>
+    <columns>Expected_Quotation_value__c</columns>
+    <columns>Win_Probability__c</columns>
+    <columns>Selling_price_in_Quotation__c</columns>
+    <columns>Upsell_opportunity__c</columns>
+    <columns>CSRCommentsOnBid__c</columns>
+    <columns>CSR_s_comment_on_opportunity__c</columns>
+    <columns>Competition__c</columns>
+    <columns>Type_of_Business__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Assign_Tendering_Representative__c</field>
+        <operation>equals</operation>
+        <value>Arun Aravind</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Initial Review</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Bid/No Bid</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Approved for Tendering</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Quotation under compilation</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Tender Under Review</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Tender Under Approval</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>&quot;Approved, Make Quotation ready for submitial&quot;</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Quote Ready for Submital</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>PO received</value>
+    </filters>
+    <label>Quotes Under Compilation - Arun</label>
+    <sharedTo></sharedTo>
+</ListView>

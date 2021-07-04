@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_name_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>If(Send_an_Acknowledgement__c==TRUE, If(LEN( Customer_Acknowledgement_Name__c ) !=0,FALSE,TRUE),false)</errorConditionFormula>
+    <errorDisplayField>Customer_Acknowledgement_Name__c</errorDisplayField>
+    <errorMessage>Please Provide Customer Acknowledgement Name</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revised_date_validation_after_date</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(Planned_Job_Delivery_Date__c &lt; Revised_Job_Delivery_Date_if_any__c , Text( Reason_for_change_in_delivery_date__c )==&quot;&quot;)</errorConditionFormula>
+    <errorDisplayField>Reason_for_change_in_delivery_date__c</errorDisplayField>
+    <errorMessage>You must select the most suitable option from the drop down menu.</errorMessage>
+</ValidationRule>

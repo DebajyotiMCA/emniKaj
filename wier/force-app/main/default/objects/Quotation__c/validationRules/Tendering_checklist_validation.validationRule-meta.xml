@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tendering_checklist_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+(( COpportunity__r.Total_Tendering_Checklist_Checked__c ) &lt;&gt; ( COpportunity__r.Total_Tendering_checklist_status__c  )),
+ Submit_for_review__c == TRUE, COpportunity__r.Quote_ready_for_Submit__c ==TRUE
+)</errorConditionFormula>
+    <errorDisplayField>Comment_if_any__c</errorDisplayField>
+    <errorMessage>You must confirm all applicable matters in the tendering checklist as &quot;Completed&quot; before you can consider the quote as ready for submittal.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Changes_and_Submit_for_Contract</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( Require_Changes__c =TRUE, Submit_for_Contract_Manager_Approval__c =TRUE)</errorConditionFormula>
+    <errorMessage>You can select either Require Changes/ Clarification from Tendering Rep  or Submit for Contract Manager&apos;s Approval BUT NOT BOTH.</errorMessage>
+</ValidationRule>

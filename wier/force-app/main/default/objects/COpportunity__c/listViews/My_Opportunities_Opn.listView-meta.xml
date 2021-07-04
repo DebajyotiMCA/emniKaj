@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Opportunities_Opn</fullName>
+    <booleanFilter>1 OR 2 OR  3 OR 4 OR 5</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Purchaser__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Opportunity_description__c</columns>
+    <columns>Contents_of_customer_communication__c</columns>
+    <columns>Win_Prob__c</columns>
+    <columns>Selling_price_in_Quotation__c</columns>
+    <columns>Expected_date_of_input__c</columns>
+    <columns>Assign_Tendering_Representative__c</columns>
+    <columns>Close_Date__c</columns>
+    <columns>Quotation_submittal_date__c</columns>
+    <columns>Expected_Quotation_value__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Initial Review,Quotation under compilation,Tender Under Review</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>,Tender Under Approval,&quot;Approved, Make Quotation ready for submitial&quot;</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Quote Ready for Submital,Quote Submitted to Customer</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Customer Contacted for Submitted quote</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Quotation under clarification with Customer</value>
+    </filters>
+    <label>My Opportunities (Open)</label>
+    <sharedTo>
+        <group>Commercial_Sales</group>
+        <roleAndSubordinates>Baku_Business_Head</roleAndSubordinates>
+        <roleAndSubordinates>Business_Head_UAE</roleAndSubordinates>
+        <roleAndSubordinates>Dxb_RE_General_Manager</roleAndSubordinates>
+        <roleAndSubordinates>General_Manager</roleAndSubordinates>
+        <roleAndSubordinates>Head_UK_Turbomachinery</roleAndSubordinates>
+        <roleAndSubordinates>Head_of_Aberdeen</roleAndSubordinates>
+        <roleAndSubordinates>Non_DXB_Iraq_Team_member</roleAndSubordinates>
+        <roleAndSubordinates>Non_DXB_Non_Iraq_Team_member</roleAndSubordinates>
+        <roleAndSubordinates>Oman_Business_Head</roleAndSubordinates>
+        <roleAndSubordinates>Oman_HOS</roleAndSubordinates>
+        <roleAndSubordinates>Projects_Business_Head</roleAndSubordinates>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_feedback_on_quotation_sent__c</fullName>
+    <externalId>false</externalId>
+    <label>Customer feedback on quotation sent</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Needs Changes/Clarification</fullName>
+                <default>false</default>
+                <label>Needs Changes/Clarification</label>
+            </value>
+            <value>
+                <fullName>Opportunity lost</fullName>
+                <default>false</default>
+                <label>Opportunity lost</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>true</default>
+                <label>None</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

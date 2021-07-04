@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Order_Acknowledgement_Validatio</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(ISNEW(),IF(opportunity__r.Total_Workorder__c != opportunity__r.Total_workorder_withoutname__c,TRUE,FALSE),FALSE)</errorConditionFormula>
+    <errorMessage>You can&apos;t proceed with customer order acknowledgement unless work order numbers are entered in &apos;Job Update&apos; section.</errorMessage>
+</ValidationRule>

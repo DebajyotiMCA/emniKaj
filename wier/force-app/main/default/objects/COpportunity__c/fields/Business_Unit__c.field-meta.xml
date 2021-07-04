@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Unit__c</fullName>
+    <externalId>false</externalId>
+    <label>Business Unit</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CIS</fullName>
+                <default>false</default>
+                <label>CIS</label>
+            </value>
+            <value>
+                <fullName>Dubai - APS/RE</fullName>
+                <default>false</default>
+                <label>Dubai - APS/RE</label>
+            </value>
+            <value>
+                <fullName>Dubai - Oilfield</fullName>
+                <default>false</default>
+                <label>Dubai - Oilfield</label>
+            </value>
+            <value>
+                <fullName>Iraq</fullName>
+                <default>false</default>
+                <label>Iraq</label>
+            </value>
+            <value>
+                <fullName>NAI</fullName>
+                <default>false</default>
+                <label>NAI</label>
+            </value>
+            <value>
+                <fullName>Oman</fullName>
+                <default>false</default>
+                <label>Oman</label>
+            </value>
+            <value>
+                <fullName>Saudi</fullName>
+                <default>false</default>
+                <label>Saudi</label>
+            </value>
+            <value>
+                <fullName>Abu Dhabi</fullName>
+                <default>false</default>
+                <label>Abu Dhabi</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

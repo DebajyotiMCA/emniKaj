@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Barton_Opportunities_All</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Movex_CO_No__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Opportunity_description__c</columns>
+    <columns>Contents_of_customer_communication__c</columns>
+    <columns>Win_Prob__c</columns>
+    <columns>Selling_price_in_Quotation__c</columns>
+    <columns>Expected_date_of_input__c</columns>
+    <columns>Assign_Tendering_Representative__c</columns>
+    <columns>Close_Date__c</columns>
+    <columns>Quotation_submittal_date__c</columns>
+    <columns>Expected_Quotation_value__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Business_Unit__c</field>
+        <operation>equals</operation>
+        <value>Barton</value>
+    </filters>
+    <filters>
+        <field>Tendering_Manager_Role__c</field>
+        <operation>equals</operation>
+        <value>Barton - Head of Tendering</value>
+    </filters>
+    <label>Barton Opportunities (All)</label>
+    <sharedTo>
+        <role>UK_Business_Head</role>
+        <roleAndSubordinates>Head_UK_Turbomachinery</roleAndSubordinates>
+    </sharedTo>
+</ListView>

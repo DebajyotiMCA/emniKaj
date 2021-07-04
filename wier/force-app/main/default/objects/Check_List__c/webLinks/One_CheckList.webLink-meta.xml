@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>One_CheckList</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>One CheckList</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/19.0/connection.js&quot;)}
+var records = {!GETRECORDIDS($ObjectType.Check_List__c)};
+var rid = null;
+var updateRecords = [];
+if (records[0] == null)
+{
+alert(&quot;Please select at least one record to update.&quot;);
+}
+else
+{
+for (var a=0; a&lt;records.length; a++)
+{
+rid = records[a];
+}
+window.open(&apos;apex/wr_CheckList?oid={!COpportunity__c.Id }&amp;reid=rid&apos;,&apos;name&apos;,&apos;height=400,width=650&apos;);
+
+}</url>
+</WebLink>

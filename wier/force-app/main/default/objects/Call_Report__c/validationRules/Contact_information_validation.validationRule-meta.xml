@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_information_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>if(AND( Lead__c ==NULL, Customer__c ==NULL, Opportunity__c ==NULL, Attendee1__c ==NULL,Attendee2__c ==NULL,Attendee3__c ==NULL,Attendee4__c ==NULL,Attendee5__c ==NULL),TRUE,FALSE)</errorConditionFormula>
+    <errorMessage>Please choose at least one contact information.</errorMessage>
+</ValidationRule>

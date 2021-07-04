@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PO_value_mismatch_with_Quote_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>Opportunity__r.Selling_price_in_Quotation__c  &lt;&gt;  PO_Amount__c</errorConditionFormula>
+    <errorDisplayField>PO_Amount__c</errorDisplayField>
+    <errorMessage>PO value is not matching with Quote value. Please review or upload the new cost sheet and quotation.</errorMessage>
+</ValidationRule>

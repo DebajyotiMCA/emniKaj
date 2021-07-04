@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>report2</label>
+    <protected>false</protected>
+    <values>
+        <field>Report_ID__c</field>
+        <value xsi:type="xsd:string">00O1w000000QGR3</value>
+    </values>
+    <values>
+        <field>filter_string__c</field>
+        <value xsi:type="xsd:string">[{column:&quot;Customer&quot;,operator:&quot;equals&quot;,value:&quot;AccId&quot;}]</value>
+    </values>
+</CustomMetadata>

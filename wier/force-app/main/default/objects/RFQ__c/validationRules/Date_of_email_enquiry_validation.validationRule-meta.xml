@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_of_email_enquiry_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>if(Date_on_Enquiry__c &gt; TODAY(),TRUE,FALSE)</errorConditionFormula>
+    <errorDisplayField>Date_on_Enquiry__c</errorDisplayField>
+    <errorMessage>Date of email Enquiry must be current or past date.</errorMessage>
+</ValidationRule>

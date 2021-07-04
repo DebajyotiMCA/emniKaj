@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TM_assigned_validation_rule</fullName>
+    <active>true</active>
+    <description>TM_assigned_validation_rule</description>
+    <errorConditionFormula>IF((TEXT(Tendering_Manager_s_Decision_on_Bid__c)==&apos;Yes&apos; &amp;&amp; ISBLANK( Assign_Tendering_Representative__c ) &amp;&amp; ISBLANK( Tendering_Engineer_Email__c )),TRUE, FALSE)</errorConditionFormula>
+    <errorMessage>Please assign the Tendering Representative for this job.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PO_handover_validation_rule</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+((  Opportunity__r.Total_Handover_Checklist_Checked__c ) &lt;&gt; (  Opportunity__r.Total_Handover_Checklist_Status__c  )), 
+  PO_handed_over_to_contract__c   == TRUE, $Profile.Name  &lt;&gt; &apos;Tendering Manager - Abu Dhabi&apos;, $Profile.Name  &lt;&gt; &apos;TM &amp; Planning - Abu Dhabi&apos;
+)</errorConditionFormula>
+    <errorDisplayField>PO_handed_over_to_contract__c</errorDisplayField>
+    <errorMessage>You must confirm all applicable matters as Completed in the Handover to Contract checklist, before hand over to Contract.</errorMessage>
+</ValidationRule>

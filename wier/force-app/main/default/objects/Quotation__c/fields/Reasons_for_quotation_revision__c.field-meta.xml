@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reasons_for_quotation_revision__c</fullName>
+    <externalId>false</externalId>
+    <label>Reasons for quotation revision</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Change of technical scope / specification by customer</fullName>
+                <default>false</default>
+                <label>Change of technical scope / specification by customer</label>
+            </value>
+            <value>
+                <fullName>Errors / omissions - tendering</fullName>
+                <default>false</default>
+                <label>Errors / omissions - tendering</label>
+            </value>
+            <value>
+                <fullName>Information / intelligence gap - sales</fullName>
+                <default>false</default>
+                <label>Information / intelligence gap - sales</label>
+            </value>
+            <value>
+                <fullName>Lead time revision</fullName>
+                <default>false</default>
+                <label>Lead time revision</label>
+            </value>
+            <value>
+                <fullName>Line item quantity revision</fullName>
+                <default>false</default>
+                <label>Line item quantity revision</label>
+            </value>
+            <value>
+                <fullName>P.O.  for partial items</fullName>
+                <default>false</default>
+                <label>P.O.  for partial items</label>
+            </value>
+            <value>
+                <fullName>P.O. for additional items - customer request</fullName>
+                <default>false</default>
+                <label>P.O. for additional items - customer request</label>
+            </value>
+            <value>
+                <fullName>Payment terms revision</fullName>
+                <default>false</default>
+                <label>Payment terms revision</label>
+            </value>
+            <value>
+                <fullName>Price revision</fullName>
+                <default>false</default>
+                <label>Price revision</label>
+            </value>
+            <value>
+                <fullName>Schedule change - customer request</fullName>
+                <default>false</default>
+                <label>Schedule change - customer request</label>
+            </value>
+            <value>
+                <fullName>Schedule change - Weir initiated</fullName>
+                <default>false</default>
+                <label>Schedule change - Weir initiated</label>
+            </value>
+            <value>
+                <fullName>Supplier quote received with better price</fullName>
+                <default>false</default>
+                <label>Supplier quote received with better price</label>
+            </value>
+            <value>
+                <fullName>Terms and conditions revision</fullName>
+                <default>false</default>
+                <label>Terms and conditions revision</label>
+            </value>
+            <value>
+                <fullName>Validity period revision</fullName>
+                <default>false</default>
+                <label>Validity period revision</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

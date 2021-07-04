@@ -1,0 +1,1487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PO_handed_over_to_planning</fullName>
+    <active>true</active>
+    <description>PO handed over to planning</description>
+    <label>PO handed over to planning</label>
+    <picklistValues>
+        <picklist>Abu_Dhabi_Revenue_Stream__c</picklist>
+        <values>
+            <fullName>BOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electrical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Machineshop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>O%26M</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pumps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tubular</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turbines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Valves</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Budgetary_Quote__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Business_Unit__c</picklist>
+        <values>
+            <fullName>Abu Dhabi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CIS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dubai - APS%2FRE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dubai - Oilfield</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iraq</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NAI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oman</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saudi</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CSRDecisionOnBid__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_enquiry_execution__c</picklist>
+        <values>
+            <fullName>Not processed%2FInvolving any support by Dubai facility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quotation and job%2C both executed in Dubai facility</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_requires_material_from_particul__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Known</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Decision_by_Authority_above_HOS__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>End__c</picklist>
+        <values>
+            <fullName>Algeria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Australia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Austria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Azerbaijan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bahrain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bangladesh</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belgium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caribbean</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>China</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Congo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denmark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Egypt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gabon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ghana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hungary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>India</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indonesia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iran</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iraq</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ireland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Israel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jordan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KSA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kazakhstan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kenya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kuwait</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lebanon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Libya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malaysia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Morocco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Netherlands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nigeria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Norway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oman</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pakistan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Palestine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Philippines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portugal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qatar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Romania</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Russia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saudi Arabia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Serbia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singapore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovakia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sudan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swaziland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sweden</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Syria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taiwan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tunisia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turkey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turkmenistan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UAE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vietnam</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yemen</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>General_Manager_Decision_on_Bid__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Head_of_Sales_Decision_on_Bid_Approval__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Head_of_Sales_Decision_on_Bid__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Head_of_Tendering_Decision_on_Bid__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Is_the_job_to_be_executed_in_Dubai__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Level_of_competition__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not applicable</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Management_Decision_on_Bid__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Material_origin__c</picklist>
+        <values>
+            <fullName>Algeria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Any</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Australia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Austria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Azerbaijan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bahrain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>China</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Egypt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Europe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Europe or USA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ghana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hungary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>India</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iran</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iraq</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jordan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KSA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kazakhstan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kuwait</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lebanon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Libya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malaysia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Morocco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Netherlands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nigeria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non Chinese</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oman</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pakistan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Palestine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portugal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qatar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Romania</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Russia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saudi Arabia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Serbia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singapore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sudan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Syria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tunisia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turkey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UAE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vietnam</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yemen</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Opportunity_source__c</picklist>
+        <values>
+            <fullName>Advertisement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collaboration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Visit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer enquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Enquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employee Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>External Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Frame Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Installed Base</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Show %2F Exhibition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Word of mouth</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Quotation_Approval__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requires Changes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Quotation_submission_preference__c</picklist>
+        <values>
+            <fullName>By CSR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>By Tendering</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RFQ_Record_type__c</picklist>
+        <values>
+            <fullName>RFQ  via Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RFQ without quotation under Contract</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_for_no_bid_recommendation_TM__c</picklist>
+        <values>
+            <fullName>Cancelled by Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Embargo - end destination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Group companies quoted directly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Licensing constraint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Management decision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed response due date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not in our Product Range</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not sufficient details to quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suppliers did not respond timely</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supply chain lead time constraint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical capability constraint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Workshop capacity constraint</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_for_no_bid_recommendation_csr__c</picklist>
+        <values>
+            <fullName>Cancelled by Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Embargo - end destination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Group companies quoted directly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Licensing constraint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Management decision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed response due date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not in our Product Range</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not sufficient details to quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suppliers did not respond timely</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supply chain lead time constraint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical capability constraint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Workshop capacity constraint</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reasons_for_Quote_Delay__c</picklist>
+        <values>
+            <fullName>CSR Delayed Processing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold - Lack of Data</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold - No Movex Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Vendor Quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operational Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TR Delayed</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Revenue_stream__c</picklist>
+        <values>
+            <fullName>API Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>APS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BHA Repair</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BOP Control Unit %28Koomey%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Casing and Tubing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chokes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Compressors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connector welding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crossover %26 Subs %28casing %26 tubing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drill Pipe %2F Drill Collar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drillstem Subs %28rotary%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electrical %26 Instrumentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fabrication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Flow Iron</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Frac-tree</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gas Turbines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gearbox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hard Banding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IKM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inspection Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manifolds - D%26C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manifolds - Production</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mathena Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mechanical Seals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Novatech Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>O%26M</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OCTG Plain end threading</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OCTG Pup Joints %28free issue material%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OFS Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other OEM tools</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Packers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pulsation Dampener</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pumps - Clyde</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pumps - Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pumps - Weir</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SPM Flow Iron</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scholler Blackman %28DSI%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Steam Turbines - AST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Steam Turbines - Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tubular PS - Non-Aramco non-premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tubular PS - Non-Aramco premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tubular S - Non-Aramco non-premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tubular S - Non-Aramco premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Valves - SSV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Valves - non API</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Valves 6A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wellhead</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Saudi_Revenue_Stream__c</picklist>
+        <values>
+            <fullName>Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pressure Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tubular</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>V%26WH</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Approved for Tendering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved%2C Make Quotation ready for submitial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bid%2FNo Bid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Contacted for Submitted quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer notified of a Completed Job</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer order acknowledged</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fully Collected</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initial Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoicing onhold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Job done awaiting contracts sign-off</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Job handover to Operations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Job invoiced in movex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Job ready for Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opportunity closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PO Approved by Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PO Under Clarification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PO handed over to Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PO handover to Planning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PO received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PO under Review with Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partial Collected</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quotation under clarification with Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quotation under compilation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote Ready for Submital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote Submitted to Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote accepted but PO awaited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quoted %26 Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tender Under Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tender Under Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>job delivered</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Strategic_Initiative__c</picklist>
+        <values>
+            <fullName>ABC Rate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>API 6A Valves</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>APS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manifolds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mechanical Seal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>O %26 M</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rentals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swell Packer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Valves</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wellheads</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tendering_Manager_Review__c</picklist>
+        <values>
+            <fullName>Requires Changes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submit for Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tendering_Manager_s_Decision_on_Bid__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type_of_Business__c</picklist>
+        <values>
+            <fullName>API Oilfield</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>O%26M</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OCTG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pressure Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rotating Equipment</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type_of_activity__c</picklist>
+        <values>
+            <fullName>Control System Upgrade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engineering %26 Consultancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Field Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manufacturing - NEW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Projects</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rental</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Repair %2F Service %28workshop%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spares</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trading</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Training</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Win_Probability__c</picklist>
+        <values>
+            <fullName>25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>50</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>75</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>95</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

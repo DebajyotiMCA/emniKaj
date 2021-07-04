@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Handed_over_to_Opertion_validation_rule</fullName>
+    <active>false</active>
+    <errorConditionFormula>if(Handover_to_operation__c ==FALSE,TRUE,FALSE)</errorConditionFormula>
+    <errorDisplayField>Handover_to_operation__c</errorDisplayField>
+    <errorMessage>Please check the box.</errorMessage>
+</ValidationRule>

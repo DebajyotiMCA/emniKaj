@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_Opp_when_quote_attached</fullName>
+    <active>true</active>
+    <errorConditionFormula>Close_opportunity__c = TRUE &amp;&amp; No_of_quotes_attached__c &gt; 0  &amp;&amp; Quotes_with_reason_for_lost_quote__c  = 0
+
+&amp;&amp;  $User.Id != &apos;0050X00000ADQJB&apos;</errorConditionFormula>
+    <errorDisplayField>Close_opportunity__c</errorDisplayField>
+    <errorMessage>Please select the reason for lost quote</errorMessage>
+</ValidationRule>

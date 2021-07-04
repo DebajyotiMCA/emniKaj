@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSR_No_Bid_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>if(AND( Text(CSRDecisionOnBid__c) =&apos;No&apos;, ISBLANK(  CSR_updates_on_Opportunity__c )),TRUE,FALSE)</errorConditionFormula>
+    <errorDisplayField>CSR_updates_on_Opportunity__c</errorDisplayField>
+    <errorMessage>Please provide the comment on Bid/No Bid.</errorMessage>
+</ValidationRule>

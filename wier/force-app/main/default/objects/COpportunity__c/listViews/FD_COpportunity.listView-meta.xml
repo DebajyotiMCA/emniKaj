@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FD_COpportunity</fullName>
+    <columns>NAME</columns>
+    <filterScope>Queue</filterScope>
+    <label>FD</label>
+    <queue>FD</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+        <roleAndSubordinates>Oman_HOS</roleAndSubordinates>
+    </sharedTo>
+</ListView>

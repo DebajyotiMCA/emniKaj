@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_no_bid_recommendation_csr__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason for &quot;no bid&quot; recommendation</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cancelled by Customer</fullName>
+                <default>false</default>
+                <label>Cancelled by Customer</label>
+            </value>
+            <value>
+                <fullName>Embargo - end destination</fullName>
+                <default>false</default>
+                <label>Embargo - end destination</label>
+            </value>
+            <value>
+                <fullName>Group companies quoted directly</fullName>
+                <default>false</default>
+                <label>Group companies quoted directly</label>
+            </value>
+            <value>
+                <fullName>Licensing constraint</fullName>
+                <default>false</default>
+                <label>Licensing constraint</label>
+            </value>
+            <value>
+                <fullName>Management decision</fullName>
+                <default>false</default>
+                <label>Management decision</label>
+            </value>
+            <value>
+                <fullName>Missed response due date</fullName>
+                <default>false</default>
+                <label>Missed response due date</label>
+            </value>
+            <value>
+                <fullName>Not in our Product Range</fullName>
+                <default>false</default>
+                <label>Not in our Product Range</label>
+            </value>
+            <value>
+                <fullName>Not sufficient details to quote</fullName>
+                <default>false</default>
+                <label>Not sufficient details to quote</label>
+            </value>
+            <value>
+                <fullName>Suppliers did not respond timely</fullName>
+                <default>false</default>
+                <label>Suppliers did not respond timely</label>
+            </value>
+            <value>
+                <fullName>Supply chain lead time constraint</fullName>
+                <default>false</default>
+                <label>Supply chain lead time constraint</label>
+            </value>
+            <value>
+                <fullName>Technical capability constraint</fullName>
+                <default>false</default>
+                <label>Technical capability constraint</label>
+            </value>
+            <value>
+                <fullName>Workshop capacity constraint</fullName>
+                <default>false</default>
+                <label>Workshop capacity constraint</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

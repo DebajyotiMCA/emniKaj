@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Info_clarification_and_PO_handed_over</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(  Info_clarification_reqd_from_customer__c  ==TRUE,  PO_handed_over_to_contract__c  ==TRUE)</errorConditionFormula>
+    <errorDisplayField>Info_clarification_reqd_from_customer__c</errorDisplayField>
+    <errorMessage>You can select only one of the options.</errorMessage>
+</ValidationRule>

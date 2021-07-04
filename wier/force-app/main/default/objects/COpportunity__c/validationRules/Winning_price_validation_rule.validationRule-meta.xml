@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Winning_price_validation_rule</fullName>
+    <active>false</active>
+    <errorConditionFormula>Winning_Price_AED__c &lt; 0</errorConditionFormula>
+    <errorDisplayField>Winning_Price_AED__c</errorDisplayField>
+    <errorMessage>Winning price must be greater than or equal to zero.</errorMessage>
+</ValidationRule>

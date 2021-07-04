@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Opportunities_Al</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Movex_CO_No__c</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>Opportunity_description__c</columns>
+    <columns>Contents_of_customer_communication__c</columns>
+    <columns>Win_Prob__c</columns>
+    <columns>Selling_price_in_Quotation__c</columns>
+    <columns>Expected_date_of_input__c</columns>
+    <columns>Assign_Tendering_Representative__c</columns>
+    <columns>Close_Date__c</columns>
+    <columns>Quotation_submittal_date__c</columns>
+    <columns>Expected_Quotation_value__c</columns>
+    <columns>CREATEDBY_USER.ALIAS</columns>
+    <filterScope>Mine</filterScope>
+    <label>My Opportunities (All)</label>
+    <sharedTo>
+        <group>Commercial_Sales</group>
+        <roleAndSubordinates>Baku_Business_Head</roleAndSubordinates>
+        <roleAndSubordinates>Business_Head_UAE</roleAndSubordinates>
+        <roleAndSubordinates>Dxb_RE_General_Manager</roleAndSubordinates>
+        <roleAndSubordinates>General_Manager</roleAndSubordinates>
+        <roleAndSubordinates>Head_UK_Turbomachinery</roleAndSubordinates>
+        <roleAndSubordinates>Head_of_Aberdeen</roleAndSubordinates>
+        <roleAndSubordinates>Non_DXB_Iraq_Team_member</roleAndSubordinates>
+        <roleAndSubordinates>Non_DXB_Non_Iraq_Team_member</roleAndSubordinates>
+        <roleAndSubordinates>Oman_Business_Head</roleAndSubordinates>
+        <roleAndSubordinates>Oman_HOS</roleAndSubordinates>
+        <roleAndSubordinates>Projects_Business_Head</roleAndSubordinates>
+        <roleAndSubordinates>Saudi_Business_Head</roleAndSubordinates>
+    </sharedTo>
+</ListView>
