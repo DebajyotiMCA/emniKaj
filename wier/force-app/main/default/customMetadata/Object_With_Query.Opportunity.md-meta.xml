@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>Query_String__c</field>
-        <value xsi:type="xsd:string">select id, name,Value_for_pipeline__c from COpportunity__c where Customer__c =: AccId and status__c in (&apos;Approved&apos;, &apos;Make Quotation ready for submitial&apos;,&apos;Quote Ready for Submital&apos;,&apos;Quote Submitted to Customer&apos;,&apos;Customer Contacted for Submitted quote&apos;,&apos;Quotation under clarification with Customer&apos;) and Business_Unit__c not in (&apos;Aberdeen&apos;,&apos;Barton&apos;) order by Value_for_pipeline__c desc limit 10</value>
+        <value xsi:type="xsd:string">select id, name, Value_for_pipeline__c, CurrencyIsoCode from COpportunity__c where Customer__c =: AccId  and status__c in (&apos;Approved&apos;, &apos;Make Quotation ready for submitial&apos;,&apos;Quote Ready for Submital&apos;,&apos;Quote Submitted to Customer&apos;,&apos;Customer Contacted for Submitted quote&apos;,&apos;Quotation under clarification with Customer&apos;) and Business_Unit__c not in (&apos;Aberdeen&apos;,&apos;Barton&apos;) order by Value_for_pipeline__c desc limit 10</value>
     </values>
 </CustomMetadata>

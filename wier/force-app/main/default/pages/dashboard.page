@@ -1,75 +1,144 @@
-<apex:page standardController="Account" showHeader="true" lightningStylesheets="true" extensions="dashboardExt" >
-   
-      
-    <div >
-        Header
-        {!account.Name}
-               
-    </div>
+<apex:page standardController="Account" showHeader="false" sidebar="false" lightningStylesheets="true" extensions="dashboardExt" >
+   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    .infotable {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      overflow-y: scroll;
+      border: 1px solid #ddd;
+    }
     
-    <apex:pageBlock >
+    .infotable th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even){background-color: #f2f2f2}
+    </style>
+    </head>
+    <apex:pageBlock title="{!account.Name}" tabStyle="Account" >
+        <apex:pageBlockSection columns="1" title="Customer Information"  >
+            <apex:pageblockSectionItem >
+                <apex:outputPanel >
+                    <table width="100%" >
+                        <tr>
+                            <th>Type</th>
+                            <th>Phone</th>
+                            
+                            <th>Website</th>
+                            <th>Industry</th>
+                            <th>Billing Address</th>
+                        </tr>
+                        <tr>
+                            <td>{!account.Type}</td>
+                            <td>{!account.Phone}
+                            </td>
+                            
+                            <td><apex:outputLink value="{!account.Website}">{!account.Website}</apex:outputLink></td>
+                            <td>{!account.Industry}</td>
+                            <td>{!account.BillingCountry}</td>
+                        </tr>
+                    </table>
+                </apex:outputPanel>
+            </apex:pageblockSectionItem>
+            
+        </apex:pageBlockSection>
         <apex:pageBlockSection columns="3">
             <apex:pageBlockSectionItem >
-                <table>
-                    <caption>Top 10 Pending Quotes by value(USD)</caption>
+            <apex:outputPanel >
+                <table width="100%" class="infotable" >
+                    <caption><b>Top 10 Pending Quotes by value(USD)</b></caption>
+                    <tr>
+                        <th>Name</th>
+                        <th style="text-align : right">Value for pipeline </th>
+                    </tr>
+                    <apex:repeat value="{!listofObject['Opportunity']}" var="item" >
+                        <tr>
+                            <td><apex:outputLink value="/{!item.id}">{!item.Name}</apex:outputLink> </td>
+                            <td style="text-align : right">
+                            <apex:outputText value="{0, number, 0,000.00}">
+                                <apex:param value="{!item.Value_for_pipeline__c }" />
+                            </apex:outputText>
+                            ({!item.CurrencyIsoCode})
+                            </td>
+                        </tr>
+                    </apex:repeat>
                 </table>
+                
+            </apex:outputPanel>
             </apex:pageBlockSectionItem>
             <apex:pageBlockSectionItem >
-                <analytics:reportChart reportId="00O1w000000QGR3" filter="{!filtermap['00O1w000000QGR3']}" size="small" />
+                <analytics:reportChart reportId="00O67000004pUgf" filter="{!filtermap['00O67000004pUgf']}" size="small" />
             </apex:pageBlockSectionItem>
             <apex:pageBlockSectionItem >
-                <analytics:reportChart reportId="00O1w000000QG8aEAG" filter="{!filtermap['00O1w000000QG8aEAG']}" size="small" />
+                <analytics:reportChart reportId="00O67000004pUhd" filter="{!filtermap['00O67000004pUhd']}" size="small" />
             </apex:pageBlockSectionItem>
         </apex:pageBlockSection>
         <apex:pageBlockSection columns="3">
             <apex:pageBlockSectionItem >
-                <analytics:reportChart reportId="00O1w000000QG8aEAG" filter="{!filtermap['00O1w000000QG8aEAG']}" size="small" />
+                <analytics:reportChart reportId="00O67000004pUsC" filter="{!filtermap['00O67000004pUsC']}" size="small" />
             </apex:pageBlockSectionItem>
             <apex:pageBlockSectionItem >
-                <analytics:reportChart reportId="00O1w000000QG8aEAG" filter="{!filtermap['00O1w000000QG8aEAG']}" size="small" />
+                <analytics:reportChart reportId="00O67000004pUsW" filter="{!filtermap['00O67000004pUsW']}" size="small" />
             </apex:pageBlockSectionItem>
             <apex:pageBlockSectionItem >
-                <analytics:reportChart reportId="00O1w000000QG8aEAG" filter="{!filtermap['00O1w000000QG8aEAG']}" size="small" />
+                <analytics:reportChart reportId="00O67000004pUsg" filter="{!filtermap['00O67000004pUsg']}" size="small" />
             </apex:pageBlockSectionItem>
         </apex:pageBlockSection>
         <apex:pageBlockSection columns="3">
             <apex:pageBlockSectionItem >
-                <analytics:reportChart reportId="00O1w000000QG8aEAG" filter="{!filtermap['00O1w000000QG8aEAG']}" size="small" />
+                <analytics:reportChart reportId="00O67000004pUsl" filter="{!filtermap['00O67000004pUsl']}" size="small" />
             </apex:pageBlockSectionItem>
             <apex:pageBlockSectionItem >
-                <analytics:reportChart reportId="00O1w000000QG8aEAG" filter="{!filtermap['00O1w000000QG8aEAG']}" size="small" />
+                <analytics:reportChart reportId="00O67000004pUsv" filter="{!filtermap['00O67000004pUsv']}" size="small" />
             </apex:pageBlockSectionItem>
             <apex:pageBlockSectionItem >
-                <analytics:reportChart reportId="00O1w000000QG8aEAG" filter="{!filtermap['00O1w000000QG8aEAG']}" size="small" />
+                <analytics:reportChart reportId="00O67000004pUsq" filter="{!filtermap['00O67000004pUsq']}" size="small" />
             </apex:pageBlockSectionItem>
         </apex:pageBlockSection>
         <apex:pageBlockSection columns="3">
-            <apex:pageBlockSectionItem >
-                <table>
-                    <caption>Leads</caption>
-                </table>
-            </apex:pageBlockSectionItem>
             <apex:pageBlockSectionItem >
                 <apex:outputPanel >
                 <table width="100%">
-                    <caption>Contacts</caption>
+                    <caption><b>Leads</b></caption>
                     <tr>
                         <th>Name</th>
-                        <th>Id</th>
+                        <th style="text-align : right">Type</th>
                     </tr>
-                    <apex:repeat value="{!listofObject['Contact']}" var="item" >
+                    <apex:repeat value="{!listofObject['Lead']}" var="item" >
                         <tr>
-                            <td>{!item.Name}</td>
-                            <td>{!item.Id}</td>
+                            <td><apex:outputLink value="/{!item.id}">{!item.Name}</apex:outputLink> </td>
+                            <td style="text-align : right">{!item.Type_of_Lead__c }</td>
                         </tr>
                     </apex:repeat>
                 </table>
                 </apex:outputPanel>
             </apex:pageBlockSectionItem>
             <apex:pageBlockSectionItem >
-                <table>
-                    <caption>Other entity</caption>
+                <apex:outputPanel >
+                <table width="100%">
+                    <caption><b>Contacts</b></caption>
+                    <tr>
+                        <th>Name</th>
+                        <th style="text-align : right">Email</th>
+                    </tr>
+                    <apex:repeat value="{!listofObject['Contact']}" var="item" >
+                        <tr>
+                            <td><apex:outputLink value="/{!item.id}">{!item.Name}</apex:outputLink> </td>
+                            <td style="text-align : right">{!item.Email}</td>
+                        </tr>
+                    </apex:repeat>
                 </table>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                <table width="100%">
+                    <caption><b>Other entity</b></caption>
+                </table>
+                </apex:outputPanel>
             </apex:pageBlockSectionItem>
         </apex:pageBlockSection>
     </apex:pageBlock>

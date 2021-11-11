@@ -4,10 +4,10 @@
     <protected>false</protected>
     <values>
         <field>Report_ID__c</field>
-        <value xsi:type="xsd:string">00O1w000000QG8aEAG</value>
+        <value xsi:type="xsd:string">00O67000004pUgf</value>
     </values>
     <values>
         <field>filter_string__c</field>
-        <value xsi:type="xsd:string">[{column:&quot;Account.Id&quot;,operator:&quot;equals&quot;,value:&quot;AccId&quot;}]</value>
+        <value xsi:type="xsd:string">[{column:&quot;COpportunity__c.Customer_Id__c&quot; , operator:&quot;equals&quot;,value:&quot;AccId&quot;}]</value>
     </values>
 </CustomMetadata>
